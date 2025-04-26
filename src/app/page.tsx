@@ -235,7 +235,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <motion.section id="team"
+        {/*<motion.section id="team"
         initial={{ opacity: 0, x: 0 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
@@ -250,26 +250,127 @@ export default function Home() {
                 </p>
               </div>
               <div className="grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {shuffledCards.map((card, index) => (
-        <Card key={index} className="border-0 rounded-none shadow-none">
-          <CardContent className="p-6 bg-muted rounded-lg">
-            <div className="flex flex-col gap-4 items-center">
-              <Avatar className="w-20 h-20 border">
-                {/* <AvatarImage src="/placeholder-user.jpg" /> */}
-                <AvatarFallback>{card.avatar}</AvatarFallback>
-              </Avatar>
-              <div className="text-center">
-                <div className="font-medium">{card.name}</div>
-                <div className="text-sm text-muted-foreground">{card.role}</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
+                {shuffledCards.map((card, index) => (
+                  <Card key={index} className="border-0 rounded-none shadow-none">
+                    <CardContent className="p-6 bg-muted rounded-lg">
+                      <div className="flex flex-col gap-4 items-center">
+                        <Avatar className="w-20 h-20 border">
+                          {/* <AvatarImage src="/placeholder-user.jpg" /> (fin du commentaire)
+                          <AvatarFallback>{card.avatar}</AvatarFallback>
+                        </Avatar>
+                        <div className="text-center">
+                          <div className="font-medium">{card.name}</div>
+                          <div className="text-sm text-muted-foreground">{card.role}</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>
-        </motion.section>
+        </motion.section>*/}
+        <section id="affiliate" className="w-full py-12 md:py-24 lg:py-32 border-t">
+          <div className="container px-4 md:px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2"
+            >
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Join Us</div>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Become an Affiliate</h2>
+                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    Join our community of car enthusiasts and enjoy exclusive benefits like special badges and the ability to import your car photos directly into the app.
+                  </p>
+                </div>
+                <div className="hidden md:block">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="mt-4">Apply Now</Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[650px] max-h-[90vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle>Affiliate Program Application</DialogTitle>
+                        <DialogDescription>
+                          Review the requirements below before submitting your application.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="py-4" style={{ height: 540 }}>
+                        <FilloutStandardEmbed filloutId="3nF36BZAZ3us" />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
+              
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col justify-center items-center space-y-4"
+              >
+                <div className="bg-muted p-6 rounded-lg w-full max-w-md">
+                  <h3 className="font-semibold mb-4 text-xl">Affiliate Benefits</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <div className="mr-2 mt-1 bg-primary rounded-full p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span>Exclusive badge on your profile</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="mr-2 mt-1 bg-primary rounded-full p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span>Import your car photos directly</span>
+                    </li>
+                    {/*<li className="flex items-start">
+                      <div className="mr-2 mt-1 bg-primary rounded-full p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span>Featured content in the app</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="mr-2 mt-1 bg-primary rounded-full p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span>Early access to new features</span>
+                    </li>*/}
+                  </ul>
+                </div>
+                <div className="md:hidden w-full flex justify-center">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="mt-4">Apply Now</Button>
+                    </DialogTrigger>
+                    <DialogContent className="w-[calc(100%-2rem)] max-w-[650px] max-h-[90vh] overflow-y-auto">
+                      <DialogHeader className="sticky top-0 bg-background pt-4 pb-2 z-10">
+                        <DialogTitle>Affiliate Program Application</DialogTitle>
+                        <DialogDescription>
+                          Review the requirements below before submitting your application.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="py-2" style={{ height: 480 }}>
+                        <FilloutStandardEmbed filloutId="3nF36BZAZ3us" />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32 border-t">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2">
