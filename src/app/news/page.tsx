@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,8 @@ import Footer from '@/components/Footer';
 import { toast } from 'sonner';
 import { Toaster } from '@/components/ui/sonner';
 
-export default function NewsPage() {
+// Composant pour la page de redirection
+function NewsRedirect() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   
@@ -40,35 +41,47 @@ export default function NewsPage() {
     toast.info("Redirection vers l'application en cours...");
   }, [id]);
   
-  // Page affichée pendant la tentative de redirection
+  return (
+    <div className="container flex flex-col items-center justify-center h-[70vh] px-4 md:px-6">
+      {!id ? (
+        <>
+          <h1 className="text-3xl font-bold text-center">Aucun article spécifié</h1>
+          <p className="mt-4 text-muted-foreground text-center">
+            Veuillez spécifier un ID d'article valide
+          </p>
+          <Link href="/" className="mt-8">
+            <Button>Retourner à l'accueil</Button>
+          </Link>
+        </>
+      ) : (
+        <>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
+          <h1 className="text-3xl font-bold mt-8 text-center">
+            Ouverture de Wheeloh en cours...
+          </h1>
+          <p className="mt-4 text-muted-foreground text-center max-w-md">
+            Si l'application ne s'ouvre pas automatiquement, vous allez être redirigé vers le Play Store
+          </p>
+        </>
+      )}
+    </div>
+  );
+}
+
+// Page principale qui utilise Suspense
+export default function NewsPage() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <Toaster />
       <Header showNavLinks={true} />
       <main className="flex-1">
-        <div className="container flex flex-col items-center justify-center h-[70vh] px-4 md:px-6">
-          {!id ? (
-            <>
-              <h1 className="text-3xl font-bold text-center">Aucun article spécifié</h1>
-              <p className="mt-4 text-muted-foreground text-center">
-                Veuillez spécifier un ID d'article valide
-              </p>
-              <Link href="/" className="mt-8">
-                <Button>Retourner à l'accueil</Button>
-              </Link>
-            </>
-          ) : (
-            <>
-              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
-              <h1 className="text-3xl font-bold mt-8 text-center">
-                Ouverture de Wheeloh en cours...
-              </h1>
-              <p className="mt-4 text-muted-foreground text-center max-w-md">
-                Si l'application ne s'ouvre pas automatiquement, vous allez être redirigé vers le Play Store
-              </p>
-            </>
-          )}
-        </div>
+        <Suspense fallback={
+          <div className="flex items-center justify-center h-[70vh]">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
+          </div>
+        }>
+          <NewsRedirect />
+        </Suspense>
       </main>
       <Footer />
     </div>
