@@ -1,7 +1,10 @@
 "use client";
 
 import { Suspense } from 'react';
-import NewsRedirectContent from '@/components/NewsRedirectContent';
+// Correction de l'import : le chemin du composant doit être correct.
+// Supposons que le composant se trouve dans 'src/components/NewsRedirectContent.tsx'.
+// Si ce n'est pas le cas, veuillez ajuster le chemin en conséquence.
+import NewsRedirectContent from '../../components/NewsRedirectContent';
 
 export default function NewsPage() {
   return (
