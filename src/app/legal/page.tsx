@@ -20,10 +20,10 @@ export default function Legal() {
             
             <h4 className="text-xl font-semibold mt-8">1. Éditeur du site</h4>
             <p>
-              {/*Le site web <strong>Wheeloh</strong> est édité par :<br />
-              <strong>Henri d'Aboville, Théophile Bonte et Antoine Savoyant</strong>, personnes physiques.<br />*/}
-              Adresse : 12 rue de la Liberté, 75011 Paris, France<br />
-              Téléphone : +33 1 23 45 67 89<br />
+              Le site web <strong>Wheeloh</strong> est édité par :<br />
+              Henri d'Aboville, Théophile Bonte et Antoine Savoyant, personnes physiques.<br />
+              Adresse : 48 bis rue des Chantiers, 78000 Versailles, France<br />
+              Téléphone : +33 7 52 05 25 59<br />
               Adresse e-mail : <a href="mailto:contact@wheeloh.com" className="text-blue-600 hover:underline">contact@wheeloh.com</a><br />
               Site web : <a href="https://wheeloh.com" className="text-blue-600 hover:underline">https://wheeloh.com</a>
             </p>

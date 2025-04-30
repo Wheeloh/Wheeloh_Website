@@ -23,9 +23,9 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
           <Link href="/#features" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Features
           </Link>
-          <Link href="/#team" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          {/* <Link href="/#team" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Team
-          </Link>
+          </Link> */}
           <Link href="/#contact" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Contact
           </Link>
