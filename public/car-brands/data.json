@@ -32,10 +32,6 @@
         "categorieFinale": "luxe"
       },
       {
-        "model": "Alpine A108",
-        "categorieFinale": "luxe"
-      },
-      {
         "model": "Alpine A110",
         "categorieFinale": "luxe"
       },
@@ -57,7 +53,7 @@
       },
       {
         "model": "Alpine A370",
-        "categorieFinale": "luxe"
+        "categorieFinale": "prestige"
       },
       {
         "model": "Alpine A390",
@@ -65,15 +61,7 @@
       },
       {
         "model": "Alpine A424 Beta",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Alpine A610",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Alpine Gta",
-        "categorieFinale": "luxe"
+        "categorieFinale": "prestige"
       },
       {
         "model": "Alpine Vision Concept",
@@ -81,7 +69,7 @@
       },
       {
         "model": "Alpine Vision Gran Turismo",
-        "categorieFinale": "luxe"
+        "categorieFinale": "prestige"
       }
     ]
   },
@@ -484,79 +472,7 @@
     "country": "United States",
     "models": [
       {
-        "model": "Chevrolet 3100",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Alero",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Apache",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Avalanche",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Avalanche Utilitaire",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Aveo",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Aveo 2",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Aveo 2 Business",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Beat",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Bel Air",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Bel Air Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Bel Air Coupe",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Beretta",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Biscayne",
-        "categorieFinale": "luxe"
-      },
-      {
         "model": "Chevrolet Blazer",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Bolt",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet C10",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet C20",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet C30",
         "categorieFinale": "luxe"
       },
       {
@@ -565,10 +481,6 @@
       },
       {
         "model": "Chevrolet Camaro 2",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Camaro 3",
         "categorieFinale": "luxe"
       },
       {
@@ -588,10 +500,6 @@
         "categorieFinale": "luxe"
       },
       {
-        "model": "Chevrolet Camaro 5 Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
         "model": "Chevrolet Camaro 6",
         "categorieFinale": "luxe"
       },
@@ -608,71 +516,7 @@
         "categorieFinale": "luxe"
       },
       {
-        "model": "Chevrolet Caprice",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Caprice Berline",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Caprice Break",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Captiva",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Chevelle",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Chevelle Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Chevy",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Citation",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Colorado Rallye",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Corsica",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Corvair",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Corvair Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
         "model": "Chevrolet Corvette",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Corvette C1",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Corvette C1 Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Corvette C2",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Corvette C2 Cabriolet",
         "categorieFinale": "luxe"
       },
       {
@@ -685,10 +529,6 @@
       },
       {
         "model": "Chevrolet Corvette C4",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Corvette C4 Cabriolet",
         "categorieFinale": "luxe"
       },
       {
@@ -721,98 +561,18 @@
       },
       {
         "model": "Chevrolet Corvette C8 Stingray Convertible",
-        "categorieFinale": "luxe"
+        "categorieFinale": "prestige"
       },
       {
         "model": "Chevrolet Corvette C8 Stingray Targa",
-        "categorieFinale": "luxe"
+        "categorieFinale": "prestige"
       },
       {
         "model": "Chevrolet Corvette Z06",
-        "categorieFinale": "luxe"
+        "categorieFinale": "prestige"
       },
       {
         "model": "Chevrolet Corvette Zr1",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Cruze",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Cruze Sw",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet El Camino",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Epica",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Equinox",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Evanda",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Fleetline",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Groove",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Hhr",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Impala",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Impala Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet K10 Pick Up",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet K5 Blazer",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Kalos",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Lacetti",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Malibu",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Malibu 2",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Matiz",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Matiz 2",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Matiz M3x",
         "categorieFinale": "luxe"
       },
       {
@@ -820,111 +580,7 @@
         "categorieFinale": "luxe"
       },
       {
-        "model": "Chevrolet Monte Carlo",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Monza",
-        "categorieFinale": "luxe"
-      },
-      {
         "model": "Chevrolet Nova",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Nova Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Nubira",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Nubira Sw",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Orlando",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Orlando Concept",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Rezzo",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet S10 Pick Up",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet S3x",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Sequel",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Silverado",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Sonic",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Spark",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Sport Van",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Ssr",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Suburban",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Tahoe",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Trailblazer",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Trans Sport",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Trax",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Trax Concept",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Van Express",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Vega",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Volt",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Chevrolet Volt Concept",
         "categorieFinale": "luxe"
       },
       {
@@ -937,14 +593,6 @@
     "logo": "https://wheeloh.com/car-brands/logos/dodge.png",
     "country": "United States",
     "models": [
-      {
-        "model": "Dodge Avenger",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Caliber",
-        "categorieFinale": "luxe"
-      },
       {
         "model": "Dodge Challenger",
         "categorieFinale": "luxe"
@@ -966,119 +614,11 @@
         "categorieFinale": "luxe"
       },
       {
-        "model": "Dodge Coronet",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge D100",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge D24",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Dakota",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Dart",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Dart 2",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Dart Break",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Dart Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
         "model": "Dodge Demon Concept",
         "categorieFinale": "luxe"
       },
       {
-        "model": "Dodge Durango",
-        "categorieFinale": "luxe"
-      },
-      {
         "model": "Dodge Envi",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Journey",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Kingsway",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Lancer",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Magnum",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Matador",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Monaco",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Monaco Cabriolet",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Nitro",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Omni",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Phoenix",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Pioneer",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Polara",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Ram",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Ram Utilitaire",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Ramcharger",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Royal",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Royal Custom",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Stealth",
         "categorieFinale": "luxe"
       },
       {
@@ -1099,14 +639,6 @@
       },
       {
         "model": "Dodge Viper Srt-10",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Wayfarer",
-        "categorieFinale": "luxe"
-      },
-      {
-        "model": "Dodge Zeo",
         "categorieFinale": "luxe"
       }
     ]
