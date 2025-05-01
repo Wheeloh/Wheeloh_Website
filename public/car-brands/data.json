@@ -1,0 +1,2922 @@
+{
+  "Abarth": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "Abarth 124",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Ac": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Ac 428 Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ac Coupe Aceca",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Alpine": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "France",
+    "models": [
+      {
+        "model": "Alpine A106",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A108",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A110",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A110 (2e Generation)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A290",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A290 Beta",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A310",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A370",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A390",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A424 Beta",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine A610",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine Gta",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine Vision Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alpine Vision Gran Turismo",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Ariel": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Ariel Atom",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ariel Atom 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ariel Atom 3",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Audi": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Germany",
+    "models": [
+      {
+        "model": "Audi A4 (4e Generation)",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Audi E-tron Gt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi E-tron Spyder",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Le Mans",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Audi R8",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi R8 (2e Generation)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi R8 (2e Generation) Gt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi R8 (2e Generation) Spyder",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi R8 Gt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi R8 Gt Spyder",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi R8 Spyder",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi R8 Tdi Le Mans Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs E-tron Gt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs3 (3e Generation) Berline",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs3 Sportback",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs4",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs4 (5e Generation) Avant",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs5 (2e Generation) Sportback",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs6 (2e Generation)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs6 (2e Generation) Avant",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs6 (3e Generation) Avant",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs6 (4e Generation) Avant",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs6 Avant",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Rs7 (2e Generation) Sportback",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Tt 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Tt 2 Rs Roadster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Tt 3 Rs Roadster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Tt Quattro Sport Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Tt Rs",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Audi Tts",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Bentley": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Bentley Arnage",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Azure",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Bentayga",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Brooklands",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Brooklands 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental 2 Gt Speed",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Flying Spur",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Gt",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Gt 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Gt 3",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Gt 4",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Gtc",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Gtc 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Gtc 3",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Continental Gtc 4",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Corniche",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Eight",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Exp 10 Speed 6 Concept",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Exp 9 F",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Flying Spur",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Flying Spur 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Flying Spur 3",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Mark",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Mark Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Mulsanne",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Mulsanne 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley S1",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley S2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley S3",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Silver Cloud",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley T",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Turbo R",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Turbo Rt",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bentley Type R",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Bugatti": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "France",
+    "models": [
+      {
+        "model": "Bugatti Chiron",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Divo",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Eb110",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Tourbillon",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Type 35",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Type 41",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Type 46",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Type 57",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Veyron",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Bugatti Veyron Gran Sport",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Cadillac": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United States",
+    "models": [
+      {
+        "model": "Cadillac Ciel Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Cien",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Cadillac Ct6",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Cts 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Cts-v",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Cts-v 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Cts-v 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Elmiraj Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Escalade",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Escalade 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Cadillac Seville Cabriolet",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Chevrolet": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United States",
+    "models": [
+      {
+        "model": "Chevrolet 3100",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Alero",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Apache",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Avalanche",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Avalanche Utilitaire",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Aveo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Aveo 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Aveo 2 Business",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Beat",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Bel Air",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Bel Air Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Bel Air Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Beretta",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Biscayne",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Blazer",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Bolt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet C10",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet C20",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet C30",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 3 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 4",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 4 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 5",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 5 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 6",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro 6 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Camaro Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Caprice",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Caprice Berline",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Caprice Break",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Captiva",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Chevelle",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Chevelle Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Chevy",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Citation",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Colorado Rallye",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corsica",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvair",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvair Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C1",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C1 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C2 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C3 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C4",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C4 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C5",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C5 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C6",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C6 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C7 Stingray",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C7 Stingray Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C7 Stingray Targa",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C8 Stingray Convertible",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette C8 Stingray Targa",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette Z06",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Corvette Zr1",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Cruze",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Cruze Sw",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet El Camino",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Epica",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Equinox",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Evanda",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Fleetline",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Groove",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Hhr",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Impala",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Impala Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet K10 Pick Up",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet K5 Blazer",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Kalos",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Lacetti",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Malibu",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Malibu 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Matiz",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Matiz 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Matiz M3x",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Miray Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Monte Carlo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Monza",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Nova",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Nova Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Nubira",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Nubira Sw",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Orlando",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Orlando Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Rezzo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet S10 Pick Up",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet S3x",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Sequel",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Silverado",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Sonic",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Spark",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Sport Van",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Ssr",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Suburban",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Tahoe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Trailblazer",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Trans Sport",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Trax",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Trax Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Van Express",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Vega",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Volt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Volt Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Chevrolet Wtcc Ultra Concept",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Dodge": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United States",
+    "models": [
+      {
+        "model": "Dodge Avenger",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Caliber",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Challenger",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Challenger 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Challenger Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Charger",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Charger 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Coronet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge D100",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge D24",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Dakota",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Dart",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Dart 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Dart Break",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Dart Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Demon Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Durango",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Envi",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Journey",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Kingsway",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Lancer",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Magnum",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Matador",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Monaco",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Monaco Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Nitro",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Omni",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Phoenix",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Pioneer",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Polara",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Ram",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Ram Utilitaire",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Ramcharger",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Royal",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Royal Custom",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Stealth",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Viper",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Viper 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Viper Gts",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Viper Rt-10",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Viper Srt-10",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Wayfarer",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Dodge Zeo",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Donkervoort": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Netherlands",
+    "models": [
+      {
+        "model": "Donkervoort D8",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Donkervoort D8 Gto",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Donkervoort S8",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Ferrari": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "Ferrari 12cilindri",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 12cilindri Coupe",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 12cilindri Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 208",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 212",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 250",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 250 Gt Cab",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 275",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 275 Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 288",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 296",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 308",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 308 Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 328",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 328 Gtb",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 328 Gts",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 330",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 330 Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 348",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 348 Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 360",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 360 Modena",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 360 Modena Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 365",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 400",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 412",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 456",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 458",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 458 Italia",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 458 Italia Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 458 Speciale",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 458 Speciale Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 488",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 488 Challenge",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 488 Gtb",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 488 Pista",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 488 Pista Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 488 Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 512",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 512 Bb",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 512 Bbi",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 550",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 550 Maranello",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 550 Maranello Barchetta",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 575",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 575m Maranello",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 575m Maranello Superamerica",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 599",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 599 Gtb Fiorano",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 599 Gto",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 599 Sa Aperta",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 599xx",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 612",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 812",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 812 Competizione",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 812 Competizione Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 812 Gts",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari 812 Superfast",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari California",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari California T",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Daytona Sp3",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Dino",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Dino Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Enzo",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F12",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F150",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F355",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F355 Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F40",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F430",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F430 Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F50",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F8",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F8 Tributo",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari F80",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Ff",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Fxx",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Gtc4lusso",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Laferrari",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Laferrari Aperta",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Mondial",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Mondial Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Monza",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Portofino",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Purosangue",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Roma",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Roma Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Sf90 Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Sf90 Stradale",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Spider 365",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ferrari Testarossa",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Ford": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United States",
+    "models": [
+      {
+        "model": "Ford A",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ford Cobra",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Gt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Gt 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ford Gt 40",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Ford Mustang",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang 4 Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang 5 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang 5 Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang 6 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang 6 Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang 7 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang 7 Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Mustang Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ford Sierra",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Ginetta": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Ginetta G50",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Honda": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Japan",
+    "models": [
+      {
+        "model": "Honda Civic Type R",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Honda Nsx",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Honda Nsx 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Honda Prelude",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Honda S2000",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Honda Small Hybrid Sports",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Infiniti": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Japan",
+    "models": [
+      {
+        "model": "Infiniti Emerg-e",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Jaguar": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Jaguar 240",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Jaguar 3.8",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Jaguar C-x16 Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Cx-75",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Jaguar F-type",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar R-type Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Ss",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Type E Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Xfr-s",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Xfr-s Sportbrake",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Xj",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Xj220",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Jaguar Xj6",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Xjs",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Xjs-c",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Jaguar Xkr-s",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Koenigsegg": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Sweden",
+    "models": [
+      {
+        "model": "Koenigsegg Agera",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Koenigsegg Agera R",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Koenigsegg Cc 8s",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Koenigsegg Cc R",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Koenigsegg Regera",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Lamborghini": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "Lamborghini 350",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini 350 Gt",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini 3500",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini 400",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini 400 Gt",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Asterion Concept",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Aventador",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Aventador Roadster",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Centenario",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Countach",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Diablo",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Diablo Roadster",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Espada",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Estoque Concept",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Gallardo",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Gallardo Spyder",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Huracan",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Huracan Spyder",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Islero",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Jalpa",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Jarama",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Lm",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Miura",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Murcielago",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Murcielago Roadster",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Reventon",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Revuelto",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Sesto Elemento",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Sian",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Silhouette",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Temerario",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Urraco",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Urus",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Veneno",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lamborghini Veneno Roadster",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Lancia": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "Lancia Stratos",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Lexus": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Japan",
+    "models": [
+      {
+        "model": "Lexus Lf-lc Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lexus Lfa",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lexus Rc F",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Lotus": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Lotus 2 Eleven",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus 3-eleven",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lotus 340 R",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Elan Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Eletre",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Elise",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Elise 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Elise 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Elite 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Elite 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Emeya",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Emira",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lotus Esprit 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Europa",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Europa 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Evora",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Excel",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Exige",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Lotus Exige 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Lotus Exige 2 Roadster",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Maserati": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "Maserati 2.24v",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 222",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 228",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 3200 Gt",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 3500 Gt",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 3500 Gti",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 420",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 422",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 424 V",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 425",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 430",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati 5000 Gt",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Alfieri",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Biturbo",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Biturbo Spyder",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Bora",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Coupe",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Ghibli",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Ghibli 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Ghibli 3",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Ghibli Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Grancabrio",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Grancabrio 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Gransport",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Gransport Spyder",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Granturismo",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Granturismo 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Granturismo 2 Folgore",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Grecale",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Indy",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Karif",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Khamsin",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Kubang Concept",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Kyalami",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Levante",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Mc12",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Mc20",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Mc20 Cielo",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Merak",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Mexico",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Mistral",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Mistral Cabriolet",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Quattroporte",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Quattroporte 2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Quattroporte 3",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Quattroporte 4",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Quattroporte 5",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Quattroporte 6",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Sebring",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Shamal",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maserati Spyder",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Mazda": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Japan",
+    "models": [
+      {
+        "model": "Mazda RX-7",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mazda RX-7 (3e Generation)",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Mercedes": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Germany",
+    "models": [
+      {
+        "model": "Mercedes 190 Sl",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Mercedes 280 Coupe",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Mercedes 300",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Mercedes Cl 3 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Cla Shooting Brake Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe A 4 Berline Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe C 4 Cabriolet Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe C 4 Coupe Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe C 4 Sw Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe Cls 2 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe E 4 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe E 5 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe E 5 Coupe Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe E 6 Break Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe G",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe G 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe G 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe G 3 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe G 4",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe G 4 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe G Fourgon",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Classe S 7 Coupe Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Cle Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Cle Coupe Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Clk Gtr",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Mercedes Eqe Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Gle Coupe 2 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Gls Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Sl 2 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Sl 4 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Sl 5 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Slk",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Slk 2 Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Slr",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Sls",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Sls Amg",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Sls Amg Roadster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Vision Eq Silver Arrow",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes Vision Mercedes-maybach 6",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Morgan": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Morgan Plus 6",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Nissan": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Japan",
+    "models": [
+      {
+        "model": "Nissan 200 Sx",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan 200 Sx S13",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan 200 Sx S14",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan 240 Z",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan 280 Zx",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan 300 Zx",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan 300 Zx Z32",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Nissan 370z",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan 370z Roadster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Gt-r",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Gt-r Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Laurel",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Silvia",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Skyline",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Nissan Skyline R31 Berline",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Skyline R31 Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Skyline R33 Berline",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Skyline R34 Berline",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Nissan Skyline R34 Coupe",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Pagani": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "Pagani Zonda",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Zonda S",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Zonda Roadster",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Zonda Cinque",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Zonda 760 LH",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Zonda R",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Huayra",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Huayra BC",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Huayra Roadster",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Huayra Roadster BC",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Pagani Huayra R",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Plymouth": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "United States",
+    "models": [
+      {
+        "model": "Plymouth Barracuda",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Plymouth Road Runner",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Porsche": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Germany",
+    "models": [
+      {
+        "model": "Porsche 356",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 356 Roadster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 356 Speedster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 550",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 718",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 718 Boxster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 718 Cayman",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 718 Spyder",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 904",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 991 Cabriolet Turbo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 991 Gt2 Rs",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 991 Gt3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 991 Gt3 Rs",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 991 Speedster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 991 Targa",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 991 Turbo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 992 Cabriolet Turbo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 992 Dakar",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 992 Gt3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 992 Gt3 Rs",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 992 Targa",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 992 Turbo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 993",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 993 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 996",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 996 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 997",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 911 Type 997 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 912",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 912 Targa",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 914",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 918",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 918 Spyder",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 924",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 928",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 944",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 944 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 959",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 968",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche 968 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Boxster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Boxster 2 Type 987",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Boxster 3 Type 981",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Boxster Type 986",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Carrera Gt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayenne",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayenne 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayenne 2 Societe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayenne 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayenne 3 Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayenne 4",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayman",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayman 2 Type 981",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayman 2 Type 981 Gt4",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Cayman Type 987",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Macan",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Macan 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Mission E Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Panamera",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Panamera 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Panamera 2 Sport Turismo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Panamera 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Panamera Sport Turismo Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Taycan",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Taycan Cross Turismo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Porsche Taycan Sport Turismo",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Subaru": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Japan",
+    "models": [
+      {
+        "model": "Subaru Impreza 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Subaru Impreza 2 Sti",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Subaru Impreza Gt",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Subaru Viziv Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Subaru Wrx Sti",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Subaru Wrx Sti S",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Subaru Wrx Sti S 2",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Toyota": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Japan",
+    "models": [
+      {
+        "model": "Toyota Ft-86",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Toyota Ft-86 (2)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Toyota Gr 86",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Toyota Mtrc",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Toyota Supra",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Toyota Supra Mki",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Toyota Supra Mkiii",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Toyota Supra Mkiv",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Toyota Supra Mkv",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Toyota Yaris 3 Grmn",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Volkswagen": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Germany",
+    "models": [
+      {
+        "model": "Volkswagen I.d. Vizzion Concept",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Volkswagen Xl Sport Concept",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Wiesmann": {
+    "logo": "https://iili.io/3XsdQpe.png",
+    "country": "Germany",
+    "models": [
+      {
+        "model": "Wiesmann Gt",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Wiesmann Gt Mf4",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Wiesmann Gt Mf4-s",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Wiesmann Gt Mf5",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Wiesmann Roadster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Wiesmann Roadster Mf3",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Wiesmann Roadster Mf4",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Wiesmann Roadster Mf5",
+        "categorieFinale": "luxe"
+      }
+    ]
+  }
+}
