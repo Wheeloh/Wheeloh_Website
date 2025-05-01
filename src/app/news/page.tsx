@@ -38,12 +38,14 @@ function NewsPage() {
       return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     }
     function openApp(newsId: string) {
-      const appUrl = `wheeloh://news?id=${newsId}`;
+      // Utilisation du lien universel https pour le deep linking (plus fiable et natif)
+      const appUrl = `https://wheeloh.com/news?id=${newsId}`;
       const playStore = "https://play.google.com/store/apps/details?id=ton.package";
       const appStore = "https://apps.apple.com/app/idTON_APP_ID";
       if (isMobile()) {
         window.location.href = appUrl;
         setTimeout(() => {
+          // Si l'app ne s'ouvre pas, redirige vers le store
           if (/Android/i.test(navigator.userAgent)) {
             window.location.href = playStore;
           } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
