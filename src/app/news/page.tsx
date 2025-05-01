@@ -32,41 +32,41 @@ function NewsPage() {
   const newsId = searchParams.get("id");
   const [loading, setLoading] = useState(true);
   const [webContent, setWebContent] = useState<string | null>(null);
+  const [showOpenApp, setShowOpenApp] = useState(false);
 
   useEffect(() => {
     function isMobile() {
       return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     }
-    function openApp(newsId: string) {
-      // Utilisation du lien universel https pour le deep linking (plus fiable et natif)
-      const appUrl = `https://wheeloh.com/news?id=${newsId}`;
-      const playStore = "https://play.google.com/store/apps/details?id=ton.package";
-      const appStore = "https://apps.apple.com/app/idTON_APP_ID";
-      if (isMobile()) {
-        window.location.href = appUrl;
-        setTimeout(() => {
-          // Si l'app ne s'ouvre pas, redirige vers le store
-          if (/Android/i.test(navigator.userAgent)) {
-            window.location.href = playStore;
-          } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            window.location.href = appStore;
-          }
-        }, 1500);
-      }
-    }
+    // On ne tente jamais d'ouvrir l'app automatiquement si on est déjà sur wheeloh.com
     if (newsId) {
-      if (typeof window !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        openApp(newsId);
-      } else {
-        // Ici, tu peux remplacer par un fetch réel vers Firestore ou ton backend
-        setWebContent(`Affichage web de l'article ${newsId}`);
-        setLoading(false);
+      if (typeof window !== "undefined" && isMobile()) {
+        // Affiche le bouton "Ouvrir dans l'app" uniquement sur mobile
+        setShowOpenApp(true);
       }
+      setWebContent(`Affichage web de l'article ${newsId}`);
+      setLoading(false);
     } else {
       setWebContent("Aucun article sélectionné.");
       setLoading(false);
     }
   }, [newsId]);
+
+  function handleOpenApp() {
+    if (!newsId) return;
+    // Tente d'ouvrir l'app via schéma personnalisé (nécessite config native)
+    const appUrl = `wheeloh://news?id=${newsId}`;
+    const playStore = "https://play.google.com/store/apps/details?id=ton.package";
+    const appStore = "https://apps.apple.com/app/idTON_APP_ID";
+    window.location.href = appUrl;
+    setTimeout(() => {
+      if (/Android/i.test(navigator.userAgent)) {
+        window.location.href = playStore;
+      } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.location.href = appStore;
+      }
+    }, 1500);
+  }
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200">
@@ -82,6 +82,16 @@ function NewsPage() {
             webContent
           )}
         </div>
+        {showOpenApp && newsId && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={handleOpenApp}
+              className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-200"
+            >
+              Ouvrir dans l'application
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );
