@@ -1,8 +1,33 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 
-export default function NewsPage() {
+export default function NewsPageWrapper() {
+  return (
+    <Suspense fallback={<NewsPageFallback />}> 
+      <NewsPage />
+    </Suspense>
+  );
+}
+
+function NewsPageFallback() {
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200">
+      <div className="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8 mt-12 mb-12 border border-gray-100">
+        <h1 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <Image src="/logo.svg" alt="Wheeloh" width={32} height={32} />
+          Article Wheeloh
+        </h1>
+        <div className="text-gray-400 text-lg min-h-[120px] flex items-center justify-center animate-pulse">
+          Chargement de l'article...
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function NewsPage() {
   const searchParams = useSearchParams();
   const newsId = searchParams.get("id");
   const [loading, setLoading] = useState(true);
@@ -45,7 +70,7 @@ export default function NewsPage() {
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200">
       <div className="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8 mt-12 mb-12 border border-gray-100">
         <h1 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-          <img src="/logo.svg" alt="Wheeloh" className="h-8 w-8" />
+          <Image src="/logo.svg" alt="Wheeloh" width={32} height={32} />
           Article Wheeloh
         </h1>
         <div className="text-gray-700 text-lg min-h-[120px] flex items-center justify-center">
