@@ -3,15 +3,15 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function NewsRedirectContent() {
+export default function UsersRedirectContent() {
   const searchParams = useSearchParams();
   
   useEffect(() => {
-    const newsId = searchParams.get('id');
+    const userId = searchParams.get('id');
     
-    if (newsId) {
+    if (userId) {
       // Tenter d'ouvrir l'app mobile avec le deep link
-      window.location.href = `wheeloh://news?id=${newsId}`;
+      window.location.href = `wheeloh://user?id=${userId}`;
       
       // Si échec après 1 seconde => Rediriger vers les stores
       const redirectTimer = setTimeout(() => {

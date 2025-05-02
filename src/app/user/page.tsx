@@ -3,12 +3,9 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Suspense } from 'react';
-// Correction de l'import : le chemin du composant doit être correct.
-// Correction de l'import : le chemin du composant doit être correct.
-// Si le composant NewsRedirectContent n'existe pas à cet emplacement, veuillez ajuster le chemin ci-dessous.
-import NewsRedirectContent from '@/components/NewsRedirectContent';
+import UsersRedirectContent from '@/components/UsersRedirectContent';
 
-export default function NewsPage() {
+export default function UsersPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header showNavLinks={false} />
@@ -20,7 +17,7 @@ export default function NewsPage() {
             <p className="text-muted-foreground">Veuillez patienter, vous allez être redirigé automatiquement.</p>
           </div>
         }>
-          <NewsRedirectContent />
+          <UsersRedirectContent />
         </Suspense>
       </main>
       <Footer />
