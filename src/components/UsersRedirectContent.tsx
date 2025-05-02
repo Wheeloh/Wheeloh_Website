@@ -38,17 +38,17 @@ export default function UsersRedirectContent() {
   }, [searchParams]);
   
   return (
-    <div className="flex flex-col items-center justify-center w-full h-[60vh] bg-white">
-      <div className="relative mb-8">
+    <div className="flex flex-col items-center justify-center w-full min-h-[50vh] sm:min-h-[60vh] px-4 py-8 sm:py-0 bg-white">
+      <div className="relative mb-8 w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-20 h-20 rounded-full bg-neutral-200 blur-xl opacity-60 animate-pulse"></div>
+          <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-neutral-200 blur-xl opacity-60 animate-pulse"></div>
         </div>
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-black border-opacity-80"></div>
-        <img src="/applogo.svg" alt="Wheeloh logo" className="absolute top-1/2 left-1/2 w-10 h-10 -translate-x-1/2 -translate-y-1/2 drop-shadow-xl" />
+        <div className="animate-spin rounded-full h-16 w-16 sm:h-24 sm:w-24 border-t-4 border-b-4 border-black border-opacity-80"></div>
+        <img src="/applogo.svg" alt="Wheeloh logo" className="absolute top-1/2 left-1/2 w-10 h-10 sm:w-16 sm:h-16 -translate-x-1/2 -translate-y-1/2 drop-shadow-xl" />
       </div>
-      <h1 className="text-2xl font-bold mb-2 text-black">Redirection vers l'application Wheeloh...</h1>
-      <p className="text-neutral-600 mb-2">Veuillez patienter, vous allez être redirigé automatiquement.</p>
-      <span className="text-xs text-neutral-400 animate-pulse">Si rien ne se passe, vérifiez que l'application est bien installée.</span>
+      <h1 className="text-xl sm:text-2xl font-bold mb-2 text-black text-center">Redirection vers l'application Wheeloh...</h1>
+      <p className="text-neutral-600 mb-2 text-center text-sm sm:text-base">Veuillez patienter, vous allez être redirigé automatiquement.</p>
+      <span className="text-xs sm:text-sm text-neutral-400 animate-pulse text-center">Si rien ne se passe, vérifiez que l'application est bien installée.</span>
     </div>
   );
 } 
