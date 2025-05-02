@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import { Suspense } from 'react';
 import UsersRedirectContent from '@/components/UsersRedirectContent';
 
-export default function UsersPage() {
+export default function UserPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header showNavLinks={false} />
