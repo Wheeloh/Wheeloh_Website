@@ -2458,5 +2458,1107 @@
         "categorieFinale": "luxe"
       }
     ]
+  },
+  "Zenvo": {
+    "logo": "https://wheeloh.com/car-brands/logos/zenvo.png",
+    "country": "Denmark",
+    "models": [
+      {
+        "model": "Zenvo ST1",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Zenvo TS1-GT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Zenvo TSR",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Zenvo TSR-S",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Zenvo TSR-GT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Zenvo Aurora",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "W Motors": {
+    "logo": "https://wheeloh.com/car-brands/logos/w-motors.png",
+    "country": "United Arab Emirates",
+    "models": [
+      {
+        "model": "W Motors Lykan HyperSport",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "W Motors Fenyr SuperSport",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Spyker": {
+    "logo": "https://wheeloh.com/car-brands/logos/spyker.png",
+    "country": "Netherlands",
+    "models": [
+      {
+        "model": "Spyker C8 Spyder",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Spyker C8 Laviolette",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Spyker C8 Double 12 S",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Spyker C8 Spyder T",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Spyker C8 Aileron",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Spyker C8 Aileron GT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Spyker C8 Aileron Spyder",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Spyker C8 Preliator",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Spyker C12 La Turbie",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Spyker C12 Zagato",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Ruf": {
+    "logo": "https://wheeloh.com/car-brands/logos/ruf.png",
+    "country": "Germany",
+    "models": [
+      {
+        "model": "Ruf CTR Yellowbird",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ruf CTR2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ruf SCR",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ruf BTR",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ruf BTR2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ruf RCT",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ruf Dakara",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Ruf RGT",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Rimac": {
+    "logo": "https://wheeloh.com/car-brands/logos/rimac.png",
+    "country": "Croatia",
+    "models": [
+      {
+        "model": "Rimac Concept One",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Rimac Nevera",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rimac Nevera R",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Hennessey": {
+    "logo": "https://wheeloh.com/car-brands/logos/hennessey.png",
+    "country": "United States",
+    "models": [
+      {
+        "model": "Hennessey Venom GT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Hennessey Venom GT Spyder",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Hennessey Venom F5",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "De Tomaso": {
+    "logo": "https://wheeloh.com/car-brands/logos/de-tomaso.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "De Tomaso Vallelunga",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "De Tomaso Mangusta",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "De Tomaso Pantera",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "De Tomaso Deauville",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Apollo": {
+    "logo": "https://wheeloh.com/car-brands/logos/apollo.png",
+    "country": "Germany",
+    "models": [
+      {
+        "model": "Apollo Intensa Emozione",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Apollo Project EVO",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Acura": {
+    "logo": "https://wheeloh.com/car-brands/logos/acura.png",
+    "country": "Japan",
+    "models": [
+      {
+        "model": "Acura NSX",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Pininfarina": {
+    "logo": "https://wheeloh.com/car-brands/logos/pininfarina.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "Pininfarina Battista",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Shelby": {
+    "logo": "https://wheeloh.com/car-brands/logos/shelby.png",
+    "country": "United States",
+    "models": [
+      {
+        "model": "Shelby Series 1",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Caterham": {
+    "logo": "https://wheeloh.com/car-brands/logos/caterham.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Caterham Seven 170",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Caterham Seven 360",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Caterham Seven 420",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Caterham Seven 620",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Caterham Super Seven 2000",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Alfa Romeo": {
+    "logo": "https://wheeloh.com/car-brands/logos/alfa-romeo.png",
+    "country": "Italy",
+    "models": [
+      {
+        "model": "Alfa Romeo Disco Volante",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo 2000",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo 33 Stradale",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo Montreal",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo SZ/RZ (ES-30)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo Spider",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo 8C Competizione",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo 4C",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Alfa Romeo Scighera",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo TZ3 Zagato",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo 8C Spider",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Alfa Romeo 33 Stradale (2023)",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Maybach": {
+    "logo": "https://wheeloh.com/car-brands/logos/maybach.png",
+    "country": "Germany",
+    "models": [
+      {
+        "model": "Maybach 12",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Maybach SW42",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maybach 57",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Maybach 62",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maybach 57 S",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Maybach 62 S",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Maybach 62 Landaulet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Maybach 57 Zeppelin",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maybach 62 Zeppelin",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Maybach 57 S Xenatec Coupé",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Maybach Exelero",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Mercedes-Maybach Vision 6 Coupé",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Mercedes-Maybach Vision 6 Cabriolet",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes-Maybach Ultimate Luxury",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes-Maybach S 600",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Mercedes-Maybach S 650",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes-Maybach S 680",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes-Maybach GLS 600",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes-Maybach EQS SUV",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Mercedes-Maybach SL 680 Monogram Series",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "Aston Martin": {
+    "logo": "https://wheeloh.com/car-brands/logos/aston-martin.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Aston Martin Le Mans",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin DB2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DB5",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin DBS",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V8",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V8 Vantage",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Vantage",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V8 Coupe",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V8 Volante",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DB7",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V12 GT",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DB AR1",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Vanquish",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Vanquish S",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DB9",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V12 Vantage",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin One-77",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Rapide",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Virage (2011)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V12 Zagato",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Vanquish (2012)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Vulcan",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin DB11",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DBS Superleggera",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Valkyrie",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin Vantage (2018)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DBX",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DB12",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Vanquish (2024)",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Bulldog",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Twenty Twenty",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V12 Vantage RS",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Rapide Bertone Jet 2+2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin CC100 Speedster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DB10",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Lagonda Taraf",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Lagonda All-Terrain",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Vanquish Vision",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin DBS GT Zagato",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V12 Speedster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Victor",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin DBR22",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Valour",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin Valiant",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DBR1",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin DBR5",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston孵化",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin RHAM/1",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin AMR1",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin AMR2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin DBR9",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin DBRS9",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V8 Vantage N24",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V8 Vantage Rally GT",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V8 Vantage GT2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin V8 Vantage GT4",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin DBR1-2",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin AMR-One",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin Vantage GTE",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin Vantage DTM",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin Vantage GT3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Aston Martin Vantage GT4",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin AMR21",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin AMR22",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin AMR23",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin AMR24",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin AMR25",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Aston Martin Valkyrie AMR-LMH",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Noble": {
+    "logo": "https://wheeloh.com/car-brands/logos/noble.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Noble M10",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M12",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M12 GTO",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M12 GTO-3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M12 GTO-3R",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Noble M400",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M14",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M15",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M600",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M600 CarbonSport",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M600 Speedster",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "Noble M500",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "TVR": {
+    "logo": "https://wheeloh.com/car-brands/logos/tvr.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "TVR One",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR No. 3",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Grantura Mk II",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Grantura Mk IIA",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Vixen S2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR 3000S Turbo",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR 420 SEAC",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR 400SE",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR S4",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Cerbera",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Tuscan",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Tuscan S",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Tamora",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR T350",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR T400R",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Sagaris",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Typhon",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Cerbera Speed 12",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "TVR T440R",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Sagaris 2",
+        "categorieFinale": "luxe"
+      },
+      {
+        "model": "TVR Griffith II",
+        "categorieFinale": "luxe"
+      }
+    ]
+  },
+  "McLaren": {
+    "logo": "https://wheeloh.com/car-brands/logos/mclaren.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "McLaren F1",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren Mercedes-Benz SLR McLaren",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren MP4-12C",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 12C Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren P1",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 650S",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 650S Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 675LT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 675LT Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 570S",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 540C",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 570GT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 720S",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 720S Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren Senna",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 600LT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 600LT Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren Speedtail",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren GT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren Elva",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 620R",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 765LT",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 765LT Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren Artura",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 750S",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren 750S Spider",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "McLaren GTS",
+        "categorieFinale": "prestige"
+      }
+    ]
+  },
+  "Rolls-Royce": {
+    "logo": "https://wheeloh.com/car-brands/logos/rolls-royce.png",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "model": "Rolls-Royce 10 HP",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce 15 HP",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce 20 HP",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce 30 HP",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce V8",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Legalimit",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce 40/50 HP Silver Ghost",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce 20 HP",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom I",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce 20/25 HP",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom II",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce 25/30 HP",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom III",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Wraith I",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Silver Wraith",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Silver Dawn",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom IV",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Silver Cloud",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom V",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Silver Shadow",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom VI",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Corniche",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Camargue",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Silver Spirit",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Silver Spur",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Touring Limousine",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Flying Spur",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Park Ward",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Silver Seraph",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Corniche V",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom VII",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom Drophead Coupé",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom Coupé",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Ghost",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Wraith",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Dawn",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Phantom VIII",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Cullinan",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Spectre",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Boat Tail",
+        "categorieFinale": "prestige"
+      },
+      {
+        "model": "Rolls-Royce Droptail",
+        "categorieFinale": "prestige"
+      }
+    ]
   }
 }
