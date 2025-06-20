@@ -28,7 +28,7 @@ export default function NewsRedirectContent() {
           // Fallback vers la page d'accueil
           window.location.href = "/";
         }
-      }, 1000);
+      }, 4000);
       
       return () => clearTimeout(redirectTimer);
     } else {
