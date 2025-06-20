@@ -3,9 +3,9 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Suspense } from 'react';
-import UsersRedirectContent from '@/components/UsersRedirectContent';
+import InviteRedirectContent from '@/components/InviteRedirectContent';
 
-export default function UserPage() {
+export default function InvitePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header showNavLinks={false} />
@@ -17,7 +17,7 @@ export default function UserPage() {
             <p className="text-muted-foreground">Veuillez patienter, vous allez être redirigé automatiquement.</p>
           </div>
         }>
-          <UsersRedirectContent />
+          <InviteRedirectContent />
         </Suspense>
       </main>
       <Footer />

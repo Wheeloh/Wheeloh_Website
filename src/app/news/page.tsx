@@ -15,7 +15,7 @@ export default function NewsPage() {
       <main className="flex-1 flex items-center justify-center">
         <Suspense fallback={
           <div className="flex flex-col items-center justify-center w-full h-[60vh]">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mb-6"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-black-500 mb-6"></div>
             <h1 className="text-2xl font-bold mb-2">Redirection en cours...</h1>
             <p className="text-muted-foreground">Veuillez patienter, vous allez être redirigé automatiquement.</p>
           </div>
