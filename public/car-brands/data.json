@@ -4471,52 +4471,6 @@
           }
       ]
   },
-  "Koenig Specials": {
-      "logo": "https://wheeloh.com/car-brands/logos/koenig-specials.png",
-      "country": "Germany",
-      "models": [
-          {
-              "model": "Koenig Specials Koenigsegg CC",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg CCR",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg CCX",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg CCXR",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg Agera",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg Agera R",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg Agera RS",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg Regera",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg Jesko",
-              "categorieFinale": ""
-          },
-          {
-              "model": "Koenig Specials Koenigsegg Gemera",
-              "categorieFinale": ""
-          }
-      ]
-  },
   "Morgan": {
       "logo": "https://wheeloh.com/car-brands/logos/morgan.png",
       "country": "United Kingdom",
