@@ -2765,56 +2765,56 @@
           }
       ]
   },
-  "Citroën": {
-      "logo": "https://wheeloh.com/car-brands/logos/citroën.png",
+  "Citroen": {
+      "logo": "https://wheeloh.com/car-brands/logos/citroen.png",
       "country": "France",
       "models": [
           {
-              "model": "Citroën DS",
+              "model": "Citroen DS",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën SM",
+              "model": "Citroen SM",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën Traction Avant 15 Six",
+              "model": "Citroen Traction Avant 15 Six",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën CX Prestige",
+              "model": "Citroen CX Prestige",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën C6",
+              "model": "Citroen C6",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën HY Panhard",
+              "model": "Citroen HY Panhard",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën Type C",
+              "model": "Citroen Type C",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën Type B12",
+              "model": "Citroen Type B12",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën GS Birotor",
+              "model": "Citroen GS Birotor",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën Légère Sport",
+              "model": "Citroen Légère Sport",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën DS Cabriolet",
+              "model": "Citroen DS Cabriolet",
               "categorieFinale": ""
           },
           {
-              "model": "Citroën SM Maserati",
+              "model": "Citroen SM Maserati",
               "categorieFinale": ""
           }
       ]
