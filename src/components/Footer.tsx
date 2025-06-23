@@ -29,6 +29,13 @@ export default function Footer() {
             Legal Information
           </Link>
           <Link 
+            href="/cgu" 
+            className="text-sm text-muted-foreground hover:underline underline-offset-4"
+            prefetch={false}
+          >
+            CGU
+          </Link>
+          <Link 
             href="/privacy" 
             className="text-sm text-muted-foreground hover:underline underline-offset-4"
             prefetch={false}
