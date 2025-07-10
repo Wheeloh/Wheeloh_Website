@@ -51,11 +51,11 @@ export function home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Discover the Cars Around You
+                    Master the Art of Car Spotting
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Car Spotter is the ultimate mobile app for car enthusiasts. Identify makes and models, track rare
-                    cars, and share your sightings with a passionate community.
+                    Car Spotter is the ultimate car spotting companion. Perfect your spotting skills, identify any vehicle instantly, 
+                    and join a community of passionate spotters who share your love for discovering rare and unique cars.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -90,9 +90,10 @@ export function home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Key Features</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Unlock the Power of Car Spotting</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Elevate Your Car Spotting Game</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Car Spotter is packed with features to help you identify, track, and share your car sightings.
+                  Car Spotter is packed with advanced spotting features to help you become a master car spotter. From instant identification 
+                  to rare car alerts, every tool is designed to enhance your spotting experience.
                 </p>
               </div>
             </div>
@@ -101,27 +102,28 @@ export function home() {
                 <ul className="grid gap-6">
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Identify Makes and Models</h3>
+                      <h3 className="text-xl font-bold">Master Car Identification</h3>
                       <p className="text-muted-foreground">
-                        Use the app's advanced image recognition to instantly identify the make and model of any car you
-                        spot.
+                        Perfect your spotting skills with instant car identification. Our advanced AI recognizes any vehicle 
+                        you spot, helping you build your knowledge of makes, models, and rare variants.
                       </p>
                     </div>
                   </li>
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Track Rare Cars</h3>
+                      <h3 className="text-xl font-bold">Become a Rare Car Hunter</h3>
                       <p className="text-muted-foreground">
-                        Create custom alerts to be notified whenever a rare or unique car is spotted in your area.
+                        Set up spotting alerts for rare and exotic cars in your area. Never miss a spotting opportunity 
+                        and build your collection of rare car sightings.
                       </p>
                     </div>
                   </li>
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Share with the Community</h3>
+                      <h3 className="text-xl font-bold">Join the Spotting Community</h3>
                       <p className="text-muted-foreground">
-                        Connect with other car enthusiasts and share your sightings, photos, and stories in the app's
-                        social feed.
+                        Connect with fellow spotters and share your best car sightings. Show off your spotting skills, 
+                        discover new spots, and learn from other car spotting enthusiasts in our vibrant community.
                       </p>
                     </div>
                   </li>

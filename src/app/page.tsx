@@ -121,11 +121,10 @@ export default function Home() {
               className="lg:ml-14 flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Discover the Cars Around You
+                    Master the Art of Car Spotting
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Wheeloh is the ultimate mobile app for car enthusiasts. Identify makes, track rare
-                    cars, and share your sightings with passionate friends.
+                    Wheeloh is the ultimate app for car spotting enthusiasts. Spot, identify, and collect the rarest cars around you, and share your finds with a passionate community of spotters.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -181,9 +180,9 @@ export default function Home() {
             className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Key Features</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Unlock the Power of Wheeloh</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Unleash Your Car Spotter Potential</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Wheeloh is packed with features to help you identify, track, and share your car sightings.
+                  Wheeloh is packed with features to help you spot, identify, and share your most exciting automotive finds. Become an expert spotter and grow your collection of rare cars.
                 </p>
               </div>
             </motion.div>
@@ -196,27 +195,25 @@ export default function Home() {
                 <ul className="grid gap-6">
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Identify Makes</h3>
+                      <h3 className="text-xl font-bold">Instant Identification</h3>
                       <p className="text-muted-foreground">
-                        Use the app's image recognition to instantly and locally identify the make of any car you spot.
-                        {/*Use the app's advanced image recognition to instantly identify the make and model of any car you spot.*/}
+                        Instantly identify any car you spot thanks to image recognition, and expand your spotter knowledge.
                       </p>
                     </div>
                   </li>
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Earn points</h3>
+                      <h3 className="text-xl font-bold">Rare Car Hunting</h3>
                       <p className="text-muted-foreground">
-                        Invite your friends to take part in the competition between your collections.
+                        Get alerts when a rare car is spotted near you and enrich your collection with unique finds.
                       </p>
                     </div>
                   </li>
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Share with your friends</h3>
+                      <h3 className="text-xl font-bold">Community Sharing</h3>
                       <p className="text-muted-foreground">
-                        Connect with other car enthusiasts and share your sightings, photos in the app's
-                        social feed.
+                        Join the spotter community, share your best finds, and connect with other car spotting enthusiasts.
                       </p>
                     </div>
                   </li>
