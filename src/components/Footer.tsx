@@ -1,8 +1,11 @@
 "use client";
 import { motion } from 'framer-motion';
 import Link from "next/link";
+import { Heart } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <motion.footer
       initial={{ opacity: 0, y: 50 }}
@@ -17,7 +20,7 @@ export default function Footer() {
             <span className="sr-only">Wheeloh</span>
           </Link>
           <p className="text-sm text-muted-foreground">
-            © 2025 Wheeloh. Tous droits réservés.
+            © {currentYear} Wheeloh. All rights reserved.
           </p>
         </div>
         <nav className="flex gap-4 sm:gap-6">
@@ -56,6 +59,15 @@ export default function Footer() {
             Contact
           </Link>
         </nav>
+      </div>
+      <div className="border-t border-gray-300 mt-6 pt-6">
+        <div className="flex justify-center">
+          <p className="text-sm text-gray-500 flex items-center space-x-1">
+            <span>Made with</span>
+            <Heart className="w-4 h-4 text-red-500" />
+            <span>for car enthusiasts</span>
+          </p>
+        </div>
       </div>
     </motion.footer>
   );
