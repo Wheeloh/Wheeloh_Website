@@ -143,6 +143,9 @@ export default function Home() {
                           <Link href="https://play.google.com/store/apps/details?id=com.wheeloh.app" target="_blank" className="inline-flex h-10 items-center justify-center rounded-md  border-input bg-background text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
                             <img src="playstore.svg" alt="Play Store" />
                           </Link>
+                          <Link href="https://apps.apple.com/fr/app/wheeloh-carspotting/id6746037128" target="_blank" className="inline-flex h-10 items-center justify-center rounded-md  border-input bg-background text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
+                            <img src="applestore.svg" alt="App Store" />
+                          </Link>
                           {/*<img onClick={handleClickAppStore} src="applestore.svg" alt="App Store" />*/}
 
                         </div>
