@@ -66,7 +66,7 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     const embedData = {
       content: "<@&1197274909819293767>",
       embeds: [
@@ -80,7 +80,7 @@ export default function Home() {
         },
       ],
     };
-  
+
     try {
       const response = await fetch(process.env.NEXT_PUBLIC_DISCORD_WEBHOOK_URL as string, {
         method: 'POST',
@@ -89,11 +89,11 @@ export default function Home() {
         },
         body: JSON.stringify(embedData),
       });
-    
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-    
+
       toast.success('Message sent successfully!');
       setName('');
       setEmail('');
@@ -101,24 +101,24 @@ export default function Home() {
     } catch (error) {
       console.error('Error:', error);
       toast.error('Error sending message');
-    }    
+    }
   };
-  
+
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-  
+
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <Toaster/>
+      <Toaster />
       <Header showNavLinks={true} />
       <main className="flex-1">
         <section id="home" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 ">
               <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="lg:ml-14 flex flex-col justify-center space-y-4">
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="lg:ml-14 flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Master the Art of Car Spotting
@@ -162,11 +162,11 @@ export default function Home() {
                 </div>
               </motion.div>
               <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}>
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}>
                 {isMobile ? (
-                  <img src="/app-screenshot.png"width="346"height="715"alt="App Screenshot"className="mx-auto aspect-[346/715] overflow-hidden rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[267px]"/>
+                  <img src="/app-screenshot.png" width="346" height="715" alt="App Screenshot" className="mx-auto aspect-[346/715] overflow-hidden rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[267px]" />
                 ) : (
                   <Spline className="mx-auto aspect-[346/720] rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[300px]" scene="https://prod.spline.design/0UPCp4GVK8DoDLkA/scene.splinecode" />
                 )}
@@ -177,10 +177,10 @@ export default function Home() {
         <section id="features" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <motion.div
-            initial={{ opacity: 0, x: 0 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-center space-y-4 text-center">
+              initial={{ opacity: 0, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Key Features</div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Unleash Your Car Spotter Potential</h2>
@@ -191,10 +191,10 @@ export default function Home() {
             </motion.div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
               <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col justify-center space-y-4">
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col justify-center space-y-4">
                 <ul className="grid gap-6">
                   <li>
                     <div className="grid gap-1">
@@ -305,7 +305,7 @@ export default function Home() {
                   </Dialog>
                 </div>
               </div>
-              
+
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -375,10 +375,10 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2">
               <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-4">
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-4">
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Get in Touch</div>
                 <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
                   Have a Question? Let's Chat.
@@ -389,11 +389,11 @@ export default function Home() {
                 </p>
               </motion.div>
               <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col items-start space-y-4">
-              {/*<form className="w-full max-w-md space-y-4" onSubmit={handleSubmit}>
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col items-start space-y-4">
+                {/*<form className="w-full max-w-md space-y-4" onSubmit={handleSubmit}>
                   <Input type="text" placeholder="Name" className="w-full" value={name} onChange={(e) => setName(e.target.value)}/>
                   <Input type="email" placeholder="Email" className="w-full" value={email} onChange={(e) => setEmail(e.target.value)}/>
                   <Textarea placeholder="Message" className="w-full" value={message} onChange={(e) => setMessage(e.target.value)}/>

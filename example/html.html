@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Car Search: A Vector-Based Approach | System Overview</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --text: #202124;
+            --text-light: #5f6368;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+            --border: #dadce0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header Minimaliste */
+        .header {
+            padding: 120px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+            color: #000;
+        }
+
+        .header .subtitle {
+            font-size: 24px;
+            color: var(--text-light);
+            font-weight: 400;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .meta {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 120px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 100px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 500;
+            margin: 40px 0 16px 0;
+            color: #000;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: #3c4043;
+        }
+
+        /* Abstract box - Clean */
+        .abstract {
+            background: var(--bg-alt);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 60px 0;
+        }
+
+        .abstract h3 {
+            margin-top: 0;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .abstract p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 0;
+            color: var(--text);
+        }
+
+        /* Metrics - Minimalist Cards */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .metric-card {
+            background: var(--bg);
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .metric-card:hover {
+            border-color: var(--primary);
+        }
+
+        .metric-value {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #000;
+            letter-spacing: -1px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Code blocks - Clean */
+        .code-block {
+            background: #f1f3f4;
+            color: #202124;
+            padding: 24px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 30px 0;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            border: 1px solid transparent;
+        }
+
+        .code-block .comment {
+            color: #5f6368;
+            font-style: italic;
+        }
+
+        .code-block .keyword {
+            color: #d93025;
+        }
+
+        .code-block .string {
+            color: #188038;
+        }
+
+        .code-block .number {
+            color: #1a73e8;
+        }
+
+        /* Demo section */
+        .demo-container {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+
+        .demo-controls {
+            padding: 20px;
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 10px;
+        }
+
+        .demo-search input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            width: 100%;
+            font-family: inherit;
+        }
+
+        .demo-search input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+
+        #demo-viz {
+            width: 100%;
+            height: 500px;
+            background: white;
+        }
+
+        /* Charts */
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .result-chart h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 16px;
+        }
+
+        th {
+            text-align: left;
+            padding: 16px;
+            border-bottom: 2px solid var(--text);
+            font-weight: 600;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            color: #3c4043;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+            margin-top: 100px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .footer a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        /* TOC */
+        .toc {
+            position: fixed;
+            left: 40px;
+            top: 120px;
+            width: 200px;
+        }
+
+        .toc h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .toc a {
+            display: block;
+            padding: 6px 0;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 1300px) {
+            .toc {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Semantic Car Search:<br>A Vector-Based Approach</h1>
+        <p class="subtitle">Leveraging High-Dimensional Embeddings for Intelligent Automotive Discovery</p>
+
+        <div class="meta">
+            <span>Théophile</span>
+            <span>•</span>
+            <span>Wheeloh Engineering</span>
+            <span>•</span>
+            <span>November 2025</span>
+        </div>
+    </div>
+
+    <!-- Table of Contents (floating) -->
+    <div class="toc">
+        <h4>Contents</h4>
+        <a href="#abstract">Abstract</a>
+        <a href="#introduction">Introduction</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#implementation">Implementation</a>
+        <a href="#results">Results</a>
+        <a href="#demo">Interactive Demo</a>
+        <a href="#conclusion">Conclusion</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <!-- Abstract -->
+        <section id="abstract">
+            <div class="abstract">
+                <h3>Abstract</h3>
+                <p>
+                    We present a novel semantic search system for automotive data, leveraging state-of-the-art
+                    vector embeddings to enable intelligent query understanding beyond traditional keyword matching.
+                    Our approach indexes <strong>22,180 vehicle models</strong> into a 1,536-dimensional vector space
+                    using a high-performance transformer model, enabling nuanced similarity detection across
+                    brand variations, model synonyms, and linguistic variations.
+                </p>
+                <p>
+                    The system achieves a <strong>75.6% validation accuracy</strong> on 897 test queries,
+                    demonstrating robust performance in matching user intent to relevant vehicles. Through
+                    efficient batch processing and local vector comparisons, we reduce search latency from
+                    ~7 minutes (individual API calls) to <strong>~2 seconds</strong> for bulk operations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section id="introduction">
+            <h2>1. Introduction</h2>
+
+            <h3>1.1 Motivation</h3>
+            <p>
+                Traditional automotive search systems rely on exact string matching, failing to capture
+                semantic relationships between queries. A user searching for "Beamer M3" should find
+                BMW M3 results, yet keyword-based systems struggle with:
+            </p>
+            <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.8; color: #3c4043;">
+                <li>Brand synonyms (Beamer → BMW, Merco → Mercedes)</li>
+                <li>Model variations (911 Turbo → 911 Turbo S)</li>
+                <li>Typographical errors (Ferari → Ferrari)</li>
+                <li>Cross-language queries (voiture sportive → sports car)</li>
+            </ul>
+
+            <h3>1.2 Problem Statement</h3>
+            <p>
+                Given a database of 22,180 automotive models and user queries in natural language,
+                design a system that:
+            </p>
+            <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.8; color: #3c4043;">
+                <li>Understands semantic intent beyond literal text</li>
+                <li>Scales efficiently for real-time search</li>
+                <li>Maintains accuracy across diverse query patterns</li>
+                <li>Minimizes computational cost</li>
+            </ul>
+        </section>
+
+        <!-- Methodology -->
+        <section id="methodology">
+            <h2>2. Methodology</h2>
+
+            <h3>2.1 Vector Embeddings</h3>
+            <p>
+                We employ a state-of-the-art transformer model to transform textual
+                car descriptions into dense 1,536-dimensional vectors. Each vehicle is represented as:
+            </p>
+
+            <div class="code-block">
+                <span class="comment"># Example: Vector representation</span>
+                text = <span class="string">"Ferrari 458 Italia"</span>
+                embedding = model.encode(
+                input=text,
+                dimensions=<span class="number">1536</span>
+                )
+                <span class="comment"># Result: [0.021, -0.034, 0.156, ...] (1536 dimensions)</span>
+            </div>
+
+            <h3>2.2 Similarity Computation</h3>
+            <p>
+                Semantic similarity between a query Q and document D is computed using cosine similarity
+                in the embedded space. Since the embeddings are pre-normalized, this simplifies to a dot product,
+                enabling rapid batch comparisons via NumPy matrix operations.
+            </p>
+
+            <h3>2.3 Indexing Pipeline</h3>
+            <p>
+                Our indexing process consists of three stages:
+            </p>
+            <ol style="margin-left: 20px; margin-bottom: 20px; line-height: 1.8; color: #3c4043;">
+                <li><strong>Data Preparation:</strong> Extract brand, model, and version metadata</li>
+                <li><strong>Batch Embedding:</strong> Process in chunks of 100 to optimize throughput</li>
+                <li><strong>Storage:</strong> Compress vectors into .npz format (2.6 MB for 22k models)</li>
+            </ol>
+        </section>
+
+        <!-- Metrics -->
+        <section id="metrics">
+            <h2>3. Key Metrics</h2>
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-value">22,180</div>
+                    <div class="metric-label">Indexed Vehicles</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1,536</div>
+                    <div class="metric-label">Dimensions</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">75.6%</div>
+                    <div class="metric-label">Accuracy</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">~2s</div>
+                    <div class="metric-label">Bulk Search Time</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation -->
+        <section id="implementation">
+            <h2>4. Implementation Details</h2>
+
+            <h3>4.1 Architecture</h3>
+            <p>
+                The system comprises four core components:
+            </p>
+
+            <div class="code-block">
+                <span class="comment"># 1. Indexer: Generate embeddings</span>
+                <span class="keyword">class</span> CarIndexer:
+                <span class="keyword">def</span> index(cars):
+                embeddings = []
+                <span class="keyword">for</span> batch <span class="keyword">in</span> chunks(cars, <span
+                    class="number">100</span>):
+                vectors = model.encode(batch)
+                embeddings.extend(vectors)
+                save_compressed(embeddings)
+
+                <span class="comment"># 2. Search Engine: Find similar cars</span>
+                <span class="keyword">class</span> SemanticSearch:
+                <span class="keyword">def</span> search(query, top_k=<span class="number">5</span>):
+                q_vec = model.encode(query)
+                scores = np.dot(vectors, q_vec)
+                <span class="keyword">return</span> top_k_results(scores)
+
+                <span class="comment"># 3. Validator: LLM verification</span>
+                <span class="keyword">async def</span> validate(query, results):
+                response = <span class="keyword">await</span> llm.validate(
+                query=query,
+                candidates=results
+                )
+                <span class="keyword">return</span> response
+            </div>
+
+            <h3>4.2 Optimization Strategies</h3>
+            <p>
+                We implemented several optimizations to reduce cost and latency:
+            </p>
+            <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.8; color: #3c4043;">
+                <li><strong>Batch Processing:</strong> 100 items/request reduces API calls by 99%</li>
+                <li><strong>Local Vector Comparison:</strong> Post-indexing similarity computed locally</li>
+                <li><strong>Compressed Storage:</strong> NumPy .npz format reduces file size by 70%</li>
+                <li><strong>Async Validation:</strong> 20 concurrent requests reduce validation time by 14×</li>
+            </ul>
+        </section>
+
+        <!-- Results -->
+        <section id="results">
+            <h2>5. Experimental Results</h2>
+
+            <h3>5.1 Validation Performance</h3>
+            <p>
+                We evaluated the system on 897 test queries using a large language model as a ground truth validator:
+            </p>
+
+            <div class="results-grid">
+                <div class="result-chart">
+                    <h4>Match Distribution</h4>
+                    <div id="match-chart"></div>
+                </div>
+                <div class="result-chart">
+                    <h4>Confidence Levels</h4>
+                    <div id="confidence-chart"></div>
+                </div>
+            </div>
+
+            <h3>5.3 Cost-Efficiency Comparison</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Approach</th>
+                        <th style="text-align: right;">Time (897 queries)</th>
+                        <th style="text-align: right;">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Individual API Calls</td>
+                        <td style="text-align: right;">~7 min</td>
+                        <td style="text-align: right;">~$0.25</td>
+                    </tr>
+                    <tr style="background: #f8f9fa;">
+                        <td><strong>Our Approach (Batch + Local)</strong></td>
+                        <td style="text-align: right;"><strong>~2s</strong></td>
+                        <td style="text-align: right;"><strong>~$0.00</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Interactive Demo -->
+        <section id="demo">
+            <h2>6. Interactive Demonstration</h2>
+            <p>
+                Explore the 22,180-vehicle embedding space reduced to 2D via PCA.
+                Search for any car model to see semantic clustering in action.
+            </p>
+
+            <div class="demo-container">
+                <div class="demo-controls">
+                    <div class="demo-search">
+                        <input type="text" id="search-input"
+                            placeholder="Type to search (e.g., 'Ferrari', 'SUV', 'Electric')...">
+                    </div>
+                </div>
+                <div id="demo-viz"></div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+            <h2>7. Conclusion & Future Work</h2>
+            <p>
+                We successfully demonstrated a production-ready semantic search system for automotive
+                data, achieving 75.6% validation accuracy while reducing search latency by 210× compared
+                to naive approaches. The system scales efficiently to 22k+ models with minimal computational overhead.
+            </p>
+
+            <h3>Future Directions</h3>
+            <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.8; color: #3c4043;">
+                <li><strong>Multimodal Search:</strong> Incorporate vehicle images via CLIP embeddings</li>
+                <li><strong>Fine-tuning:</strong> Domain-specific embedding models for automotive terminology</li>
+                <li><strong>Real-time Updates:</strong> Incremental indexing for new vehicle releases</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 Wheeloh Engineering</p>
+        <p style="margin-top: 10px;">
+            <a href="#">GitHub</a>
+            <a href="#">Dataset</a>
+        </p>
+    </div>
+
+    <script>
+        // Load visualization data
+        let allCars = [];
+
+        fetch('embeddings_coords.json')
+            .then(response => response.json())
+            .then(data => {
+                allCars = data.cars;
+                displayViz(allCars);
+                createCharts();
+            })
+            .catch(err => console.error('Error loading data:', err));
+
+        function displayViz(cars, highlightIndices = null) {
+            const x = cars.map(c => c.x);
+            const y = cars.map(c => c.y);
+            const hoverText = cars.map(c => `<b>${c.brand} ${c.model}</b><br>${c.version}`);
+
+            let markerSize, markerColor, markerOpacity;
+
+            if (highlightIndices && highlightIndices.length > 0) {
+                markerSize = cars.map((_, i) => highlightIndices.includes(i) ? 8 : 2);
+                markerColor = cars.map((_, i) => highlightIndices.includes(i) ? '#ea4335' : '#1a73e8');
+                markerOpacity = cars.map((_, i) => highlightIndices.includes(i) ? 0.9 : 0.1);
+            } else {
+                markerSize = 3;
+                markerColor = x;
+                markerOpacity = 0.5;
+            }
+
+            const trace = {
+                x: x, y: y,
+                mode: 'markers',
+                type: 'scattergl',
+                marker: {
+                    size: markerSize,
+                    color: markerColor,
+                    colorscale: 'Viridis',
+                    opacity: markerOpacity,
+                    line: { width: 0 }
+                },
+                text: hoverText,
+                hovertemplate: '%{text}<extra></extra>'
+            };
+
+            const layout = {
+                xaxis: { title: '', showgrid: false, zeroline: false, showticklabels: false },
+                yaxis: { title: '', showgrid: false, zeroline: false, showticklabels: false },
+                hovermode: 'closest',
+                plot_bgcolor: '#ffffff',
+                paper_bgcolor: '#ffffff',
+                showlegend: false,
+                margin: { t: 0, b: 0, l: 0, r: 0 }
+            };
+
+            Plotly.newPlot('demo-viz', [trace], layout, { responsive: true, displaylogo: false });
+
+            if (highlightIndices && highlightIndices.length > 0) {
+                const hx = highlightIndices.map(i => cars[i].x);
+                const hy = highlightIndices.map(i => cars[i].y);
+                const xMargin = (Math.max(...hx) - Math.min(...hx)) * 0.5 || 1;
+                const yMargin = (Math.max(...hy) - Math.min(...hy)) * 0.5 || 1;
+
+                Plotly.relayout('demo-viz', {
+                    'xaxis.range': [Math.min(...hx) - xMargin, Math.max(...hx) + xMargin],
+                    'yaxis.range': [Math.min(...hy) - yMargin, Math.max(...hy) + yMargin]
+                });
+            }
+        }
+
+        function searchCars() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            if (!query) {
+                displayViz(allCars);
+                return;
+            }
+
+            const matches = [];
+            allCars.forEach((car, i) => {
+                const text = `${car.brand} ${car.model} ${car.version}`.toLowerCase();
+                if (text.includes(query)) matches.push(i);
+            });
+
+            displayViz(allCars, matches);
+        }
+
+        function createCharts() {
+            // Match distribution pie chart
+            const matchData = [{
+                values: [678, 219],
+                labels: ['Match Found', 'No Match'],
+                type: 'pie',
+                marker: {
+                    colors: ['#34a853', '#ea4335']
+                },
+                textinfo: 'percent',
+                hoverinfo: 'label+value+percent',
+                hole: 0.6
+            }];
+
+            Plotly.newPlot('match-chart', matchData, {
+                showlegend: true,
+                legend: { orientation: 'h', y: -0.1 },
+                margin: { t: 0, b: 0, l: 0, r: 0 },
+                height: 250
+            }, { responsive: true, displaylogo: false });
+
+            // Confidence bar chart
+            const confData = [{
+                x: ['High', 'Medium', 'Low'],
+                y: [612, 45, 21],
+                type: 'bar',
+                marker: {
+                    color: ['#34a853', '#fbbc04', '#ea4335']
+                }
+            }];
+
+            Plotly.newPlot('confidence-chart', confData, {
+                yaxis: { showgrid: true, gridcolor: '#f1f3f4' },
+                xaxis: { showgrid: false },
+                showlegend: false,
+                margin: { t: 10, b: 30, l: 30, r: 10 },
+                height: 250,
+                plot_bgcolor: '#fff'
+            }, { responsive: true, displaylogo: false });
+        }
+
+        // Keyboard shortcut
+        document.getElementById('search-input').addEventListener('keyup', (e) => {
+            searchCars();
+        });
+    </script>
+</body>
+
+</html>```
