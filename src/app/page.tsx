@@ -135,7 +135,7 @@ export default function Home() {
                 variants={staggerContainer}
                 initial="hidden"
                 animate="visible"
-                className="lg:ml-14 flex flex-col justify-center space-y-4">
+                className="lg:ml-14 flex flex-col items-center text-center lg:items-start lg:text-left justify-center space-y-4">
                 <motion.div variants={fadeInUp} className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Master the Art of Car Spotting
@@ -145,7 +145,7 @@ export default function Home() {
                   </p>
                 </motion.div>
                 <motion.div variants={fadeInUp} className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mt-4 w-full lg:w-auto">
                     {/* App Store Button */}
                     <Link href="https://apps.apple.com/fr/app/wheeloh-carspotting/id6746037128" target="_blank" className="inline-flex items-center justify-center rounded-lg bg-black text-white px-3 py-1.5 hover:bg-zinc-800 transition-colors border border-zinc-800 h-10 min-w-[140px]">
                       <svg className="w-5 h-5 mr-2 mb-0.5" viewBox="0 0 24 24" fill="currentColor">

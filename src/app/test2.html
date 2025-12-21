@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheelo Progression Design</title>
+    <style>
+        /* --- RESET & GLOBAL STYLES (Inspiré de ta charte) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        :root {
+            --primary: #000000;
+            --secondary: #666666;
+            --bg-color: #ffffff;
+            --accent-gold: #FFD700;
+            /* Pour les trophées */
+            --accent-green: #86D993;
+            /* Pour la validation (vu sur ton sondage) */
+            --light-gray: #f4f4f4;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: var(--primary);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- HEADER SIMPLIFIÉ --- */
+        .header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid #eee;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        /* --- TIMELINE CONTAINER --- */
+        .timeline-container {
+            padding: 20px 20px 80px 20px;
+            max-width: 450px;
+            /* Mobile width constraint */
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* La ligne verticale grise (arrière-plan) */
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            /* Alignement de la ligne */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #E0E0E0;
+            z-index: 0;
+        }
+
+        /* La ligne verticale noire (progression remplie) */
+        /* Ajuste la height via JS selon le % de l'utilisateur (ici 65% pour l'exemple) */
+        .timeline-progress {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            width: 2px;
+            background-color: var(--primary);
+            z-index: 1;
+            height: 60%;
+            /* À dynamiser */
+        }
+
+        /* --- ÉLÉMENTS DE LA TIMELINE --- */
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 45px;
+            /* Espace pour la ligne */
+            z-index: 2;
+        }
+
+        /* Le point sur la ligne */
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--bg-color);
+            border: 2px solid #E0E0E0;
+            border-radius: 50%;
+            position: absolute;
+            left: 4px;
+            /* Centré sur la ligne de 30px (30 - 12/2 - border) ?? non, left 30px center */
+            left: 23px;
+            top: 0px;
+            transition: all 0.3s ease;
+        }
+
+        /* Styles si le palier est atteint */
+        .timeline-item.reached .dot {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style pour le palier "Gold/Trophée" */
+        .timeline-item.trophy .dot {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+        /* --- CONTENU DU PALIER (CARD) --- */
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .percentage {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .date {
+            font-size: 12px;
+            color: var(--secondary);
+        }
+
+        /* Badge de récompense */
+        .badge {
+            background-color: var(--light-gray);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 4px;
+            display: inline-block;
+            border: 1px solid #eee;
+        }
+
+        .badge.gold {
+            background-color: #FFF9E6;
+            /* Light yellow */
+            color: #B58900;
+            border: 1px solid #FFEBA0;
+        }
+
+        /* --- GRILLE D'IMAGES --- */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 images par ligne comme ton screen */
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .grid-img {
+            width: 100%;
+            aspect-ratio: 1;
+            /* Carré parfait */
+            object-fit: cover;
+            border-radius: 4px;
+            background-color: #ddd;
+            transition: transform 0.2s;
+        }
+
+        /* --- L'INDICATEUR "VOUS ÊTES ICI" --- */
+        /* C'est l'élément flottant qui remplace ta grosse barre noire */
+        .current-status {
+            position: absolute;
+            left: 10px;
+            /* Décalé pour centrer sur la ligne */
+            top: 60%;
+            /* Doit correspondre au height du timeline-progress */
+            transform: translateY(-50%);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+        }
+
+        .current-indicator {
+            background-color: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .current-indicator::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            /* Petit point vert "Live" */
+            border-radius: 50%;
+        }
+
+        /* Avatar connecté au status */
+        .current-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            position: absolute;
+            left: -45px;
+            /* À gauche de la ligne */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- ETAT FUTUR (Non atteint) --- */
+        .timeline-item.locked {
+            opacity: 0.5;
+        }
+
+        .timeline-item.locked .dot {
+            background-color: #fff;
+            border: 2px dashed #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        <h1>Progression</h1>
+        <div style="width: 24px;"></div>
+    </div>
+
+    <div class="timeline-container">
+
+        <div class="timeline-line"></div>
+        <div class="timeline-progress"></div>
+
+        <div class="current-status">
+            <img src="https://i.pravatar.cc/150?u=sylvain" alt="Sylvain" class="current-avatar">
+            <div class="current-indicator">
+                6.3% • Rang Gold
+            </div>
+        </div>
+
+        <div class="timeline-item locked">
+            <div class="dot"></div>
+            <div class="content">
+                <div class="meta">
+                    <span class="percentage">10% - Objectif</span>
+                </div>
+                <div class="badge">
+                    Récompense : Badge Exclusif
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 100px;"></div>
+
+        <div class="timeline-item reached trophy">
+            <div class="dot"></div>
+            <div class="content">
+                <div class="meta">
+                    <span class="percentage">5% - Atteint !</span>
+                    <span class="date">14/10/24</span>
+                </div>
+                <div class="badge gold">
+                    🏆 Félicitations ! Nouveau badge
+                </div>
+                <div class="image-grid">
+                    <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1494905998402-395d579af905?w=150" class="grid-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item reached">
+            <div class="dot"></div>
+            <div class="content">
+                <div class="meta">
+                    <span class="percentage">3%</span>
+                    <span class="date">01/08/24</span>
+                </div>
+                <div class="image-grid">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=150" class="grid-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item reached">
+            <div class="dot"></div>
+            <div class="content">
+                <div class="meta">
+                    <span class="percentage">1% - Départ</span>
+                    <span class="date">03/07/24</span>
+                </div>
+                <div class="image-grid">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2eb5dd?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=150" class="grid-img">
+                    <img src="https://images.unsplash.com/photo-1553440683-189d378056aa?w=150" class="grid-img">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
