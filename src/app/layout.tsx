@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import GlobalLoader from "@/components/GlobalLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" />
       </head>
       <body className={inter.className}>
+        <GlobalLoader />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

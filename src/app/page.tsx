@@ -15,7 +15,7 @@ import { useMediaQuery } from 'react-responsive';
 import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 import { FilloutStandardEmbed } from "@fillout/react";
-import Intro from '@/components/Intro';
+
 
 interface CardInfo {
   name: string;
@@ -64,7 +64,6 @@ const staggerContainer = {
 };
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(true);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -125,9 +124,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <AnimatePresence mode="wait">
-        {showIntro && <Intro onComplete={() => setShowIntro(false)} />}
-      </AnimatePresence>
       <Toaster />
       <Header showNavLinks={true} />
       <main className="flex-1">
