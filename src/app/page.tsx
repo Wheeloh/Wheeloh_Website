@@ -10,8 +10,9 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 import Spline from '@splinetool/react-spline';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
+import GarageFeature from '@/components/GarageFeature';
 import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 import { FilloutStandardEmbed } from "@fillout/react";
@@ -194,7 +195,7 @@ export default function Home() {
                   }
                 }}>
                 {isMobile ? (
-                  <img src="/app-screenshot.png" width="346" height="715" alt="App Screenshot" className="mx-auto aspect-[346/715] overflow-hidden rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[267px]" />
+                  <img src="/presentation/camera_page_Capturez_une_voiture.png" width="346" height="715" alt="App Screenshot" className="mx-auto aspect-[346/715] overflow-hidden rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[267px]" />
                 ) : (
                   <Spline className="mx-auto aspect-[346/720] rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[300px]" scene="https://prod.spline.design/0UPCp4GVK8DoDLkA/scene.splinecode" />
                 )}
@@ -225,7 +226,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
               >
                 <div className="z-10 md:w-1/2 space-y-4">
@@ -247,7 +248,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                 className="col-span-1 md:col-span-1 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
               >
                 <div className="z-10 space-y-2">
@@ -269,7 +270,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="col-span-1 md:col-span-3 min-h-[500px] bg-black rounded-[2rem] relative overflow-hidden group shadow-2xl flex items-center justify-center"
               >
                 {/* Background Image - BRIGHTER */}
@@ -307,7 +308,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                 className="col-span-1 md:col-span-1 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
               >
                 <div className="z-10 space-y-2">
@@ -329,19 +330,24 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col md:flex-row-reverse items-center justify-between gap-8 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
               >
                 <div className="z-10 md:w-1/2 space-y-4 text-right">
                   <h3 className="text-2xl md:text-4xl font-bold">Organized Garage</h3>
                   <p className="text-muted-foreground">Find all your cars perfectly sorted in your virtual garage.</p>
                 </div>
-                <div className="md:w-1/2 flex justify-center items-center">
+                <div className="md:w-1/2 flex justify-center items-center w-full">
+                  {/* Shows on Mobile Only */}
                   <img
                     src="/presentation/albums_trie.png"
                     alt="Garage"
-                    className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                    className="md:hidden w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
                   />
+                  {/* Shows on Desktop Only - Interactive Parallax */}
+                  <div className="hidden md:block w-full">
+                    <GarageFeature />
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -354,7 +360,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
               >
                 <div className="z-10 space-y-2 text-center">
@@ -376,7 +382,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                 className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
               >
                 <div className="z-10 space-y-2 text-center">
