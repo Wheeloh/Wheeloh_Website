@@ -1,4 +1,13 @@
+# *
 User-agent: *
 Allow: /
 
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Host
+Host: https://wheeloh.com
+
+# Sitemaps
 Sitemap: https://wheeloh.com/sitemap.xml

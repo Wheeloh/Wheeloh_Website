@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Perfect Intro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #f1f3f4;
+            --bezier: cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-light);
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+        }
+
+        /* --- BACKGROUNDS --- */
+        #bg-container {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .bg-layer {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s var(--bezier), transform 2s var(--bezier);
+            transform: scale(1.1);
+        }
+
+        .bg-layer.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .bg-layer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- TEXTE --- */
+        .hero-text {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            color: white;
+            font-size: 5rem;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease 1s;
+        }
+
+        /* --- L'INTRO : LE SLIDE DES IMAGES --- */
+        .nav-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            transition: all 1.2s var(--bezier);
+        }
+
+        /* Quand l'intro est finie, on déplace le wrapper en bas */
+        .nav-wrapper.docked {
+            top: auto;
+            bottom: 50px;
+            transform: translate(-50%, 0);
+        }
+
+        .nav-glass {
+            display: flex;
+            gap: 20px;
+            padding: 15px;
+            border-radius: 30px;
+            transition: all 0.8s ease;
+        }
+
+        .docked .nav-glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            gap: 12px;
+            padding: 12px;
+        }
+
+        .thumb {
+            width: 120px;
+            /* Taille large pour l'intro */
+            height: 120px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            transform: translateX(150vw);
+            /* Départ hors écran droite */
+            animation: slideIn 1.5s var(--bezier) forwards;
+            transition: all 0.6s var(--bezier);
+        }
+
+        /* Redimensionnement quand il devient un dock */
+        .docked .thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            opacity: 0.6;
+        }
+
+        .docked .thumb.active {
+            opacity: 1;
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        /* Animation de slide initial */
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .show-text .hero-text {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero-text">We just love pixels</div>
+
+    <div id="bg-container"></div>
+
+    <div class="nav-wrapper" id="navWrapper">
+        <div class="nav-glass" id="thumbContainer"></div>
+    </div>
+
+    <script>
+        const images = [
+            "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1800&q=80",
+            "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=1800&q=80",
+            "https://images.unsplash.com/photo-1557683316-973673baf926?w=1800&q=80",
+            "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1800&q=80",
+            "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1800&q=80"
+        ];
+
+        const bgContainer = document.getElementById('bg-container');
+        const thumbContainer = document.getElementById('thumbContainer');
+        const navWrapper = document.getElementById('navWrapper');
+        let currentIndex = 0;
+        let interval;
+
+        function init() {
+            images.forEach((src, index) => {
+                const bg = document.createElement('div');
+                bg.className = `bg-layer layer-${index}`;
+                bg.innerHTML = `<img src="${src}">`;
+                bgContainer.appendChild(bg);
+
+                const thumb = document.createElement('div');
+                thumb.className = `thumb`;
+                thumb.style.animationDelay = `${index * 0.15}s`;
+                thumb.innerHTML = `<img src="${src}">`;
+                thumb.onclick = () => goToSlide(index);
+                thumbContainer.appendChild(thumb);
+            });
+
+            // Séquence d'intro
+            setTimeout(() => {
+                // 1. On "dock" les vignettes en bas
+                navWrapper.classList.add('docked');
+
+                // 2. On affiche la première image et le texte
+                setTimeout(() => {
+                    document.body.classList.add('show-text');
+                    goToSlide(0);
+                    startAutoPlay();
+                }, 1000);
+            }, 2500); // Laisse le temps au slide de se finir au centre
+        }
+
+        function goToSlide(index) {
+            if (!navWrapper.classList.contains('docked')) return;
+
+            currentIndex = index;
+            document.querySelectorAll('.bg-layer').forEach((l, i) => l.classList.toggle('active', i === index));
+            document.querySelectorAll('.thumb').forEach((t, i) => t.classList.toggle('active', i === index));
+
+            clearInterval(interval);
+            startAutoPlay();
+        }
+
+        function startAutoPlay() {
+            interval = setInterval(() => {
+                goToSlide((currentIndex + 1) % images.length);
+            }, 4000);
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

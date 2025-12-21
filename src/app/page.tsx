@@ -10,11 +10,12 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 import Spline from '@splinetool/react-spline';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 import { FilloutStandardEmbed } from "@fillout/react";
+import Intro from '@/components/Intro';
 
 interface CardInfo {
   name: string;
@@ -47,7 +48,23 @@ const shuffleArray = (array: CardInfo[]): CardInfo[] => {
     .map(({ item }) => item);
 };
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
 export default function Home() {
+  const [showIntro, setShowIntro] = useState(true);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -108,6 +125,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
+      <AnimatePresence mode="wait">
+        {showIntro && <Intro onComplete={() => setShowIntro(false)} />}
+      </AnimatePresence>
       <Toaster />
       <Header showNavLinks={true} />
       <main className="flex-1">
@@ -115,56 +135,68 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 ">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
                 className="lg:ml-14 flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
+                <motion.div variants={fadeInUp} className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Master the Art of Car Spotting
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Wheeloh is the ultimate app for car spotting enthusiasts. Spot, identify, and collect the rarest cars around you, and share your finds with a passionate community of spotters.
                   </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button>Download App</Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>Beta of Wheeloh</DialogTitle>
-                        <DialogDescription>
-                          This is the beta version of the application, available only on Play Store, so please bear with us.
-                          {/*Wheeloh is still in development, so please be patient.*/}
-                        </DialogDescription>
-                        <div className="flex gap-4">
-                          <Link href="https://play.google.com/store/apps/details?id=com.wheeloh.app" target="_blank" className="inline-flex h-10 items-center justify-center rounded-md  border-input bg-background text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
-                            <img src="playstore.svg" alt="Play Store" />
-                          </Link>
-                          <Link href="https://apps.apple.com/fr/app/wheeloh-carspotting/id6746037128" target="_blank" className="inline-flex h-10 items-center justify-center rounded-md  border-input bg-background text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
-                            <img src="applestore.svg" alt="App Store" />
-                          </Link>
-                          {/*<img onClick={handleClickAppStore} src="applestore.svg" alt="App Store" />*/}
+                </motion.div>
+                <motion.div variants={fadeInUp} className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                    {/* App Store Button */}
+                    <Link href="https://apps.apple.com/fr/app/wheeloh-carspotting/id6746037128" target="_blank" className="inline-flex items-center justify-center rounded-lg bg-black text-white px-3 py-1.5 hover:bg-zinc-800 transition-colors border border-zinc-800 h-10 min-w-[140px]">
+                      <svg className="w-5 h-5 mr-2 mb-0.5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
+                      </svg>
+                      <div className="flex flex-col items-start leading-none">
+                        <span className="text-[9px] font-medium opacity-80">Download on the</span>
+                        <span className="text-sm font-bold">App Store</span>
+                      </div>
+                    </Link>
 
-                        </div>
-                      </DialogHeader>
-                    </DialogContent>
-                  </Dialog>
-                  <Link
-                    href="#features"
-                    className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                    prefetch={false}
-                  >
-                    Learn More
-                  </Link>
-                </div>
+                    {/* Google Play Button */}
+                    <Link href="https://play.google.com/store/apps/details?id=com.wheeloh.app" target="_blank" className="inline-flex items-center justify-center rounded-lg bg-black text-white px-3 py-1.5 hover:bg-zinc-800 transition-colors border border-zinc-800 h-10 min-w-[140px]">
+                      <svg className="w-5 h-5 mr-2" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M17,14.5l4.2-4.5L4.9,1.2C4.8,1.1,4.6,1.1,4.3,1L17,14.5z" />
+                        <path d="M23,21l5.9-3.2c0.7-0.4,1.1-1,1.1-1.8s-0.4-1.5-1.1-1.8L23,11l-4.7,5L23,21z" />
+                        <path d="M2.4,1.9C2.1,2.2,2,2.6,2,3V29c0,0.4,0.1,0.8,0.4,1.2L15.6,16L2.4,1.9z" />
+                        <path d="M17,17.5L4.3,31c0.2,0,0.4-0.1,0.6-0.2L21.2,22L17,17.5z" />
+                      </svg>
+                      <div className="flex flex-col items-start leading-none">
+                        <span className="text-[9px] font-medium opacity-80">GET IT ON</span>
+                        <span className="text-sm font-bold">Google Play</span>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="#features"
+                      className="inline-flex h-10 items-center justify-center rounded-lg border border-input bg-background px-6 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                      prefetch={false}
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </motion.div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}>
+                animate={{ opacity: 1, x: 0, y: [0, -15, 0] }}
+                transition={{
+                  opacity: { duration: 0.5 },
+                  x: { duration: 0.5 },
+                  y: {
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }
+                }}>
                 {isMobile ? (
                   <img src="/app-screenshot.png" width="346" height="715" alt="App Screenshot" className="mx-auto aspect-[346/715] overflow-hidden rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[267px]" />
                 ) : (
@@ -174,65 +206,197 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
+        {/* BENTO GRID FEATURES SECTION */}
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-zinc-50/50 dark:bg-black/50">
           <div className="container px-4 md:px-6">
             <motion.div
-              initial={{ opacity: 0, x: 0 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Key Features</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Unleash Your Car Spotter Potential</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Wheeloh is packed with features to help you spot, identify, and share your most exciting automotive finds. Become an expert spotter and grow your collection of rare cars.
-                </p>
-              </div>
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16 space-y-4"
+            >
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Unleash Your Potential</h2>
+              <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
+                A complete ecosystem for car spotters. Collect, share, and compete.
+              </p>
             </motion.div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-max">
+
+              {/* Feature 1: Capture (Span 2) */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col justify-center space-y-4">
-                <ul className="grid gap-6">
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Instant Identification</h3>
-                      <p className="text-muted-foreground">
-                        Instantly identify any car you spot thanks to image recognition, and expand your spotter knowledge.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Rare Car Hunting</h3>
-                      <p className="text-muted-foreground">
-                        Get alerts when a rare car is spotted near you and enrich your collection with unique finds.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Community Sharing</h3>
-                      <p className="text-muted-foreground">
-                        Join the spotter community, share your best finds, and connect with other car spotting enthusiasts.
-                      </p>
-                    </div>
-                  </li>
-                </ul>
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4 }}
+                className="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+              >
+                <div className="z-10 md:w-1/2 space-y-4">
+                  <h3 className="text-2xl md:text-4xl font-bold">Capture a Car</h3>
+                  <p className="text-muted-foreground">Use our smart camera to instantly identify any vehicle and add it to your collection.</p>
+                </div>
+                <div className="md:w-1/2 flex justify-center items-center">
+                  <img
+                    src="/presentation/camera_page_Capturez_une_voiture.png"
+                    alt="Capture"
+                    className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
               </motion.div>
-              <motion.img
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                src="features.png"
-                width="150.79"
-                height="310"
-                alt="Features"
-                className="mx-auto  overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last max-h-[434px] max-w-[211px]"
-              />
+
+              {/* Feature 2: Share (Span 1) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="col-span-1 md:col-span-1 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+              >
+                <div className="z-10 space-y-2">
+                  <h3 className="text-2xl font-bold">Share</h3>
+                  <p className="text-muted-foreground text-sm">Earn points by sharing your best finds with the community.</p>
+                </div>
+                <div className="flex-1 flex items-center justify-center w-full">
+                  <img
+                    src="/presentation/feedpage_Partagez_la.png"
+                    alt="Share"
+                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Feature 3: MAP INTEGRATION (Span 3 / Full Width) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.4 }}
+                className="col-span-1 md:col-span-3 min-h-[500px] bg-black rounded-[2rem] relative overflow-hidden group shadow-2xl flex items-center justify-center"
+              >
+                {/* Background Image - BRIGHTER */}
+                <div
+                  className="absolute inset-0 z-0 bg-cover bg-center opacity-85 transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: "url('/presentation/map_background.png')" }}
+                />
+                {/* Overlay - LIGHTER */}
+                <div className="absolute inset-0 z-0" />
+
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full px-8 md:px-16 gap-8">
+                  <div className="text-center md:text-left space-y-4 max-w-lg">
+                    <h3 className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl">Track your Spots</h3>
+                    <p className="text-white text-lg md:text-xl font-medium drop-shadow-md">Find the exact location of all your finds on the real-time interactive map.</p>
+                  </div>
+
+                  <motion.div
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                    className="w-full max-w-[300px] md:max-w-[400px]"
+                  >
+                    <img
+                      src="/presentation/garage_penché_track_spot.png"
+                      alt="Map Tracking"
+                      className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.6)] transition-all duration-500"
+                    />
+                  </motion.div>
+                </div>
+              </motion.div>
+
+
+              {/* Feature 4: Compete (Span 1) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="col-span-1 md:col-span-1 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+              >
+                <div className="z-10 space-y-2">
+                  <h3 className="text-2xl font-bold">Compete</h3>
+                  <p className="text-muted-foreground text-sm">Climb the global leaderboard and challenge your friends.</p>
+                </div>
+                <div className="flex-1 flex items-center justify-center w-full">
+                  <img
+                    src="/presentation/classement.png"
+                    alt="Compete"
+                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Feature 5: Garage (Span 2) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4 }}
+                className="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col md:flex-row-reverse items-center justify-between gap-8 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+              >
+                <div className="z-10 md:w-1/2 space-y-4 text-right">
+                  <h3 className="text-2xl md:text-4xl font-bold">Organized Garage</h3>
+                  <p className="text-muted-foreground">Find all your cars perfectly sorted in your virtual garage.</p>
+                </div>
+                <div className="md:w-1/2 flex justify-center items-center">
+                  <img
+                    src="/presentation/albums_trie.png"
+                    alt="Garage"
+                    className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
             </div>
+
+            {/* Split row for last 2 items */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              {/* Feature 5: Collection */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+              >
+                <div className="z-10 space-y-2 text-center">
+                  <h3 className="text-2xl font-bold">Brand Collection</h3>
+                  <p className="text-muted-foreground">Complete your collection, brand by brand.</p>
+                </div>
+                <div className="flex justify-center w-full">
+                  <img
+                    src="/presentation/brand_list.png"
+                    alt="Collection"
+                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Feature 6: News */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+              >
+                <div className="z-10 space-y-2 text-center">
+                  <h3 className="text-2xl font-bold">Auto News</h3>
+                  <p className="text-muted-foreground">Stay informed with the latest news from the automotive world.</p>
+                </div>
+                <div className="flex justify-center w-full">
+                  <img
+                    src="/presentation/automobile_news.png"
+                    alt="News"
+                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+            </div>
+
           </div>
         </section>
         {/*<motion.section id="team"
@@ -273,9 +437,10 @@ export default function Home() {
         <section id="affiliate" className="w-full py-12 md:py-24 lg:py-32 border-t">
           <div className="container px-4 md:px-6">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
               className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2"
             >
               <div className="flex flex-col justify-center space-y-4">
@@ -289,7 +454,7 @@ export default function Home() {
                 <div className="hidden md:block">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button className="mt-4">Apply Now</Button>
+                      <Button className="mt-4 rounded-lg">Apply Now</Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[650px] max-h-[90vh] overflow-y-auto">
                       <DialogHeader>
@@ -307,12 +472,10 @@ export default function Home() {
               </div>
 
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                variants={fadeInUp}
                 className="flex flex-col justify-center items-center space-y-4"
               >
-                <div className="bg-muted p-6 rounded-lg w-full max-w-md">
+                <div className="bg-muted p-6 rounded-md w-full max-w-md">
                   <h3 className="font-semibold mb-4 text-xl">Affiliate Benefits</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
@@ -375,9 +538,10 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
                 className="space-y-4">
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Get in Touch</div>
                 <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
@@ -389,9 +553,11 @@ export default function Home() {
                 </p>
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                transition={{ delay: 0.2 }}
                 className="flex flex-col items-start space-y-4">
                 {/*<form className="w-full max-w-md space-y-4" onSubmit={handleSubmit}>
                   <Input type="text" placeholder="Name" className="w-full" value={name} onChange={(e) => setName(e.target.value)}/>
