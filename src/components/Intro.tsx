@@ -7,18 +7,29 @@ const Intro = ({ onComplete }: { onComplete: () => void }) => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
+        // Function to finish loading
+        const completeLoading = () => {
             setProgress(100);
-        }, 500);
-
-        const completeTimer = setTimeout(() => {
-            onComplete();
-        }, 2500);
-
-        return () => {
-            clearTimeout(timer);
-            clearTimeout(completeTimer);
+            // Small delay to allow progress bar animation to finish
+            setTimeout(() => {
+                onComplete();
+            }, 500);
         };
+
+        if (document.readyState === "complete") {
+            completeLoading();
+        } else {
+            const handleLoad = () => completeLoading();
+            window.addEventListener("load", handleLoad);
+
+            // Fallback in case load event never fires or takes too long (max 3s)
+            const fallbackTimer = setTimeout(completeLoading, 3000);
+
+            return () => {
+                window.removeEventListener("load", handleLoad);
+                clearTimeout(fallbackTimer);
+            };
+        }
     }, [onComplete]);
 
     return (
@@ -44,8 +55,8 @@ const Intro = ({ onComplete }: { onComplete: () => void }) => {
                 <motion.div
                     className="h-full bg-white"
                     initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
+                    animate={{ width: `${progress}%` }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
                 />
             </div>
         </motion.div>

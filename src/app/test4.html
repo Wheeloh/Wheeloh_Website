@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,7 @@
             height: 650px;
             background: #FFFFFF;
             border-radius: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
             border: 8px solid #000;
             position: relative;
             overflow: hidden;
@@ -39,8 +40,19 @@
             padding: 30px 20px;
             text-align: center;
         }
-        .header h3 { margin: 0; font-size: 16px; color: #888; font-weight: 500; }
-        .header h2 { margin: 5px 0 0 0; font-size: 22px; color: #000; }
+
+        .header h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .header h2 {
+            margin: 5px 0 0 0;
+            font-size: 22px;
+            color: #000;
+        }
 
         .btn-reset {
             margin-top: auto;
@@ -86,7 +98,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .card-front {
@@ -98,13 +110,14 @@
         .card-back {
             background: white;
             transform: rotateY(180deg);
-            border: 2px solid #FFD700; /* Gold border */
+            border: 2px solid #FFD700;
+            /* Gold border */
         }
 
         .logo-mark {
             width: 60px;
             height: 60px;
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -120,8 +133,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* --- PROTOTYPE 2: MINIMAL BURST --- */
@@ -179,15 +199,21 @@
             position: absolute;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
             opacity: 0;
             transition: opacity 0.5s;
             z-index: 1;
         }
 
-        .burst-active .rays { opacity: 1; }
+        .burst-active .rays {
+            opacity: 1;
+        }
 
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
 
         /* --- PROTOTYPE 3: SLIDE UNLOCK --- */
@@ -198,7 +224,7 @@
             margin: 20px auto;
             position: relative;
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             cursor: pointer;
         }
@@ -231,7 +257,10 @@
 
         .slide-pattern {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             opacity: 0.1;
             background-image: radial-gradient(#fff 1px, transparent 1px);
             background-size: 20px 20px;
@@ -249,12 +278,19 @@
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
-        }
 
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <div class="phone-frame">
@@ -262,7 +298,7 @@
             <h3>Concept 1</h3>
             <h2>The Collector</h2>
         </div>
-        
+
         <div class="scene" onclick="this.querySelector('.card').classList.toggle('is-flipped')">
             <div class="card">
                 <div class="card-face card-front">
@@ -279,7 +315,8 @@
         <p style="text-align: center; font-size: 12px; color: #999; padding: 0 40px;">
             Une animation 3D "physique" qui rappelle les cartes à collectionner. Simple et efficace.
         </p>
-        <button class="btn-reset" onclick="document.querySelector('.card').classList.remove('is-flipped')">Reset</button>
+        <button class="btn-reset"
+            onclick="document.querySelector('.card').classList.remove('is-flipped')">Reset</button>
     </div>
 
     <div class="phone-frame">
@@ -287,10 +324,10 @@
             <h3>Concept 2</h3>
             <h2>Modern Burst</h2>
         </div>
-        
+
         <div class="burst-container" id="burstContainer" onclick="this.classList.add('burst-active')">
             <div class="rays"></div>
-            
+
             <div class="orb">
                 <span style="font-size: 24px;">🎁</span>
             </div>
@@ -299,7 +336,8 @@
                 <div style="font-size: 70px;">🏎️</div>
                 <h2 style="margin: 10px 0 5px 0;">Félicitations !</h2>
                 <p style="color: #666; font-size: 14px; margin: 0;">Tu as atteint les 5%</p>
-                <div style="margin-top: 15px; padding: 8px 16px; background: #FFD700; color: black; border-radius: 20px; font-weight: bold; font-size: 12px; display: inline-block;">
+                <div
+                    style="margin-top: 15px; padding: 8px 16px; background: #FFD700; color: black; border-radius: 20px; font-weight: bold; font-size: 12px; display: inline-block;">
                     Ajouter au profil
                 </div>
             </div>
@@ -307,7 +345,8 @@
         <p style="text-align: center; font-size: 12px; color: #999; padding: 0 40px; margin-bottom: 20px;">
             Inspiré d'Apple. Pas de carte, juste de la lumière et une transition fluide. Très "Tech".
         </p>
-        <button class="btn-reset" onclick="document.getElementById('burstContainer').classList.remove('burst-active')">Reset</button>
+        <button class="btn-reset"
+            onclick="document.getElementById('burstContainer').classList.remove('burst-active')">Reset</button>
     </div>
 
     <div class="phone-frame">
@@ -315,7 +354,7 @@
             <h3>Concept 3</h3>
             <h2>The Unveil</h2>
         </div>
-        
+
         <div class="slide-container" id="slideContainer" onclick="this.classList.add('slide-active')">
             <div class="slide-content">
                 <div style="font-size: 50px;">🌟</div>
@@ -324,7 +363,7 @@
                     Tu as débloqué l'accès aux statistiques détaillées.
                 </p>
             </div>
-            
+
             <div class="slide-cover">
                 <div class="slide-pattern"></div>
                 <div style="font-size: 30px; margin-bottom: 10px;">🔒</div>
@@ -332,12 +371,14 @@
                 <div class="tap-hint">Tap to unlock</div>
             </div>
         </div>
-        
+
         <p style="text-align: center; font-size: 12px; color: #999; padding: 0 40px;">
             Comme ouvrir un cadeau ou un dossier confidentiel. L'étui glisse vers le haut pour révéler le contenu.
         </p>
-        <button class="btn-reset" onclick="document.getElementById('slideContainer').classList.remove('slide-active')">Reset</button>
+        <button class="btn-reset"
+            onclick="document.getElementById('slideContainer').classList.remove('slide-active')">Reset</button>
     </div>
 
 </body>
+
 </html>

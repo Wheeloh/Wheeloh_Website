@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheelo Hybrid Reward</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        body {
+            background-color: #E5E5E5;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Cadre mobile pour la démo */
+        .phone-frame {
+            width: 340px;
+            height: 680px;
+            background: #F8F9FA;
+            /* Fond gris très léger comme vu précédemment */
+            border-radius: 45px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 8px solid #111;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- CSS DU HYBRID FLIP --- */
+
+        /* Le conteneur qui donne la perspective 3D */
+        .reward-scene {
+            width: 260px;
+            height: 360px;
+            perspective: 1200px;
+            /* Plus la valeur est grande, plus la 3D est subtile */
+            cursor: pointer;
+        }
+
+        /* La carte elle-même */
+        .reward-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            /* Transition fluide avec un léger rebond à la fin (cubic-bezier) */
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.8s;
+            transform-style: preserve-3d;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* État quand la carte est retournée */
+        .reward-card.is-flipped {
+            transform: rotateY(180deg) scale(1.02);
+            /* Léger zoom quand c'est ouvert */
+            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Les deux faces de la carte */
+        .card-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            /* Cache le dos de l'élément */
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* --- FACE AVANT (Celle qu'on voit avant de cliquer) --- */
+        /* Style mystérieux et sombre (inspiré du Concept 1) */
+        .face-front {
+            background: linear-gradient(135deg, #1A1A1A, #000000);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mystery-icon {
+            font-size: 40px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .tap-hint {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        /* --- FACE ARRIÈRE (La révélation) --- */
+        /* Style épuré avec le contenu du Concept 2 */
+        .face-back {
+            background: white;
+            transform: rotateY(180deg);
+            /* Déjà tournée au départ */
+            color: #1A1A1A;
+            border: 2px solid #FFD700;
+            /* Bordure dorée premium */
+            text-align: center;
+        }
+
+        /* Contenu inspiré du Concept 2 */
+        .reward-emoji {
+            font-size: 70px;
+            margin-bottom: 15px;
+            /* Petite animation d'apparition pour le contenu */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.3s;
+            /* Délai pour attendre la fin du flip */
+        }
+
+        .reward-title {
+            margin: 0 0 8px 0;
+            font-size: 22px;
+            font-weight: 800;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.4s;
+        }
+
+        .reward-subtitle {
+            margin: 0 0 25px 0;
+            color: #666;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.5s;
+        }
+
+        .reward-btn {
+            padding: 10px 24px;
+            background: #FFD700;
+            color: #1A1A1A;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.6s;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Déclencheur des animations de contenu quand la carte est retournée */
+        .reward-card.is-flipped .reward-emoji,
+        .reward-card.is-flipped .reward-title,
+        .reward-card.is-flipped .reward-subtitle,
+        .reward-card.is-flipped .reward-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* Bouton reset pour la démo */
+        .reset-demo {
+            position: absolute;
+            bottom: 30px;
+            color: #999;
+            background: none;
+            border: none;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="phone-frame">
+
+        <div class="reward-scene" onclick="document.querySelector('.reward-card').classList.add('is-flipped')">
+            <div class="reward-card">
+
+                <div class="card-face face-front">
+                    <div class="mystery-icon">✨</div>
+                    <div class="tap-hint">Tap to reveal reward</div>
+                </div>
+
+                <div class="card-face face-back">
+                    <div class="reward-emoji">🏎️</div>
+                    <h2 class="reward-title">Félicitations !</h2>
+                    <p class="reward-subtitle">Tu es dans le top 5% des spotters.</p>
+                    <button class="reward-btn">Voir le badge sur mon profil</button>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="reset-demo"
+            onclick="document.querySelector('.reward-card').classList.remove('is-flipped'); event.stopPropagation();">
+            Réinitialiser l'animation
+        </button>
+
+    </div>
+
+</body>
+
+</html>
