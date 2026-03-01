@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -12,7 +12,10 @@ import { toast } from "sonner"
 import Spline from '@splinetool/react-spline';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
+import { Montserrat } from 'next/font/google';
 import GarageFeature from '@/components/GarageFeature';
+
+const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '600', '700'] });
 import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 import { FilloutStandardEmbed } from "@fillout/react";
@@ -71,6 +74,23 @@ export default function Home() {
   const [shuffledCards, setShuffledCards] = useState<CardInfo[]>(cards);
   const [maintenanceActive, setMaintenanceActive] = useState(false);
   const [maintenanceMessage, setMaintenanceMessage] = useState("");
+
+  const [titleNumber, setTitleNumber] = useState(0);
+  const titles = useMemo(
+    () => ["Car Spotting", "Car Collecting", "Discovering", "Sharing"],
+    []
+  );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (titleNumber === titles.length - 1) {
+        setTitleNumber(0);
+      } else {
+        setTitleNumber(titleNumber + 1);
+      }
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, titles]);
 
   useEffect(() => {
     setShuffledCards(shuffleArray(cards));
@@ -155,8 +175,31 @@ export default function Home() {
                 animate="visible"
                 className="lg:ml-14 flex flex-col items-center text-center lg:items-start lg:text-left justify-center space-y-4">
                 <motion.div variants={fadeInUp} className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Master the Art of Car Spotting
+                  <h1 className={`text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none flex flex-col items-center lg:items-start ${montserrat.className}`}>
+                    <span>Master the Art of</span>
+                    <span className="relative flex w-full justify-center lg:justify-start overflow-hidden text-center lg:text-left h-[1.2em] mt-1">
+                      {titles.map((title, index) => (
+                        <motion.span
+                          key={index}
+                          className="absolute pb-2"
+                          initial={{ opacity: 0, y: "-100%" }}
+                          transition={{ type: "spring", stiffness: 50 }}
+                          animate={
+                            titleNumber === index
+                              ? {
+                                  y: 0,
+                                  opacity: 1,
+                                }
+                              : {
+                                  y: titleNumber > index ? "-150%" : "150%",
+                                  opacity: 0,
+                                }
+                          }
+                        >
+                          {title}
+                        </motion.span>
+                      ))}
+                    </span>
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Wheeloh is the ultimate app for car spotting enthusiasts. Spot, identify, and collect the rarest cars around you, and share your finds with a passionate community of spotters.
