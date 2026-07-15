@@ -1,60 +1,63 @@
-"use client";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Card, CardContent } from "@/components/ui/card";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import ChangelogArticleContent from "@/components/ChangelogArticleContent";
+import JsonLd from "@/components/JsonLd";
+import { articleLd, breadcrumbLd } from "@/lib/seo";
+import { listSlugs, readEntry } from "@/lib/changelog";
 
-function stripFrontmatter(md: string) {
-  return md.replace(/^---[\s\S]*?---\s*/, '');
+export function generateStaticParams() {
+  return listSlugs().map((date) => ({ date }));
 }
 
-export default function ChangelogDetailPage() {
-  const { date } = useParams();
-  const [content, setContent] = useState<string>("");
-  const [notFound, setNotFound] = useState(false);
+export async function generateMetadata({
+  params,
+}: {
+  params: { date: string };
+}): Promise<Metadata> {
+  try {
+    const entry = readEntry(params.date);
+    const path = `/changelog/${params.date}`;
+    return {
+      title: entry.title,
+      description: entry.description || `Wheeloh changelog — ${entry.title}`,
+      alternates: { canonical: path },
+      openGraph: {
+        type: "article",
+        url: path,
+        title: entry.title,
+        description: entry.description,
+        modifiedTime: entry.iso,
+        publishedTime: entry.iso,
+      },
+    };
+  } catch {
+    return { title: "Changelog", robots: { index: false } };
+  }
+}
 
-  useEffect(() => {
-    if (!date) return;
-    fetch(`/changelog/content/${date}.md`)
-      .then((res) => {
-        if (!res.ok) throw new Error("not found");
-        return res.text();
-      })
-      .then(text => setContent(stripFrontmatter(text)))
-      .catch(() => setNotFound(true));
-  }, [date]);
-
+export default function Page({ params }: { params: { date: string } }) {
+  if (!listSlugs().includes(params.date)) notFound();
+  const entry = readEntry(params.date);
+  const path = `/changelog/${params.date}`;
   return (
-    <div className="flex flex-col min-h-[100dvh]">
-      <Header showNavLinks={true} />
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            {notFound ? (
-              <div className="text-center text-lg text-destructive">Aucune news trouvée pour cette date.</div>
-            ) : (
-              <div className="prose prose-lg prose-neutral max-w-3xl mx-auto">
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  rehypePlugins={[rehypeSlug]}
-                  components={{
-                    img: ({node, ...props}) => (
-                      <img {...props} className="rounded-lg mx-auto my-4 max-h-80" />
-                    ),
-                  }}
-                >
-                  {content}
-                </ReactMarkdown>
-              </div>
-            )}
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+    <>
+      <JsonLd
+        data={[
+          articleLd({
+            headline: entry.title,
+            description: entry.description,
+            path,
+            datePublished: entry.iso,
+            dateModified: entry.iso,
+          }),
+          breadcrumbLd([
+            { name: "Home", path: "/" },
+            { name: "Changelog", path: "/changelog" },
+            { name: entry.title, path },
+          ]),
+        ]}
+      />
+      <ChangelogArticleContent markdown={entry.body} title={entry.title} printed={entry.printed} />
+    </>
   );
-} 
+}

@@ -18,12 +18,11 @@ export default function InviteRedirectContent() {
         const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
         
         if (/iPhone|iPad|iPod/i.test(userAgent)) {
-          // Redirection vers App Store (remplacer par l'ID réel quand disponible)
-          //window.location.href = "https://apps.apple.com/app/wheeloh/idXXXXXXXXX";
-          window.location.href = "https://wheeloh.com/";
+          // Redirection vers App Store
+          window.location.href = "https://apps.apple.com/fr/app/wheeloh-carspotting/id6746037128?utm_source=website&utm_medium=organic&utm_campaign=invite_redirect";
         } else if (/android/i.test(userAgent)) {
           // Redirection vers Play Store
-          window.location.href = "https://play.google.com/store/apps/details?id=com.wheeloh.app";
+          window.location.href = "https://play.google.com/store/apps/details?id=com.wheeloh.app&utm_source=website&utm_medium=organic&utm_campaign=invite_redirect&referrer=utm_source%3Dwebsite%26utm_medium%3Dorganic%26utm_campaign%3Dinvite_redirect";
         } else {
           // Fallback vers la page d'accueil
           window.location.href = "/";

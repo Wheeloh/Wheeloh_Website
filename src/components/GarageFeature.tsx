@@ -75,13 +75,14 @@ export default function GarageFeature() {
                 className="relative w-[150px] h-[300px] md:w-[180px] md:h-[360px]"
                 style={{ rotateX: containerRotateX, rotateY: containerRotateY, transformStyle: "preserve-3d" }}
             >
-                <img src="/presentation/PC_albums_trie/phone.png" className="absolute inset-0 w-full h-full object-contain pointer-events-none drop-shadow-2xl z-20" />
+                <img src="/presentation/PC_albums_trie/phone.png" alt="Wheeloh app garage view on a phone" className="absolute inset-0 w-full h-full object-contain pointer-events-none drop-shadow-2xl z-20" />
 
                 {ALBUMS.map((album, i) => {
                     const m = getParallax(album.parallax);
                     return (
                         <motion.img
                             key={i}
+                            alt={`${album.src.replace(/_Album\.png$/, "").toLowerCase()} car album in the Wheeloh garage`}
                             src={`/presentation/PC_albums_trie/${album.src}`}
                             className={`absolute ${album.pos} ${album.size} h-auto object-contain z-30 drop-shadow-xl`}
                             style={{

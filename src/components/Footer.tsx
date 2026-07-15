@@ -2,6 +2,21 @@
 import { motion } from 'framer-motion';
 import Link from "next/link";
 import { Heart } from 'lucide-react';
+import { APP_STORE_URL, PLAY_STORE_URL, STATUS_URL, CONTACT_EMAIL } from "@/lib/seo";
+
+const PRODUCT_LINKS = [
+  { href: "/#features", label: "Features" },
+  { href: "/changelog", label: "Changelog" },
+  { href: "/engineering", label: "Engineering" },
+  { href: STATUS_URL, label: "Status", external: true },
+];
+
+const LEGAL_LINKS = [
+  { href: "/legal", label: "Legal Information" },
+  { href: "/cgu", label: "CGU" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/community-standards", label: "Community Standards" },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,52 +28,62 @@ export default function Footer() {
       transition={{ duration: 0.5 }}
       className="w-full border-t py-6"
     >
-      <div className="container flex flex-col items-center justify-between gap-4 px-4 md:px-6 md:flex-row">
-        <div className="flex gap-4 items-center">
+      <div className="container grid gap-8 px-4 md:px-6 md:grid-cols-4">
+        <div className="flex flex-col gap-3">
           <Link href="/" className="flex items-center" prefetch={false}>
             <img src="/applogo.svg" alt="" className='w-12' />
             <span className="sr-only">Wheeloh</span>
           </Link>
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} Wheeloh. All rights reserved.
+          <p className="text-sm text-muted-foreground max-w-xs">
+            The car-spotting app for enthusiasts. Spot, identify and collect the rarest cars around you.
           </p>
         </div>
-        <nav className="flex gap-4 sm:gap-6">
-          <Link 
-            href="/legal" 
-            className="text-sm text-muted-foreground hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Legal Information
+
+        <nav className="flex flex-col gap-2">
+          <h2 className="text-sm font-semibold">Product</h2>
+          {PRODUCT_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              prefetch={false}
+              className="text-sm text-muted-foreground hover:underline underline-offset-4"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <nav className="flex flex-col gap-2">
+          <h2 className="text-sm font-semibold">Legal</h2>
+          {LEGAL_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              prefetch={false}
+              className="text-sm text-muted-foreground hover:underline underline-offset-4"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <nav className="flex flex-col gap-2">
+          <h2 className="text-sm font-semibold">Get the app</h2>
+          <Link href={APP_STORE_URL} prefetch={false} className="text-sm text-muted-foreground hover:underline underline-offset-4">
+            Download on the App Store
           </Link>
-          <Link 
-            href="/cgu" 
-            className="text-sm text-muted-foreground hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            CGU
+          <Link href={PLAY_STORE_URL} prefetch={false} className="text-sm text-muted-foreground hover:underline underline-offset-4">
+            Get it on Google Play
           </Link>
-          <Link 
-            href="/privacy" 
-            className="text-sm text-muted-foreground hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Privacy Policy
-          </Link>
-          <Link 
-            href="/community-standards" 
-            className="text-sm text-muted-foreground hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Community Standards
-          </Link>
-          <Link 
-            href="mailto:contact@wheeloh.com" 
-            className="text-sm text-muted-foreground hover:underline underline-offset-4"
-          >
+          <Link href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-muted-foreground hover:underline underline-offset-4">
             Contact
           </Link>
         </nav>
+      </div>
+      <div className="container px-4 md:px-6">
+        <p className="text-sm text-muted-foreground mt-8">
+          © {currentYear} Wheeloh. All rights reserved.
+        </p>
       </div>
       <div className="border-t border-gray-300 mt-6 pt-6">
         <div className="flex justify-center">

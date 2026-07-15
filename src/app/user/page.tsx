@@ -1,9 +1,15 @@
-"use client";
-
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Suspense } from 'react';
 import UsersRedirectContent from '@/components/UsersRedirectContent';
+
+export const metadata: Metadata = {
+  title: 'Profil',
+  description: 'Ouverture de ce profil dans l’application Wheeloh.',
+  robots: { index: false, follow: false },
+  alternates: { canonical: '/user' },
+};
 
 export default function UserPage() {
   return (

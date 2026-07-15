@@ -1,0 +1,29 @@
+# Wheeloh
+
+> Wheeloh is a mobile car-spotting app for iOS and Android. Point your camera at
+> a car to instantly identify its make, model and version, collect it in your
+> virtual garage, plot it on a live map, earn points on the leaderboard, and share
+> rare finds with a community of enthusiasts.
+
+Wheeloh is published by Wheeloh SAS (Versailles, France). Contact: contact@wheeloh.com.
+The marketing site is primarily in English; legal documents are in French.
+
+## App
+- [App Store (iOS)](https://apps.apple.com/fr/app/wheeloh-carspotting/id6746037128)
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=com.wheeloh.app)
+- [Service status](https://status.wheeloh.com)
+
+## Core pages
+- [Home / features](https://wheeloh.com/): capture, share, map tracking, leaderboard, garage, brand collection, auto news, FAQ
+- [Changelog](https://wheeloh.com/changelog): product updates and release notes
+- [Engineering](https://wheeloh.com/engineering): technical deep dives from the Wheeloh team
+- [Semantic Car Search](https://wheeloh.com/engineering/semantic-car-search): a vector-embedding approach indexing 22,180 vehicle models in a 1,536-dimensional space (75.6% validation accuracy)
+
+## Legal (French)
+- [Mentions légales](https://wheeloh.com/legal)
+- [CGU](https://wheeloh.com/cgu)
+- [Politique de confidentialité](https://wheeloh.com/privacy)
+- [Standards communautaires](https://wheeloh.com/community-standards)
+
+## Notes
+- /invite, /news and /user are deep-link redirect pages and are not indexable content.

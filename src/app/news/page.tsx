@@ -1,12 +1,15 @@
-"use client";
-
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Suspense } from 'react';
-// Correction de l'import : le chemin du composant doit être correct.
-// Correction de l'import : le chemin du composant doit être correct.
-// Si le composant NewsRedirectContent n'existe pas à cet emplacement, veuillez ajuster le chemin ci-dessous.
 import NewsRedirectContent from '@/components/NewsRedirectContent';
+
+export const metadata: Metadata = {
+  title: 'Actualité',
+  description: 'Ouverture de cette actualité dans l’application Wheeloh.',
+  robots: { index: false, follow: false },
+  alternates: { canonical: '/news' },
+};
 
 export default function NewsPage() {
   return (

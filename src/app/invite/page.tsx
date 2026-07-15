@@ -1,9 +1,15 @@
-"use client";
-
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Suspense } from 'react';
 import InviteRedirectContent from '@/components/InviteRedirectContent';
+
+export const metadata: Metadata = {
+  title: 'Invitation',
+  description: 'Ouverture de votre invitation dans l’application Wheeloh.',
+  robots: { index: false, follow: false },
+  alternates: { canonical: '/invite' },
+};
 
 export default function InvitePage() {
   return (

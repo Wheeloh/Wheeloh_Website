@@ -3,12 +3,48 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import MaintenanceBar from "@/components/MaintenanceBar";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Wheeloh - App",
-  description: "This app is the ultimate mobile app for car enthusiasts. Identify makes, track rare cars, and share your sightings with passionate friends.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Wheeloh — Car Spotting App",
+    template: "%s | Wheeloh",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    "car spotting",
+    "car spotting app",
+    "car identification",
+    "car collection",
+    "supercars",
+    "automotive",
+    "Wheeloh",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    locale: "en_US",
+    title: "Wheeloh — Car Spotting App",
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wheeloh — Car Spotting App",
+    description: SITE_DESCRIPTION,
+  },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon-ios.png",
+  },
+  manifest: "/manifest.webmanifest",
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -18,9 +54,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/icon.png" />
-      </head>
       <body className={inter.className}>
         <MaintenanceBar />
         <SmoothScroll>{children}</SmoothScroll>
