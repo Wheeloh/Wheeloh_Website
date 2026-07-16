@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, useMemo } from 'react'
 import Link from "next/link"
+import Image from "next/image"
+import dynamic from "next/dynamic"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
@@ -9,17 +11,16 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
-import Spline from '@splinetool/react-spline';
 import { motion } from 'framer-motion';
-import { useMediaQuery } from 'react-responsive';
-import { Montserrat } from 'next/font/google';
-import GarageFeature from '@/components/GarageFeature';
-
-const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '600', '700'] });
 import Header from "@/components/Header";
 import Footer from '@/components/Footer';
-import { FilloutStandardEmbed } from "@fillout/react";
+import LazyMount from "@/components/LazyMount";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
 import { FAQ_ITEMS } from "@/lib/seo";
+
+const Spline = dynamic(() => import('@/components/SplineLazy'), { ssr: false });
+const GarageFeature = dynamic(() => import('@/components/GarageFeature'), { ssr: false });
+const FilloutStandardEmbed = dynamic(() => import('@/components/FilloutEmbedLazy'), { ssr: false });
 
 
 interface CardInfo {
@@ -160,7 +161,7 @@ export default function Home() {
     }
   };
 
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isDesktop = useIsDesktop();
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -176,7 +177,7 @@ export default function Home() {
                 animate="visible"
                 className="lg:ml-14 flex flex-col items-center text-center lg:items-start lg:text-left justify-center space-y-4">
                 <motion.div variants={fadeInUp} className="space-y-2">
-                  <h1 className={`text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none flex flex-col items-center lg:items-start ${montserrat.className}`}>
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none flex flex-col items-center lg:items-start font-heading">
                     <span>Master the Art of</span>
                     <span className="relative flex w-full justify-center lg:justify-start overflow-hidden text-center lg:text-left h-[1.2em] mt-1">
                       {titles.map((title, index) => (
@@ -256,10 +257,10 @@ export default function Home() {
                     delay: 0.5
                   }
                 }}>
-                {isMobile ? (
-                  <img src="/presentation/camera_page_Capturez_une_voiture.png" width="346" height="715" alt="The Wheeloh app camera identifying a car on an iPhone" className="mx-auto aspect-[346/715] overflow-hidden rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[267px]" />
-                ) : (
+                {isDesktop ? (
                   <Spline className="mx-auto aspect-[346/720] rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[300px]" scene="https://prod.spline.design/0UPCp4GVK8DoDLkA/scene.splinecode" />
+                ) : (
+                  <Image src="/presentation/camera_page_Capturez_une_voiture.png" width={346} height={715} priority sizes="267px" alt="The Wheeloh app camera identifying a car on an iPhone" className="mx-auto aspect-[346/715] overflow-hidden rounded-xl object-cover sm:w-full lg:order-last max-h-[552px] max-w-[267px]" />
                 )}
               </motion.div>
             </div>
@@ -302,8 +303,11 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="md:w-1/2 flex justify-center items-center">
-                  <img
+                  <Image
                     src="/presentation/camera_page_Capturez_une_voiture.png"
+                    width={1200}
+                    height={2388}
+                    sizes="(max-width: 768px) 90vw, 400px"
                     alt="The Wheeloh smart camera identifying a car"
                     className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
                   />
@@ -324,8 +328,11 @@ export default function Home() {
                   <p className="text-muted-foreground text-sm">Earn points by sharing your best finds with the community.</p>
                 </div>
                 <div className="flex-1 flex items-center justify-center w-full">
-                  <img
+                  <Image
                     src="/presentation/feedpage_Partagez_la.png"
+                    width={1200}
+                    height={2369}
+                    sizes="(max-width: 768px) 90vw, 300px"
                     alt="Sharing a car spot in the Wheeloh community feed"
                     className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
                   />
@@ -342,10 +349,15 @@ export default function Home() {
                 className="col-span-1 md:col-span-3 min-h-[500px] bg-black rounded-[2rem] relative overflow-hidden group shadow-2xl flex items-center justify-center"
               >
                 {/* Background Image - BRIGHTER */}
-                <div
-                  className="absolute inset-0 z-0 bg-cover bg-center opacity-85 transition-transform duration-700 group-hover:scale-105"
-                  style={{ backgroundImage: "url('/presentation/map_background.png')" }}
-                />
+                <div className="absolute inset-0 z-0 opacity-85 transition-transform duration-700 group-hover:scale-105">
+                  <Image
+                    src="/presentation/map_background.png"
+                    alt=""
+                    fill
+                    sizes="100vw"
+                    className="object-cover object-center"
+                  />
+                </div>
                 {/* Overlay - LIGHTER */}
                 <div className="absolute inset-0 z-0" />
 
@@ -360,8 +372,11 @@ export default function Home() {
                     transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                     className="w-full max-w-[300px] md:max-w-[400px]"
                   >
-                    <img
+                    <Image
                       src="/presentation/garage_penché_track_spot.png"
+                      width={1200}
+                      height={1906}
+                      sizes="(max-width: 768px) 90vw, 400px"
                       alt="Interactive map showing where cars were spotted"
                       className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.6)] transition-all duration-500"
                     />
@@ -384,8 +399,11 @@ export default function Home() {
                   <p className="text-muted-foreground text-sm">Climb the global leaderboard and challenge your friends.</p>
                 </div>
                 <div className="flex-1 flex items-center justify-center w-full">
-                  <img
+                  <Image
                     src="/presentation/classement.png"
+                    width={1106}
+                    height={2184}
+                    sizes="(max-width: 768px) 90vw, 300px"
                     alt="Global leaderboard ranking of car spotters"
                     className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
                   />
@@ -406,16 +424,20 @@ export default function Home() {
                   <p className="text-muted-foreground">Find all your cars perfectly sorted in your virtual garage.</p>
                 </div>
                 <div className="md:w-1/2 flex justify-center items-center w-full">
-                  {/* Shows on Mobile Only */}
-                  <img
-                    src="/presentation/albums_trie.png"
-                    alt="Organized virtual garage of collected cars"
-                    className="md:hidden w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {/* Shows on Desktop Only - Interactive Parallax */}
-                  <div className="hidden md:block w-full">
-                    <GarageFeature />
-                  </div>
+                  {isDesktop ? (
+                    <div className="w-full">
+                      <GarageFeature />
+                    </div>
+                  ) : (
+                    <Image
+                      src="/presentation/albums_trie.png"
+                      width={1200}
+                      height={2368}
+                      sizes="90vw"
+                      alt="Organized virtual garage of collected cars"
+                      className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
                 </div>
               </motion.div>
             </div>
@@ -436,8 +458,11 @@ export default function Home() {
                   <p className="text-muted-foreground">Complete your collection, brand by brand.</p>
                 </div>
                 <div className="flex justify-center w-full">
-                  <img
+                  <Image
                     src="/presentation/brand_list.png"
+                    width={1200}
+                    height={2020}
+                    sizes="(max-width: 768px) 90vw, 400px"
                     alt="Brand collection progress by car manufacturer"
                     className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
                   />
@@ -461,8 +486,11 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex justify-center w-full">
-                  <img
+                  <Image
                     src="/presentation/automobile_news.png"
+                    width={1200}
+                    height={2486}
+                    sizes="(max-width: 768px) 90vw, 400px"
                     alt="Latest automotive news feed in the Wheeloh app"
                     className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
                   />
@@ -673,14 +701,9 @@ export default function Home() {
                     Submit
                   </Button>
                 </form>*/}
-                <div
-                  style={{
-                    height: 490,
-                  }}
-                  className="w-full max-w-md"
-                >
+                <LazyMount minHeight={490} className="w-full max-w-md">
                   <FilloutStandardEmbed filloutId="nbbX3d69vzus" />
-                </div>
+                </LazyMount>
               </motion.div>
             </div>
           </div>

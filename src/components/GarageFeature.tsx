@@ -1,7 +1,10 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
 import React, { useRef } from "react";
+
+const MotionImage = motion(Image);
 
 export default function GarageFeature() {
     const ref = useRef<HTMLDivElement>(null);
@@ -75,15 +78,18 @@ export default function GarageFeature() {
                 className="relative w-[150px] h-[300px] md:w-[180px] md:h-[360px]"
                 style={{ rotateX: containerRotateX, rotateY: containerRotateY, transformStyle: "preserve-3d" }}
             >
-                <img src="/presentation/PC_albums_trie/phone.png" alt="Wheeloh app garage view on a phone" className="absolute inset-0 w-full h-full object-contain pointer-events-none drop-shadow-2xl z-20" />
+                <Image src="/presentation/PC_albums_trie/phone.png" alt="Wheeloh app garage view on a phone" fill sizes="180px" className="object-contain pointer-events-none drop-shadow-2xl z-20" />
 
                 {ALBUMS.map((album, i) => {
                     const m = getParallax(album.parallax);
                     return (
-                        <motion.img
+                        <MotionImage
                             key={i}
                             alt={`${album.src.replace(/_Album\.png$/, "").toLowerCase()} car album in the Wheeloh garage`}
                             src={`/presentation/PC_albums_trie/${album.src}`}
+                            width={175}
+                            height={175}
+                            sizes="80px"
                             className={`absolute ${album.pos} ${album.size} h-auto object-contain z-30 drop-shadow-xl`}
                             style={{
                                 x: m.x,
