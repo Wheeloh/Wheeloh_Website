@@ -69,6 +69,26 @@ export const mobileAppLd: JsonLd = {
   publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
 };
 
+/**
+ * Merge the latest changelog entry's version/date into mobileAppLd, so the
+ * JSON-LD always reflects the real shipped version instead of going stale.
+ * Extracts "1.2.1" out of a title like "Wheeloh v1.2.1 — ...". Falls back to
+ * the base mobileAppLd unchanged if no version number is present.
+ */
+export const withLatestRelease = (entry: {
+  title: string;
+  slug: string;
+  iso: string;
+}): JsonLd => {
+  const version = entry.title.match(/v(\d+(?:\.\d+){1,2})/i)?.[1];
+  return {
+    ...mobileAppLd,
+    ...(version ? { softwareVersion: version } : {}),
+    releaseNotes: abs(`/changelog/${entry.slug}`),
+    dateModified: entry.iso,
+  };
+};
+
 // ---------------------------------------------------------------------------
 // Reusable helpers
 // ---------------------------------------------------------------------------
@@ -149,7 +169,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "What is Wheeloh?",
     answer:
-      "Wheeloh is a mobile car-spotting app for enthusiasts. Point your camera at a car, instantly identify its make and model, add it to your virtual garage, and share rare finds with a community of spotters.",
+      "Wheeloh is a mobile car spotting (carspotting) app for enthusiasts. Point your camera at a car, instantly identify its make and model, add it to your virtual garage, and share rare finds with a community of spotters.",
   },
   {
     question: "Is Wheeloh free to download?",

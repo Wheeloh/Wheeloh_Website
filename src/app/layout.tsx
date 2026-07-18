@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   keywords: [
     "car spotting",
     "car spotting app",
+    "carspotting",
+    "carspotting app",
     "car identification",
     "car collection",
     "supercars",

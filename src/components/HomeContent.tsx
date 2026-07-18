@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 import LazyMount from "@/components/LazyMount";
@@ -69,7 +70,12 @@ const staggerContainer = {
   }
 };
 
-export default function Home() {
+interface LatestUpdate {
+  slug: string;
+  title: string;
+}
+
+export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -177,6 +183,16 @@ export default function Home() {
                 animate="visible"
                 className="lg:ml-14 flex flex-col items-center text-center lg:items-start lg:text-left justify-center space-y-4">
                 <motion.div variants={fadeInUp} className="space-y-2">
+                  {latestUpdate && (
+                    <Link
+                      href={`/changelog/${latestUpdate.slug}`}
+                      className="mb-2 inline-flex max-w-full items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-xs font-medium hover:bg-muted transition-colors sm:text-sm"
+                    >
+                      <span className="shrink-0 rounded-full bg-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-foreground">New</span>
+                      <span className="truncate">{latestUpdate.title}</span>
+                      <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+                    </Link>
+                  )}
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none flex flex-col items-center lg:items-start font-heading">
                     <span>Master the Art of</span>
                     <span className="relative flex w-full justify-center lg:justify-start overflow-hidden text-center lg:text-left h-[1.2em] mt-1">

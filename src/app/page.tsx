@@ -5,9 +5,10 @@ import {
   SITE_DESCRIPTION,
   organizationLd,
   websiteLd,
-  mobileAppLd,
+  withLatestRelease,
   faqLd,
 } from "@/lib/seo";
+import { listEntries } from "@/lib/changelog";
 
 export const metadata: Metadata = {
   title: { absolute: "Wheeloh — Car Spotting App | Spot, Identify & Collect Cars" },
@@ -17,10 +18,14 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const [latestUpdate] = listEntries();
+
   return (
     <>
-      <JsonLd data={[organizationLd, websiteLd, mobileAppLd, faqLd]} />
-      <HomeContent />
+      <JsonLd data={[organizationLd, websiteLd, withLatestRelease(latestUpdate), faqLd]} />
+      <HomeContent
+        latestUpdate={{ slug: latestUpdate.slug, title: latestUpdate.title }}
+      />
     </>
   );
 }
