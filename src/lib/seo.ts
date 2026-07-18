@@ -58,7 +58,8 @@ export const websiteLd: JsonLd = {
 export const mobileAppLd: JsonLd = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
-  name: "Wheeloh — Car Spotting",
+  name: "Wheeloh — Car Spotting App",
+  alternateName: "Wheeloh Carspotting",
   operatingSystem: "iOS, Android",
   applicationCategory: "LifestyleApplication",
   url: SITE_URL,
@@ -170,6 +171,11 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "What is Wheeloh?",
     answer:
       "Wheeloh is a mobile car spotting (carspotting) app for enthusiasts. Point your camera at a car, instantly identify its make and model, add it to your virtual garage, and share rare finds with a community of spotters.",
+  },
+  {
+    question: "What does car spotting (carspotting) mean?",
+    answer:
+      "Car spotting, also written carspotting, is the hobby of noticing, photographing and identifying interesting or rare cars you come across in everyday life — similar to train spotting or plane spotting, but for automobiles. Wheeloh is a car spotting app built specifically for this hobby: it identifies the cars you photograph and helps you track, collect and share every spot.",
   },
   {
     question: "Is Wheeloh free to download?",

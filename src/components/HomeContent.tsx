@@ -220,7 +220,7 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                     </span>
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Wheeloh is the ultimate app for car spotting enthusiasts. Spot, identify, and collect the rarest cars around you, and share your finds with a passionate community of spotters.
+                    Wheeloh is the ultimate car spotting app for enthusiasts. Spot, identify, and collect the rarest cars around you, and share your finds with a passionate community of spotters.
                   </p>
                 </motion.div>
                 <motion.div variants={fadeInUp} className="flex flex-col gap-2 min-[400px]:flex-row">
