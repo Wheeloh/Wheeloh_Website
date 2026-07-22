@@ -15,8 +15,7 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
       className="px-4 lg:px-6 h-14 flex items-center"
     >
       <Link href="/" className="flex items-center justify-center" prefetch={false}>
-        <img src="/applogo.svg" alt="" className='w-20' />
-        <span className="sr-only">Wheeloh</span>
+        <img src="/applogo.svg" alt="Wheeloh" className='w-20' />
       </Link>
       {showNavLinks && (
         <nav className="ml-auto flex gap-4 sm:gap-6">

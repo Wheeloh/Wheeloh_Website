@@ -368,7 +368,7 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                 <div className="absolute inset-0 z-0 opacity-85 transition-transform duration-700 group-hover:scale-105">
                   <Image
                     src="/presentation/map_background.png"
-                    alt=""
+                    alt="Map background showing car spotting locations tracked in Wheeloh"
                     fill
                     sizes="100vw"
                     className="object-cover object-center"

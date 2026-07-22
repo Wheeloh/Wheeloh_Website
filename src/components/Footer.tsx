@@ -31,8 +31,7 @@ export default function Footer() {
       <div className="container grid gap-8 px-4 md:px-6 md:grid-cols-4">
         <div className="flex flex-col gap-3">
           <Link href="/" className="flex items-center" prefetch={false}>
-            <img src="/applogo.svg" alt="" className='w-12' />
-            <span className="sr-only">Wheeloh</span>
+            <img src="/applogo.svg" alt="Wheeloh" className='w-12' />
           </Link>
           <p className="text-sm text-muted-foreground max-w-xs">
             The car-spotting app for enthusiasts. Spot, identify and collect the rarest cars around you.

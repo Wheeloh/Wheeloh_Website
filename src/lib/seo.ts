@@ -5,8 +5,9 @@
 export const SITE_URL = "https://wheeloh.com";
 export const SITE_NAME = "Wheeloh";
 export const SITE_TAGLINE = "Car Spotting App";
+// Kept to 145 chars (search engines truncate meta descriptions around 155-160).
 export const SITE_DESCRIPTION =
-  "Wheeloh is the car-spotting app for enthusiasts. Spot a car with your camera, instantly identify its make and model, collect it in your virtual garage, and share rare finds with a passionate community of spotters.";
+  "Wheeloh is the car spotting app for enthusiasts. Spot, identify and collect rare cars with your camera, then share your finds with the community.";
 
 export const CONTACT_EMAIL = "contact@wheeloh.com";
 export const CONTACT_PHONE = "+33 7 52 05 25 59";
