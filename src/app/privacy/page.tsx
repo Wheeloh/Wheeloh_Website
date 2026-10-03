@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Politique de confidentialité de Wheeloh : quelles données sont traitées et comment nous les protégeons.",
   alternates: { canonical: "/privacy" },
-  openGraph: { url: "/privacy", locale: "fr_FR", title: "Politique de confidentialité | Wheeloh" },
+  openGraph: { url: "/privacy", locale: "fr_FR", title: "Politique de confidentialité | Wheeloh", images: ["/opengraph-image"] },
 };
 
 export default function Page() {

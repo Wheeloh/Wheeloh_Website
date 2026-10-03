@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Mentions légales de Wheeloh : éditeur, hébergement, propriété intellectuelle et données personnelles.",
   alternates: { canonical: "/legal" },
-  openGraph: { url: "/legal", locale: "fr_FR", title: "Mentions légales | Wheeloh" },
+  openGraph: { url: "/legal", locale: "fr_FR", title: "Mentions légales | Wheeloh", images: ["/opengraph-image"] },
 };
 
 export default function Page() {

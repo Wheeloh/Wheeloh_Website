@@ -12,6 +12,8 @@ The marketing site is primarily in English; legal documents are in French.
 - [App Store (iOS)](https://apps.apple.com/fr/app/wheeloh-carspotting/id6746037128)
 - [Google Play (Android)](https://play.google.com/store/apps/details?id=com.wheeloh.app)
 - [Service status](https://status.wheeloh.com)
+- [Instagram](https://www.instagram.com/wheeloh_app)
+- [TikTok](https://www.tiktok.com/@bywheeloh)
 
 ## Core pages
 - [Home / features](https://wheeloh.com/): capture, share, map tracking, leaderboard, garage, brand collection, auto news, FAQ

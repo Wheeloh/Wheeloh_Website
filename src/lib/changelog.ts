@@ -23,6 +23,19 @@ function stripFrontmatter(md: string): string {
   return md.replace(/^---[\s\S]*?---\s*/, "");
 }
 
+/** Strip inline markdown formatting so a line is safe to use as a plain-text
+ * meta description / OG description / JSON-LD description. */
+function stripMarkdownInline(text: string): string {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, "$1") // **bold**
+    .replace(/__(.*?)__/g, "$1") // __bold__
+    .replace(/\*(.*?)\*/g, "$1") // *italic*
+    .replace(/_(.*?)_/g, "$1") // _italic_
+    .replace(/`(.*?)`/g, "$1") // `code`
+    .replace(/\[(.*?)\]\(.*?\)/g, "$1") // [text](url)
+    .trim();
+}
+
 /** List changelog slugs (filenames without ".md") from index.json. */
 export function listSlugs(): string[] {
   const index = JSON.parse(
@@ -51,7 +64,14 @@ export function readEntry(slug: string): ChangelogEntry {
   // Prefer the slug when it is already an ISO date (deterministic on CI).
   const iso = /^\d{4}-\d{2}-\d{2}$/.test(slug) ? slug : new Date().toISOString().slice(0, 10);
 
-  return { slug, title, printed, iso, description: description.trim(), body: stripFrontmatter(raw) };
+  return {
+    slug,
+    title: stripMarkdownInline(title),
+    printed,
+    iso,
+    description: stripMarkdownInline(description),
+    body: stripFrontmatter(raw),
+  };
 }
 
 /** All entries, newest first (by ISO date). */

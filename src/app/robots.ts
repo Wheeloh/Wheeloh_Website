@@ -4,6 +4,15 @@ import { SITE_URL } from "@/lib/seo";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
+      // Explicit allow rules for AI answer-engine crawlers, so access is a
+      // deliberate policy rather than an incidental side effect of the
+      // generic wildcard below (same effective access either way today,
+      // but explicit survives future edits that add a more specific block).
+      { userAgent: "GPTBot", allow: "/" },
+      { userAgent: "OAI-SearchBot", allow: "/" },
+      { userAgent: "ClaudeBot", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
+      { userAgent: "Google-Extended", allow: "/" },
       {
         userAgent: "*",
         allow: "/",

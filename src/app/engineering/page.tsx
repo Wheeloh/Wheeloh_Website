@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     url: "/engineering",
     title: "Engineering | Wheeloh",
     description: "Technical deep dives from the Wheeloh engineering team.",
+    images: ["/opengraph-image"],
   },
 };
 

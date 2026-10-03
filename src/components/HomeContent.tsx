@@ -186,15 +186,15 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                   {latestUpdate && (
                     <Link
                       href={`/changelog/${latestUpdate.slug}`}
-                      className="mb-2 inline-flex max-w-full items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-xs font-medium hover:bg-muted transition-colors sm:text-sm"
+                      className="mb-2 inline-flex w-fit max-w-full items-center gap-2 rounded-full border bg-muted/50 p-1 pr-3 text-xs font-medium hover:bg-muted transition-colors sm:text-sm"
                     >
                       <span className="shrink-0 rounded-full bg-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-foreground">New</span>
-                      <span className="truncate">{latestUpdate.title}</span>
+                      <span className="min-w-0 truncate">{latestUpdate.title}</span>
                       <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                     </Link>
                   )}
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none flex flex-col items-center lg:items-start font-heading">
-                    <span>Master the Art of</span>
+                    <span>Master the Art of{" "}</span>
                     <span className="relative flex w-full justify-center lg:justify-start overflow-hidden text-center lg:text-left h-[1.2em] mt-1">
                       {titles.map((title, index) => (
                         <motion.span
@@ -303,10 +303,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+                className="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="z-10 md:w-1/2 space-y-4">
                   <h3 className="text-2xl md:text-4xl font-bold">Capture a Car</h3>
@@ -323,9 +323,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                     src="/presentation/camera_page_Capturez_une_voiture.png"
                     width={1200}
                     height={2388}
-                    sizes="(max-width: 768px) 90vw, 400px"
+                    sizes="(max-width: 768px) 320px, 400px"
+                    priority
                     alt="The Wheeloh smart camera identifying a car"
-                    className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transform-gpu [backface-visibility:hidden] [transform:translateZ(0)] transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
               </motion.div>
@@ -334,10 +335,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-                className="col-span-1 md:col-span-1 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+                className="col-span-1 md:col-span-1 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="z-10 space-y-2">
                   <h3 className="text-2xl font-bold">Share</h3>
@@ -348,9 +349,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                     src="/presentation/feedpage_Partagez_la.png"
                     width={1200}
                     height={2369}
-                    sizes="(max-width: 768px) 90vw, 300px"
+                    sizes="(max-width: 768px) 320px, 300px"
+                    priority
                     alt="Sharing a car spot in the Wheeloh community feed"
-                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transform-gpu [backface-visibility:hidden] [transform:translateZ(0)] transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
               </motion.div>
@@ -359,7 +361,7 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="col-span-1 md:col-span-3 min-h-[500px] bg-black rounded-[2rem] relative overflow-hidden group shadow-2xl flex items-center justify-center"
@@ -371,6 +373,7 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                     alt="Map background showing car spotting locations tracked in Wheeloh"
                     fill
                     sizes="100vw"
+                    priority
                     className="object-cover object-center"
                   />
                 </div>
@@ -392,9 +395,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                       src="/presentation/garage_penché_track_spot.png"
                       width={1200}
                       height={1906}
-                      sizes="(max-width: 768px) 90vw, 400px"
+                      sizes="(max-width: 768px) 320px, 400px"
+                      priority
                       alt="Interactive map showing where cars were spotted"
-                      className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.6)] transition-all duration-500"
+                      className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.6)] transform-gpu [backface-visibility:hidden] [transform:translateZ(0)]"
                     />
                   </motion.div>
                 </div>
@@ -405,10 +409,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-                className="col-span-1 md:col-span-1 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+                className="col-span-1 md:col-span-1 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="z-10 space-y-2">
                   <h3 className="text-2xl font-bold">Compete</h3>
@@ -419,9 +423,9 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                     src="/presentation/classement.png"
                     width={1106}
                     height={2184}
-                    sizes="(max-width: 768px) 90vw, 300px"
+                    sizes="(max-width: 768px) 320px, 300px"
                     alt="Global leaderboard ranking of car spotters"
-                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transform-gpu [backface-visibility:hidden] [transform:translateZ(0)] transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
               </motion.div>
@@ -430,10 +434,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col md:flex-row-reverse items-center justify-between gap-8 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+                className="col-span-1 md:col-span-2 bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col md:flex-row-reverse items-center justify-between gap-8 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="z-10 md:w-1/2 space-y-4 text-right">
                   <h3 className="text-2xl md:text-4xl font-bold">Organized Garage</h3>
@@ -449,9 +453,9 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                       src="/presentation/albums_trie.png"
                       width={1200}
                       height={2368}
-                      sizes="90vw"
+                      sizes="320px"
                       alt="Organized virtual garage of collected cars"
-                      className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-auto max-h-[350px] object-contain drop-shadow-2xl rounded-xl transform-gpu [backface-visibility:hidden] [transform:translateZ(0)] transition-transform duration-500 group-hover:scale-105"
                     />
                   )}
                 </div>
@@ -464,10 +468,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+                className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="z-10 space-y-2 text-center">
                   <h3 className="text-2xl font-bold">Brand Collection</h3>
@@ -478,9 +482,9 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                     src="/presentation/brand_list.png"
                     width={1200}
                     height={2020}
-                    sizes="(max-width: 768px) 90vw, 400px"
+                    sizes="(max-width: 768px) 320px, 400px"
                     alt="Brand collection progress by car manufacturer"
-                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transform-gpu [backface-visibility:hidden] [transform:translateZ(0)] transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
               </motion.div>
@@ -489,10 +493,10 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.15 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-                className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-all"
+                className="bg-white dark:bg-zinc-900 rounded-[2rem] p-8 flex flex-col items-center gap-6 overflow-hidden relative group shadow-xl hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="z-10 space-y-2 text-center">
                   <h3 className="text-2xl font-bold">Auto News</h3>
@@ -506,9 +510,9 @@ export default function Home({ latestUpdate }: { latestUpdate?: LatestUpdate }) 
                     src="/presentation/automobile_news.png"
                     width={1200}
                     height={2486}
-                    sizes="(max-width: 768px) 90vw, 400px"
+                    sizes="(max-width: 768px) 320px, 400px"
                     alt="Latest automotive news feed in the Wheeloh app"
-                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto max-h-[300px] object-contain drop-shadow-2xl rounded-xl transform-gpu [backface-visibility:hidden] [transform:translateZ(0)] transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
               </motion.div>

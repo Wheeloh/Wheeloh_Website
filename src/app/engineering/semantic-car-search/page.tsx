@@ -8,7 +8,7 @@ const HEADLINE = "Semantic Car Search: A Vector-Based Approach";
 const DESCRIPTION =
   "Leveraging high-dimensional embeddings for intelligent automotive discovery — indexing 22,180 vehicle models into a 1,536-dimensional vector space.";
 const PUBLISHED = "2025-11-24";
-const MODIFIED = "2025-11-24";
+const MODIFIED = "2026-10-03";
 
 export const metadata: Metadata = {
   title: HEADLINE,
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: PUBLISHED,
     modifiedTime: MODIFIED,
     authors: ["Théophile"],
+    images: ["/opengraph-image"],
   },
 };
 

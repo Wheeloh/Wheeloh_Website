@@ -28,6 +28,7 @@ export async function generateMetadata({
         description: entry.description,
         modifiedTime: entry.iso,
         publishedTime: entry.iso,
+        images: ["/opengraph-image"],
       },
     };
   } catch {

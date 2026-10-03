@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     url: "/changelog",
     title: "Changelog | Wheeloh",
     description: "Latest updates and release notes for Wheeloh.",
+    images: ["/opengraph-image"],
   },
 };
 

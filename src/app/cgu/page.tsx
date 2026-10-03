@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Conditions Générales d'Utilisation de l'application et du site Wheeloh.",
   alternates: { canonical: "/cgu" },
-  openGraph: { url: "/cgu", locale: "fr_FR", title: "CGU | Wheeloh" },
+  openGraph: { url: "/cgu", locale: "fr_FR", title: "CGU | Wheeloh", images: ["/opengraph-image"] },
 };
 
 export default function Page() {

@@ -19,7 +19,7 @@ export default function ChangelogListContent({
   entries: ChangelogListItem[];
 }) {
   return (
-    <div lang="fr" className="flex flex-col min-h-[100dvh]">
+    <div lang="en" className="flex flex-col min-h-[100dvh]">
       <Header showNavLinks={true} />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32">
@@ -32,11 +32,11 @@ export default function ChangelogListContent({
             >
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Changelog</div>
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Dernières nouveautés & annonces</h1>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Product Updates & Announcements</h1>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl mx-auto">
-                  Retrouvez ici toutes les dernières mises à jour, nouveautés et annonces importantes concernant l&apos;application{" "}
-                  <Link href="/" className="underline underline-offset-4 hover:text-foreground">Wheeloh</Link>. Curieux du fonctionnement interne ? Explorez nos{" "}
-                  <Link href="/engineering" className="underline underline-offset-4 hover:text-foreground">articles d&apos;ingénierie</Link>.
+                  Discover the latest updates, new features, and major announcements for the{" "}
+                  <Link href="/" className="underline underline-offset-4 hover:text-foreground">Wheeloh</Link> app. Curious about how it works under the hood? Explore our{" "}
+                  <Link href="/engineering" className="underline underline-offset-4 hover:text-foreground">engineering articles</Link>.
                 </p>
               </div>
             </motion.div>

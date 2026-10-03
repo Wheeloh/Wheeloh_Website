@@ -17,6 +17,8 @@ export const APP_STORE_URL =
 export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.wheeloh.app";
 export const STATUS_URL = "https://status.wheeloh.com";
+export const INSTAGRAM_URL = "https://www.instagram.com/wheeloh_app";
+export const TIKTOK_URL = "https://www.tiktok.com/@bywheeloh";
 
 /** Build an absolute URL from a site-relative path. */
 export const abs = (path = "/"): string =>
@@ -28,9 +30,15 @@ type JsonLd = Record<string, unknown>;
 // Site-entity schemas (rendered once, on the homepage only)
 // ---------------------------------------------------------------------------
 
+/** Canonical @id for the Wheeloh Organization node, referenced by every
+ * other JSON-LD block's `publisher`/`author` so Google/LLM knowledge-graph
+ * consolidation doesn't have to infer these are the same entity. */
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
 export const organizationLd: JsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": ORGANIZATION_ID,
   name: SITE_NAME,
   legalName: "Wheeloh SAS",
   url: SITE_URL,
@@ -44,7 +52,7 @@ export const organizationLd: JsonLd = {
     postalCode: "78000",
     addressCountry: "FR",
   },
-  sameAs: [APP_STORE_URL, PLAY_STORE_URL, STATUS_URL],
+  sameAs: [APP_STORE_URL, PLAY_STORE_URL, STATUS_URL, INSTAGRAM_URL, TIKTOK_URL],
 };
 
 export const websiteLd: JsonLd = {
@@ -53,7 +61,7 @@ export const websiteLd: JsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   inLanguage: ["en", "fr"],
-  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+  publisher: { "@type": "Organization", "@id": ORGANIZATION_ID, name: SITE_NAME, url: SITE_URL },
 };
 
 export const mobileAppLd: JsonLd = {
@@ -68,7 +76,7 @@ export const mobileAppLd: JsonLd = {
   downloadUrl: [APP_STORE_URL, PLAY_STORE_URL],
   // No aggregateRating: we do not fabricate store ratings (avoids Google penalties).
   offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
-  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+  publisher: { "@type": "Organization", "@id": ORGANIZATION_ID, name: SITE_NAME, url: SITE_URL },
 };
 
 /**
@@ -82,7 +90,7 @@ export const withLatestRelease = (entry: {
   slug: string;
   iso: string;
 }): JsonLd => {
-  const version = entry.title.match(/v(\d+(?:\.\d+){1,2})/i)?.[1];
+  const version = entry.title.match(/v?(\d+(?:\.\d+){1,2})/i)?.[1];
   return {
     ...mobileAppLd,
     ...(version ? { softwareVersion: version } : {}),
@@ -123,9 +131,11 @@ export const techArticleLd = (opts: {
   "@type": "TechArticle",
   headline: opts.headline,
   description: opts.description,
+  image: abs("/opengraph-image"),
   author: { "@type": "Person", name: opts.author },
   publisher: {
     "@type": "Organization",
+    "@id": ORGANIZATION_ID,
     name: SITE_NAME,
     logo: { "@type": "ImageObject", url: abs("/icon.png") },
   },
@@ -145,9 +155,11 @@ export const articleLd = (opts: {
   "@type": "Article",
   headline: opts.headline,
   description: opts.description,
-  author: { "@type": "Organization", name: SITE_NAME },
+  image: abs("/opengraph-image"),
+  author: { "@type": "Organization", "@id": ORGANIZATION_ID, name: SITE_NAME },
   publisher: {
     "@type": "Organization",
+    "@id": ORGANIZATION_ID,
     name: SITE_NAME,
     logo: { "@type": "ImageObject", url: abs("/icon.png") },
   },

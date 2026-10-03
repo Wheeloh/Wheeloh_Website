@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Standards communautaires de Wheeloh : les règles qui garantissent une communauté de passionnés respectueuse.",
   alternates: { canonical: "/community-standards" },
-  openGraph: { url: "/community-standards", locale: "fr_FR", title: "Standards Communautaires | Wheeloh" },
+  openGraph: { url: "/community-standards", locale: "fr_FR", title: "Standards Communautaires | Wheeloh", images: ["/opengraph-image"] },
 };
 
 export default function Page() {

@@ -4,3 +4,40 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Consolidate the www subdomain into a single 301 hop to the apex domain
+# (previously www -> https://www -> https://apex, two redirects).
+[[redirects]]
+  from = "http://www.wheeloh.com/*"
+  to = "https://wheeloh.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.wheeloh.com/*"
+  to = "https://wheeloh.com/:splat"
+  status = 301
+  force = true
+
+# Content-hashed Next.js build assets never change content at a given URL —
+# safe to cache forever. Netlify's default headers for these were
+# `max-age=0, must-revalidate`, forcing a revalidation round-trip on every
+# repeat visit.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_next/image*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Baseline security headers (none were previously set beyond HSTS).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://prod.spline.design https://forms.fillout.com; frame-src https://forms.fillout.com; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
