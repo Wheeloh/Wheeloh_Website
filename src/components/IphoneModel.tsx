@@ -12,6 +12,11 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 
+type ActionName = string
+interface GLTFAction extends THREE.AnimationClip {
+  name: ActionName
+}
+
 type GLTFResult = GLTF & {
   nodes: {
     ttmRoLdJipiIOmf: THREE.Mesh
@@ -83,7 +88,7 @@ type GLTFResult = GLTF & {
 }
 
 export function Model(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/iphone.glb') as GLTFResult
+  const { nodes, materials } = useGLTF('/models/iphone.glb') as GLTFResult
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.ttmRoLdJipiIOmf.geometry} material={materials.hUlRcbieVuIiOXG} scale={0.01} />
@@ -121,4 +126,4 @@ export function Model(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/iphone.glb')
+useGLTF.preload('/models/iphone.glb')
