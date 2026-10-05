@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import SemanticCarSearchContent from "@/components/SemanticCarSearchContent";
 import JsonLd from "@/components/JsonLd";
@@ -47,7 +48,9 @@ export default function Page() {
           ]),
         ]}
       />
-      <SemanticCarSearchContent />
+      <Suspense fallback={<div className="min-h-screen bg-white" />}>
+        <SemanticCarSearchContent />
+      </Suspense>
     </>
   );
 }
