@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
   },
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
+    icon: "/icon-black.png",
+    shortcut: "/icon-black.png",
     apple: "/icon-ios.png",
   },
   robots: { index: true, follow: true },
