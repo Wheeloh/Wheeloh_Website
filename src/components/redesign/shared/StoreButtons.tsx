@@ -57,7 +57,7 @@ export default function StoreButtons({ tone = "light", size = "md", campaign = "
   ];
 
   return (
-    <div className={cn("flex items-center gap-2.5 sm:flex-wrap sm:gap-3", className)}>
+    <div className={cn("flex flex-wrap items-center gap-2.5 sm:gap-3", className)}>
       {stores.map(({ name, kicker, href, Icon }) => (
         <a
           key={name}

@@ -13,7 +13,7 @@ export default function Faq() {
 
   return (
     <section id="faq" aria-labelledby="faq-title" className="sheet relative z-10 -mt-10 pb-20 pt-20 sm:pb-28 sm:pt-28">
-      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-12">
+      <div className="mx-auto grid grid-cols-1 max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <h2 id="faq-title" className="text-display-l font-extrabold">
             <SplitText text={"Questions,\nanswered."} lineClassNames={["", "text-ash"]} />

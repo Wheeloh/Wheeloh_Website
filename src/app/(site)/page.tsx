@@ -10,7 +10,14 @@ export const metadata: Metadata = {
   title: { absolute: "Wheeloh — Car Spotting App | Spot, Identify & Collect Cars" },
   description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
-  openGraph: { url: "/", title: "Wheeloh — Car Spotting App", description: SITE_DESCRIPTION },
+  // A page's openGraph replaces the layout's whole block, so the preview
+  // image has to be listed here too (the other pages list it as well).
+  openGraph: {
+    url: "/",
+    title: "Wheeloh — Car Spotting App",
+    description: SITE_DESCRIPTION,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Wheeloh — Spot, identify and collect the rarest cars around you" }],
+  },
 };
 
 export default async function Page() {

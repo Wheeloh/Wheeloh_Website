@@ -24,6 +24,10 @@ export const TIKTOK_URL = "https://www.tiktok.com/@bywheeloh";
 export const abs = (path = "/"): string =>
   path.startsWith("http") ? path : `${SITE_URL}${path.startsWith("/") ? "" : "/"}${path}`;
 
+/** The app icon (black flag on a white tile), 512 px: Google's logo for the
+ * Organization. Made from the app's own icon; reads on white and on dark. */
+export const LOGO_URL = abs("/icon-512.png");
+
 type JsonLd = Record<string, unknown>;
 
 // ---------------------------------------------------------------------------
@@ -42,7 +46,7 @@ export const organizationLd: JsonLd = {
   name: SITE_NAME,
   legalName: "Wheeloh SAS",
   url: SITE_URL,
-  logo: abs("/icon.png"),
+  logo: LOGO_URL,
   email: CONTACT_EMAIL,
   telephone: CONTACT_PHONE,
   address: {
@@ -137,7 +141,7 @@ export const techArticleLd = (opts: {
     "@type": "Organization",
     "@id": ORGANIZATION_ID,
     name: SITE_NAME,
-    logo: { "@type": "ImageObject", url: abs("/icon.png") },
+    logo: { "@type": "ImageObject", url: LOGO_URL },
   },
   datePublished: opts.datePublished,
   dateModified: opts.dateModified ?? opts.datePublished,
@@ -161,7 +165,7 @@ export const articleLd = (opts: {
     "@type": "Organization",
     "@id": ORGANIZATION_ID,
     name: SITE_NAME,
-    logo: { "@type": "ImageObject", url: abs("/icon.png") },
+    logo: { "@type": "ImageObject", url: LOGO_URL },
   },
   datePublished: opts.datePublished,
   dateModified: opts.dateModified ?? opts.datePublished,

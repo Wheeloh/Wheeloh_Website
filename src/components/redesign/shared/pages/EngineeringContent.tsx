@@ -52,12 +52,12 @@ export default function EngineeringBlog() {
                 </>
             }
         >
-            <ul className="grid gap-8">
+            <ul className="grid grid-cols-1 gap-8">
                 {posts.map((post) => (
                     <Reveal as="li" key={post.href}>
                         <Link
                             href={post.href}
-                            className="group grid overflow-hidden rounded-[2rem] border border-line transition-[box-shadow,border-color] duration-500 ease-out-expo hover:border-transparent hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.4)] lg:grid-cols-12"
+                            className="group grid grid-cols-1 overflow-hidden rounded-[2rem] border border-line transition-[box-shadow,border-color] duration-500 ease-out-expo hover:border-transparent hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.4)] lg:grid-cols-12"
                         >
                             <div className="relative aspect-[16/10] overflow-hidden bg-night lg:col-span-7 lg:aspect-auto lg:min-h-[26rem]">
                                 <Image

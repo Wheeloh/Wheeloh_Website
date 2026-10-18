@@ -23,7 +23,7 @@ const PERKS = [
 export default function Affiliate() {
   return (
     <section id="affiliate" aria-labelledby="affiliate-title" className="sheet relative z-10 -mt-10 pb-24 pt-20 sm:pb-32 sm:pt-28">
-      <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
+      <div className="mx-auto grid grid-cols-1 max-w-[1440px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-6 lg:pr-10">
           <h2 id="affiliate-title" className="text-display-l font-extrabold">
             <SplitText text={"Already shooting cars?\nJoin the affiliates."} lineClassNames={["", "text-ash"]} />

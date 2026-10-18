@@ -71,8 +71,8 @@ export default function Hero({ latestUpdate }: HeroProps) {
 
   return (
     <section ref={sectionRef} id="home" className="relative overflow-hidden bg-snow pb-12 pt-24 sm:pt-28 lg:pb-20 lg:pt-32">
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-6">
-        <div className="lg:col-span-6 lg:pr-6 xl:col-span-5">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-6">
+        <div className="min-w-0 lg:col-span-6 lg:pr-6 xl:col-span-5">
           {latestUpdate && (
             <Reveal variant="fade">
               <Link
@@ -112,7 +112,7 @@ export default function Hero({ latestUpdate }: HeroProps) {
           ref={setStage}
           onPointerMove={onMove}
           onPointerLeave={onLeave}
-          className="relative h-[32rem] sm:h-[38rem] lg:col-span-6 lg:h-[min(46rem,calc(100svh-9rem))] lg:min-h-[34rem] xl:col-span-7 [perspective:1600px]"
+          className="relative min-w-0 h-[32rem] sm:h-[38rem] lg:col-span-6 lg:h-[min(46rem,calc(100svh-9rem))] lg:min-h-[34rem] xl:col-span-7 [perspective:1600px]"
           style={{ ["--mx" as string]: 0, ["--my" as string]: 0 }}
         >
           <div className="absolute inset-0 flex items-center justify-center">

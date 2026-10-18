@@ -19,7 +19,7 @@ export default function Features() {
   return (
     <section id="features" aria-labelledby="features-title" className="bg-snow py-20 sm:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
           <h2 id="features-title" className="text-display-l font-extrabold lg:col-span-7">
             <SplitText text={"One shot.\nThe rest is automatic."} lineClassNames={["", "text-ash"]} />
           </h2>
@@ -97,7 +97,7 @@ export default function Features() {
 
           {/* Column 3 over the last two rows (lg): the collection takes what it
               needs, the plates card takes the rest. Side by side at md. */}
-          <div className="grid gap-4 md:col-span-2 md:grid-cols-2 lg:col-span-1 lg:row-span-2 lg:flex lg:flex-col">
+          <div className="grid grid-cols-1 gap-4 md:col-span-2 md:grid-cols-2 lg:col-span-1 lg:row-span-2 lg:flex lg:flex-col">
             <Reveal delay={100} className={cn(CARD, "flex flex-col p-7 sm:p-9")}>
               <Copy title="Collect them all." body="Each maker has its own collection. Fill it in one spot at a time — it ticks itself off." />
               {/* at md this card is stretched to the plates card: the rings sit on its floor */}
@@ -414,7 +414,7 @@ function Leaderboard({ className }: { className?: string }) {
               </span>
               <span className="text-[0.75rem] text-ash">{r.cars} cars</span>
             </span>
-            <span className="text-[0.8125rem] font-semibold tabular">
+            <span translate="no" className="text-[0.8125rem] font-semibold tabular">
               {r.you && step >= 1 ? <CountUp to={7392} from={5180} start duration={1200} /> : r.pts.toLocaleString("en-US")} pts
             </span>
           </motion.li>

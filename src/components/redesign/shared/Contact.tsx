@@ -18,7 +18,7 @@ export default function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="relative bg-snow pb-24 text-ink sm:pb-32">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-        <div className="grid gap-12 border-t border-line pt-20 sm:pt-28 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-12 border-t border-line pt-20 sm:pt-28 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 id="contact-title" className="text-display-l font-extrabold">
               <SplitText text={"Talk to\nthe team."} lineClassNames={["", "text-ash"]} />

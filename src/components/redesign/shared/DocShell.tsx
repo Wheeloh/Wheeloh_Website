@@ -50,7 +50,7 @@ export default function DocShell({
       <Header showNavLinks />
       <header className="grain relative overflow-hidden pb-24 pt-32 text-snow sm:pb-28 sm:pt-40">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_60%_at_85%_10%,rgba(255,255,255,0.07),transparent_70%)]" />
-        <div className="relative mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:items-end">
+        <div className="relative mx-auto grid grid-cols-1 max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:items-end">
           <div className={cn(aside ? "lg:col-span-8" : "lg:col-span-10")}>
             {crumbs && crumbs.length > 0 && (
               <Reveal as="nav" variant="fade" aria-label="Breadcrumb" className="mb-8 flex flex-wrap items-center gap-1.5 text-sm font-semibold text-fog">
@@ -93,7 +93,7 @@ export default function DocShell({
         </div>
       </header>
       <main className="sheet relative z-10 -mt-10 flex-1 pb-24 pt-14 sm:pb-32 sm:pt-20">
-        <div className={cn("mx-auto max-w-[1440px] px-5 sm:px-8", contentClassName)}>{children}</div>
+        <div className={cn("mx-auto max-w-[1440px] break-words px-5 sm:px-8", contentClassName)}>{children}</div>
       </main>
       <Footer />
     </div>

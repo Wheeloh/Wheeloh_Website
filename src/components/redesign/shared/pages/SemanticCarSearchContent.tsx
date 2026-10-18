@@ -347,7 +347,7 @@ export default function SemanticCarSearchContent() {
             }
             contentClassName="text-gray-900"
         >
-                    <div className="grid lg:grid-cols-[240px_1fr] gap-8 lg:gap-16 w-full min-w-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8 lg:gap-16 w-full min-w-0">
 
                         {/* Sticky Table of Contents (Desktop) */}
                         <aside className="hidden lg:block">
@@ -469,7 +469,7 @@ export default function SemanticCarSearchContent() {
                                             However, car spotters, collectors, and casual enthusiasts almost never formulate queries aligned with this strict canonical hierarchy. Real-world queries exhibit high entropy across four distinct failure modes for classical lexical systems:
                                         </p>
 
-                                        <ul className="grid sm:grid-cols-2 gap-3 sm:gap-4 my-6">
+                                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 my-6">
                                             <li className="p-3.5 sm:p-4 rounded-xl border border-gray-200 bg-white">
                                                 <div className="font-semibold text-gray-950 mb-1 flex items-center gap-2">
                                                     <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0"></span>
@@ -850,7 +850,7 @@ export default function SemanticCarSearchContent() {
                                 </div>
 
                                 {/* 4 Interactive Plotly Charts in a 2x2 Responsive Grid */}
-                                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
                                     {/* Chart 1: Cumulative Retrieval Recall @ K (Area Chart) */}
                                     <div className="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl border border-[#dadce0] shadow-sm flex flex-col justify-between">
@@ -1166,7 +1166,7 @@ export default function SemanticCarSearchContent() {
                                     </p>
 
                                     <h3 className="text-lg sm:text-xl font-semibold text-gray-950 pt-2 sm:pt-4">Roadmap Initiatives</h3>
-                                    <div className="grid gap-3 sm:gap-4">
+                                    <div className="grid grid-cols-1 gap-3 sm:gap-4">
                                         <div className="p-4 sm:p-5 rounded-xl border border-gray-200 bg-white space-y-1.5">
                                             <div className="font-semibold text-gray-950 flex items-center gap-2 text-sm sm:text-base">
                                                 <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0"></div>

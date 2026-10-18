@@ -63,7 +63,7 @@ export default function Footer() {
       <div aria-hidden className="checker h-3 w-full text-snow/90 [--checker:12px]" />
 
       <div className="mx-auto max-w-[1440px] px-5 pb-6 pt-16 sm:px-8 lg:pt-24">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_2fr]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_2fr]">
           <div className="max-w-sm">
             <FlagMark className="h-10 w-auto text-snow" />
             <p className="mt-6 text-lg font-medium leading-snug text-smoke">

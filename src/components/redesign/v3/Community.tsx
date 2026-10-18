@@ -29,7 +29,7 @@ export default function Community() {
   return (
     <section id="community" aria-labelledby="community-title" className="bg-snow py-20 sm:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-        <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-end">
           <h2 id="community-title" className="text-display-l font-extrabold lg:col-span-7">
             <SplitText text={"Built for the scene,\nnot just the camera."} lineClassNames={["", "text-ash"]} />
           </h2>
@@ -38,7 +38,7 @@ export default function Community() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:mt-16">
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:mt-16">
           <Panel delay={0} title="Start a community." body="Car club, school crew or one-marque fan page — publish news, polls, posts and albums for everyone.">
             {(a) => <CommunityUI active={a} />}
           </Panel>
@@ -116,7 +116,7 @@ function CommunityUI({ active }: { active: boolean }) {
               {joined ? "Joined" : "Join"}
             </span>
           </div>
-          <div className="mt-3 flex gap-2 text-[0.75rem] font-bold">
+          <div className="mt-3 flex flex-wrap gap-2 text-[0.75rem] font-bold">
             {["News", "Polls", "Albums", "Meets"].map((t, i) => (
               <span key={t} className={cn("rounded-full px-3 py-1.5", i === 0 ? "bg-ink text-snow" : "bg-mist text-ink")}>
                 {t}

@@ -48,7 +48,7 @@ export default function ChangelogListContent({
         {entries.map((item, i) => {
           const { version, name } = splitTitle(item.title);
           return (
-            <Reveal as="li" key={item.slug} delay={Math.min(i, 4) * 80} className="relative grid gap-3 pb-14 pl-10 last:pb-0 md:grid-cols-[12rem_1fr] md:gap-10 md:pl-0">
+            <Reveal as="li" key={item.slug} delay={Math.min(i, 4) * 80} className="relative grid grid-cols-1 gap-3 pb-14 pl-10 last:pb-0 md:grid-cols-[12rem_1fr] md:gap-10 md:pl-0">
               <div className="md:pt-7 md:text-right">
                 <p className="text-sm font-semibold text-ash tabular md:pr-10">{item.date}</p>
               </div>
@@ -77,7 +77,7 @@ export default function ChangelogListContent({
                   )}
                 </div>
                 <h2 className="mt-4 flex items-start justify-between gap-6 text-display-s font-extrabold">
-                  {name}
+                  <span className="min-w-0 break-words">{name}</span>
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-mist transition-[background-color,color,transform] duration-500 ease-out-expo group-hover:rotate-45 group-hover:bg-ink group-hover:text-snow">
                     <ArrowUpRight className="h-5 w-5" aria-hidden />
                   </span>
