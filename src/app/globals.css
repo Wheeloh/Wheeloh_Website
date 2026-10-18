@@ -68,3 +68,669 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Redesign (v2 / v3) design tokens
+   The site mirrors the app: a black camera world (night) and white app sheets
+   (snow), with the app's own functional accents — "Spotted" green, the
+   detection/notification red and the podium medals.
+   Brand colours are OKLCH channel triplets so Tailwind can add alpha.
+   Everything version-specific is scoped on the [data-version] wrapper that
+   src/app/[version]/layout.tsx renders, via :root:has() so that portaled
+   dialogs and toasts pick the right tokens too. The original site (no
+   wrapper) keeps the tokens above untouched.
+--------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    --night: 0.13 0.004 286;     /* page black, camera UI */
+    --carbon: 0.18 0.005 286;    /* raised dark surface */
+    --graphite: 0.28 0.006 286;  /* hairlines on dark */
+    --smoke: 0.76 0.006 286;     /* secondary text on dark (≈8.9:1) */
+    --fog: 0.6 0.007 286;        /* meta text on dark, large only (≈5:1) */
+    --snow: 1 0 0;               /* app sheets */
+    --mist: 0.967 0.002 286;     /* light surface */
+    --line: 0.915 0.003 286;     /* hairlines on light */
+    --ash: 0.47 0.008 286;       /* secondary text on light (≈6.6:1) */
+    --ink: 0.17 0.004 286;       /* text on light */
+    --spotted: 0.66 0.2 142;     /* app "Spotted" green #1FAC0C */
+    --alert: 0.63 0.2 25;        /* app red #E83B3A */
+    --gold: 0.82 0.17 82;        /* #F9B401 */
+    --silver: 0.72 0.02 235;     /* #9BA7AF */
+    --bronze: 0.67 0.12 40;      /* #D87C5D */
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+    --header-h: 4.5rem;
+
+    /* The original site reads Inter; the redesign switches to Montserrat. */
+    --font-sans: var(--font-inter);
+  }
+
+  :root:has([data-version="v2"]),
+  :root:has([data-version="v3"]) {
+    --font-sans: var(--font-montserrat);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+
+    /* shadcn/ui tokens (dialogs, toasts, form controls) — light app sheet */
+    --foreground: 240 6% 7%;
+    --card-foreground: 240 6% 7%;
+    --popover-foreground: 240 6% 7%;
+    --primary: 240 6% 7%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 7%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 38%;
+    --accent: 240 5% 94%;
+    --accent-foreground: 240 6% 7%;
+    --destructive: 1 79% 57%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 88%;
+    --ring: 240 6% 7%;
+    --radius: 1rem;
+  }
+
+  :root:has([data-version="v2"]) {
+    background: oklch(var(--night));
+    color-scheme: dark;
+  }
+
+  :root:has([data-version]) body {
+    @apply antialiased;
+    font-feature-settings: "kern", "liga";
+    overflow-x: clip;
+  }
+  :root:has([data-version="v2"]) body {
+    @apply bg-night text-snow;
+  }
+  :root:has([data-version="v3"]) body {
+    @apply bg-snow text-ink;
+  }
+
+  [data-version] h1,
+  [data-version] h2,
+  [data-version] h3 {
+    text-wrap: balance;
+  }
+
+  [data-version] p {
+    text-wrap: pretty;
+  }
+
+  [data-version] ::selection {
+    background: oklch(var(--ink));
+    color: oklch(var(--snow));
+  }
+  [data-version="v2"] ::selection {
+    background: oklch(var(--snow));
+    color: oklch(var(--night));
+  }
+  [data-version="v2"] .bg-snow ::selection,
+  [data-version="v2"] .bg-mist ::selection {
+    background: oklch(var(--ink));
+    color: oklch(var(--snow));
+  }
+
+  [data-version] :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* Lenis smooth scroll (recommended base styles) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Film grain for the dark "street" sections — static, cheap. */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* White app "sheet" sliding over the dark page, like the app's bottom sheets */
+  .sheet {
+    @apply relative bg-snow text-ink rounded-t-sheet;
+  }
+
+  /* Checkered strip — the flag from the Wheeloh icon */
+  .checker {
+    background-image: conic-gradient(currentColor 25%, transparent 0 50%, currentColor 0 75%, transparent 0);
+    background-size: var(--checker, 14px) var(--checker, 14px);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reveal system. Content is visible by default; only when scripting is
+   available (`@media (scripting: enabled)`, so no inline boot script is
+   needed) do we hide it until it enters the view. Browsers without that
+   media query simply show everything.
+--------------------------------------------------------------------------- */
+@media (scripting: enabled) {
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 1.1s var(--ease-out-expo),
+    clip-path 1.2s var(--ease-out-expo),
+    filter 1s var(--ease-out-expo);
+  transition-delay: calc(var(--d, 0) * 1ms);
+}
+}
+@media (scripting: enabled) {
+[data-reveal="fade"] {
+  transform: none;
+}
+}
+@media (scripting: enabled) {
+[data-reveal="blur"] {
+  transform: translate3d(0, 12px, 0);
+  filter: blur(12px);
+}
+}
+@media (scripting: enabled) {
+[data-reveal="mask"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+}
+}
+@media (scripting: enabled) {
+[data-reveal="scale"] {
+  transform: scale(0.94);
+}
+}
+@media (scripting: enabled) {
+[data-reveal][data-in] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+}
+@media (scripting: enabled) {
+[data-reveal="mask"][data-in] {
+  clip-path: inset(0 0 0 0);
+}
+}
+
+/* Split headline words rising from a mask */
+.split-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.split-word {
+  display: inline-block;
+  will-change: transform;
+}
+@media (scripting: enabled) {
+.split-word {
+  transform: translate3d(0, 110%, 0) rotate(4deg);
+  transform-origin: 0 100%;
+  transition: transform 1.1s var(--ease-out-expo);
+  transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 60ms);
+}
+}
+@media (scripting: enabled) {
+[data-in] .split-word,
+.split-word[data-in] {
+  transform: none;
+}
+}
+
+/* Wordmark letters rising from the baseline */
+.wm-letter {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+@media (scripting: enabled) {
+.wm-animate .wm-letter {
+  transform: translate3d(0, 118%, 0);
+  transition: transform 1.25s var(--ease-out-expo);
+  transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 60ms);
+}
+}
+@media (scripting: enabled) {
+[data-in] .wm-animate .wm-letter,
+.wm-animate[data-in] .wm-letter {
+  transform: none;
+}
+}
+
+/* v2 hero viewfinder — detection box from the app camera */
+.detect-box {
+  border-width: 1px;
+  border-style: solid;
+}
+.detect-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-style: solid;
+  border-width: 0;
+  transition: border-color 0.7s;
+}
+.detect-corner-tl { left: -2px; top: -2px; border-left-width: 3px; border-top-width: 3px; border-top-left-radius: 6px; }
+.detect-corner-tr { right: -2px; top: -2px; border-right-width: 3px; border-top-width: 3px; border-top-right-radius: 6px; }
+.detect-corner-bl { left: -2px; bottom: -2px; border-left-width: 3px; border-bottom-width: 3px; border-bottom-left-radius: 6px; }
+.detect-corner-br { right: -2px; bottom: -2px; border-right-width: 3px; border-bottom-width: 3px; border-bottom-right-radius: 6px; }
+.detect-sweep {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.detect-sweep::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  height: 40%;
+  top: -40%;
+  background: linear-gradient(to bottom, transparent, oklch(var(--alert) / 0.28) 85%, oklch(var(--alert) / 0.9));
+  animation: detect-sweep 1.3s var(--ease-in-out-quart) infinite;
+}
+@keyframes detect-sweep {
+  to {
+    transform: translateY(350%);
+  }
+}
+
+/* v2 hero entrance — gated on [data-ready] (after the intro) */
+@media (scripting: enabled) {
+.hero-window {
+  opacity: 0;
+  transform: translate3d(0, 48px, 0) scale(0.96);
+}
+}
+@media (scripting: enabled) {
+.hero-photo img {
+  transform: scale(1.18);
+  transition: transform 2.2s var(--ease-out-expo);
+}
+}
+@media (scripting: enabled) {
+.hero-grid > span {
+  transform: scaleX(0);
+  transition: transform 1.4s var(--ease-out-expo) 0.5s;
+}
+}
+@media (scripting: enabled) {
+.hero-grid > span:nth-child(-n + 2) {
+  transform: scaleY(0);
+}
+}
+@media (scripting: enabled) {
+.hero-pill,
+.hero-controls,
+[data-hero-item] {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 1.1s var(--ease-out-expo);
+}
+}
+@media (scripting: enabled) {
+.hero-pill {
+  transform: translate3d(0, -12px, 0);
+  transition-delay: 0.7s;
+}
+}
+@media (scripting: enabled) {
+.hero-controls {
+  transition-delay: 0.85s;
+}
+}
+@media (scripting: enabled) {
+[data-hero-item] {
+  transition-delay: calc(var(--d, 0) * 1ms);
+}
+}
+[data-ready] .hero-window {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 1s var(--ease-out-expo),
+    transform 1.4s var(--ease-out-expo);
+}
+@media (scripting: enabled) {
+[data-ready] .hero-photo img,
+[data-ready] .hero-grid > span:nth-child(n),
+[data-ready] .hero-pill,
+[data-ready] .hero-controls,
+[data-ready] [data-hero-item] {
+  opacity: 1;
+  transform: none;
+}
+}
+
+/* Checkered flag tiles */
+.flag-tile {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+.flag-wave .flag-tile {
+  animation: flag-wave 3.2s var(--ease-in-out-quart) infinite;
+  animation-delay: calc(var(--col) * -0.3s);
+}
+.flag-intro .flag-tile {
+  animation: flag-tile-in 0.9s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i) * 70ms + 120ms);
+}
+@keyframes flag-wave {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) skewY(0deg);
+  }
+  50% {
+    transform: translate3d(0, -8%, 0) skewY(-3deg);
+  }
+}
+@keyframes flag-tile-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22%, 0) scale(0.5) rotate(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wm-animate .wm-letter,
+  .hero-window,
+  .hero-photo img,
+  .hero-grid > span,
+  .hero-pill,
+  .hero-controls,
+  [data-hero-item] {
+    transform: none !important;
+    transition: opacity 0.4s linear !important;
+  }
+  [data-reveal],
+  [data-reveal="mask"],
+  .split-word {
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    transition: opacity 0.4s linear !important;
+  }
+  .split-word {
+    opacity: 1;
+  }
+  [data-version] *,
+  [data-version] *::before,
+  [data-version] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes scroll-cue {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(200%);
+  }
+}
+
+/* v2 first-visit intro curtain */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  background: oklch(var(--night));
+  animation: preloader-failsafe 0s linear 5s forwards;
+}
+/* No intro without scripting (nothing would ever lift the curtain) or when
+   motion is reduced; repeat visits are decided server-side via a cookie. */
+@media (scripting: none), (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none;
+  }
+}
+.preloader.is-leaving {
+  transform: translate3d(0, -100%, 0);
+  transition: transform 1s var(--ease-in-out-quart) 0.15s;
+}
+.preloader.is-leaving .flag-tile {
+  animation: flag-tile-out 0.6s var(--ease-in-out-quart) both;
+  animation-delay: calc(var(--i) * 30ms);
+}
+@keyframes flag-tile-out {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -40%, 0) scale(1.4) rotate(8deg);
+  }
+}
+@keyframes preloader-failsafe {
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+/* Map screens: roads draw themselves in, the community layer breathes */
+.map-roads path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.8s var(--ease-out-expo);
+}
+.map-roads.is-drawn path {
+  stroke-dashoffset: 0;
+}
+.map-heat {
+  animation: map-heat 3.2s var(--ease-in-out-quart) infinite;
+}
+@keyframes map-heat {
+  0%,
+  100% {
+    transform: scale(0.88);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+/* Staggered children (grids, lists) — capped so long lists don't drag */
+@media (scripting: enabled) {
+[data-stagger] > * {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 1s var(--ease-out-expo);
+  transition-delay: calc(min(var(--i, 0), 24) * 28ms);
+}
+}
+@media (scripting: enabled) {
+[data-stagger][data-in] > * {
+  opacity: 1;
+  transform: none;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-stagger] > * {
+    transform: none !important;
+    transition: opacity 0.4s linear !important;
+  }
+}
+
+/* Gallery-sync scan sweep */
+.sync-scan {
+  background: linear-gradient(to bottom, transparent 0%, oklch(var(--spotted) / 0.45) 50%, transparent 52%);
+  background-size: 100% 220%;
+  animation: sync-scan 0.45s linear both;
+}
+@keyframes sync-scan {
+  from {
+    background-position: 0 100%;
+  }
+  to {
+    background-position: 0 0%;
+  }
+}
+
+/* Affiliate badge shine */
+.affiliate-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: badge-shine 3.6s var(--ease-in-out-quart) 1s infinite;
+}
+@keyframes badge-shine {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+/* Download flag: only waves while on screen */
+.download-flag:not([data-in]) .flag-tile {
+  animation-play-state: paused;
+}
+
+/* v3 hero: gentle idle float for the phone and the floating spot cards */
+@keyframes hover-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+.hover-float {
+  animation: hover-float 5s var(--ease-in-out-quart) infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+
+/* Progress road: the "sonar" halo around your own avatar */
+.sonar {
+  animation: sonar 1.6s ease-out infinite;
+}
+@keyframes sonar {
+  from {
+    transform: scale(0.82);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+
+/* Plate reveal: the app's "blanche-ombre" glow, ported from the lot-2 mock-up
+   (maquettes_lot2/css/planche.css, .lueur.blanche-ombre) at its phone values:
+   ring --ep 1.5 px, blur --flou 5 px. Layers, bottom to top: a soft dark
+   shadow outside the ring only (the plate is never darkened), a blurred white
+   halo at 0.8, a 1 px dark rim, the crisp white ring. Fades: 200 ms in, 450 ms
+   out (plate_reveal_timing.dart). */
+.plate-glow {
+  --ep: 1.5px;
+  --flou: 5px;
+  position: absolute;
+  pointer-events: none;
+  border-radius: var(--r, 4px);
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+.plate-glow.is-on {
+  opacity: 1;
+}
+.plate-glow.is-fading {
+  opacity: 0;
+  transition-duration: 0.45s;
+}
+.plate-glow .ombre {
+  position: absolute;
+  inset: calc(-1 * var(--ep));
+  border-radius: inherit;
+  box-shadow:
+    0 0 calc(var(--flou) * 1.1) calc(var(--flou) * 0.45) rgba(0, 0, 0, 0.66),
+    0 0 calc(var(--flou) * 2.8) calc(var(--flou) * 0.8) rgba(0, 0, 0, 0.34);
+}
+.plate-glow .halo {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  filter: blur(calc(var(--flou) * 0.7));
+  opacity: 0.8;
+}
+.plate-glow .anneau {
+  position: absolute;
+  inset: calc(-1 * var(--ep));
+  border-radius: inherit;
+  padding: var(--ep);
+  background: #fff;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+.plate-glow .halo > .anneau {
+  padding: calc(var(--ep) * 2.4);
+  inset: calc(-2.4 * var(--ep));
+}
+.plate-glow .lisere {
+  position: absolute;
+  inset: calc(-1 * var(--ep) - 1px);
+  border-radius: calc(var(--r, 4px) + var(--ep) + 1px);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+/* PlateActiveDot: the 8 dp dot that breathes while a plate is masked */
+.plate-dot {
+  animation: plate-dot 0.8s ease-in-out infinite alternate;
+}
+@keyframes plate-dot {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}

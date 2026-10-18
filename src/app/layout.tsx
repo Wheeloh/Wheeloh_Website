@@ -2,14 +2,17 @@ import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import MaintenanceBar from "@/components/MaintenanceBar";
+import VersionSwitcher from "@/components/redesign/shared/VersionSwitcher";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/seo";
 
+// Inter is the original site's typeface; Montserrat (the app's typeface) is
+// what the redesign uses, across its full weight range. globals.css picks
+// one of them as --font-sans depending on the version being rendered.
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-montserrat",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -64,9 +67,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://forms.fillout.com" />
         <link rel="dns-prefetch" href="https://forms.fillout.com" />
       </head>
-      <body className={inter.className}>
-        <MaintenanceBar />
+      <body className="font-sans">
         <SmoothScroll>{children}</SmoothScroll>
+        <VersionSwitcher />
       </body>
     </html>
   );

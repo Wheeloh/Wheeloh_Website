@@ -20,7 +20,7 @@ export default function robots(): MetadataRoute.Robots {
         // its own noindex meta tag, and Google must be allowed to crawl it to
         // ever see that tag and drop it from the index (a robots.txt disallow
         // alone cannot de-index an already-indexed URL).
-        disallow: ["/admin", "/invite", "/news", "/user"],
+        disallow: ["/admin", "/invite", "/news", "/user", "/v2", "/v3", "/preview"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
