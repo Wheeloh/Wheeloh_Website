@@ -2,7 +2,34 @@
 
 import { ListFilter } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useCopy } from "@/components/redesign/shared/Locale";
 import { ALBUMS, Segmented, TabBar, useSteps } from "../ui";
+
+const COPY = {
+  en: {
+    title: "Garage",
+    tabs: ["Gallery", "Albums", "Map"],
+    fresh: "New spot",
+    collection: "McLaren collection",
+    album: (brand: string) => `${brand} album in a Wheeloh garage`,
+  },
+  fr: {
+    title: "Garage",
+    tabs: ["Galerie", "Albums", "Carte"],
+    fresh: "Nouveau spot",
+    collection: "Collection McLaren",
+    album: (brand: string) => `Album ${brand} d’un garage Wheeloh`,
+  },
+};
+
+const BRAND_NAMES: Record<string, string> = {
+  porsche: "Porsche",
+  ferrari: "Ferrari",
+  lambo: "Lamborghini",
+  bugatti: "Bugatti",
+  mclaren: "McLaren",
+  pagani: "Pagani",
+};
 
 const GRID = [
   { key: "porsche", src: ALBUMS.porsche },
@@ -24,6 +51,7 @@ const MCLAREN = pos(4);
 export default function GarageScreen({ active }: { active: boolean }) {
   // 1 card appears · 2 flies to the album · 3 album bumps, count 7 · 4 collection progress
   const step = useSteps(active, [300, 1250, 2000, 2400]);
+  const t = useCopy(COPY);
 
   const flyStyle =
     step >= 2
@@ -33,10 +61,10 @@ export default function GarageScreen({ active }: { active: boolean }) {
   return (
     <div className="absolute inset-0 bg-snow text-ink">
       <div className="absolute inset-x-0 top-[60px] flex items-center justify-center">
-        <p className="text-[24px] font-bold tracking-[-0.01em]">Garage</p>
+        <p className="text-[24px] font-bold tracking-[-0.01em]">{t.title}</p>
         <ListFilter className="absolute right-[26px] h-[26px] w-[26px]" strokeWidth={1.8} />
       </div>
-      <Segmented id="garage" items={["Gallery", "Albums", "Map"]} active={1} className="absolute left-1/2 top-[104px] -translate-x-1/2" />
+      <Segmented id="garage" items={t.tabs} active={1} className="absolute left-1/2 top-[104px] -translate-x-1/2" />
 
       {GRID.map((a, i) => {
         const p = pos(i);
@@ -51,7 +79,7 @@ export default function GarageScreen({ active }: { active: boolean }) {
             style={{ left: p.x, top: p.y, width: CARD, height: CARD }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={a.src} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <img src={a.src} alt={t.album(BRAND_NAMES[a.key])} loading="lazy" className="h-full w-full object-cover" />
             {isMcLaren && (
               <span
                 className={cn(
@@ -74,7 +102,7 @@ export default function GarageScreen({ active }: { active: boolean }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/media/senna-square-sm.jpg" alt="" loading="lazy" className="h-[118px] w-full rounded-[16px] object-cover object-[50%_65%]" />
         <p className="px-[4px] pb-[2px] pt-[7px] text-[13px] font-bold leading-tight">McLaren Senna</p>
-        <p className="px-[4px] pb-[4px] text-[11px] font-semibold text-spotted">New spot</p>
+        <p className="px-[4px] pb-[4px] text-[11px] font-semibold text-spotted">{t.fresh}</p>
       </div>
 
       {/* brand collection progress */}
@@ -85,7 +113,7 @@ export default function GarageScreen({ active }: { active: boolean }) {
         )}
       >
         <div className="flex items-center justify-between text-[14px] font-bold">
-          <span>McLaren collection</span>
+          <span>{t.collection}</span>
           <span className="tabular text-snow/70">7 / 26</span>
         </div>
         <span className="mt-[10px] block h-[6px] overflow-hidden rounded-full bg-snow/15">

@@ -4,6 +4,9 @@ import ChangelogArticleContent from "@/components/redesign/shared/pages/Changelo
 import JsonLd from "@/components/JsonLd";
 import { articleLd, breadcrumbLd } from "@/lib/seo";
 import { listSlugs, readEntry } from "@/lib/changelog";
+import { pageMetadata } from "@/lib/metadata";
+import { APP_LINK_URL } from "@/lib/links";
+import { qrSvg } from "@/lib/qr";
 
 export function generateStaticParams() {
   return listSlugs().map((date) => ({ date }));
@@ -13,29 +16,27 @@ export async function generateMetadata({ params }: { params: { date: string } })
   try {
     const entry = readEntry(params.date);
     const path = `/changelog/${params.date}`;
-    return {
+    // The release title already starts with "Wheeloh": no "| Wheeloh" suffix.
+    return pageMetadata({
       title: entry.title,
+      absoluteTitle: true,
       description: entry.description || `Wheeloh changelog — ${entry.title}`,
-      alternates: { canonical: path },
-      openGraph: {
-        type: "article",
-        url: path,
-        title: entry.title,
-        description: entry.description,
-        modifiedTime: entry.iso,
-        publishedTime: entry.iso,
-        images: ["/opengraph-image"],
-      },
-    };
+      locale: "en",
+      paths: { en: path },
+      type: "article",
+      publishedTime: entry.iso,
+      modifiedTime: entry.iso,
+    });
   } catch {
     return { title: "Changelog", robots: { index: false } };
   }
 }
 
-export default function Page({ params }: { params: { date: string } }) {
+export default async function Page({ params }: { params: { date: string } }) {
   if (!listSlugs().includes(params.date)) notFound();
   const entry = readEntry(params.date);
   const path = `/changelog/${params.date}`;
+  const qr = await qrSvg(APP_LINK_URL);
   return (
     <>
       <JsonLd
@@ -54,7 +55,7 @@ export default function Page({ params }: { params: { date: string } }) {
           ]),
         ]}
       />
-      <ChangelogArticleContent markdown={entry.body} title={entry.title} printed={entry.printed} />
+      <ChangelogArticleContent markdown={entry.body} title={entry.title} printed={entry.printed} qr={qr} />
     </>
   );
 }

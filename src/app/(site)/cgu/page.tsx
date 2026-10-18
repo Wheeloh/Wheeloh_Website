@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import CguContent from "@/components/redesign/shared/pages/CguContent";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbLd } from "@/lib/seo";
+import { pageMetadata } from "@/lib/metadata";
+import { ROUTES } from "@/lib/routes";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Conditions Générales d'Utilisation (CGU)",
   description: "Conditions Générales d'Utilisation de l'application et du site Wheeloh.",
-  alternates: { canonical: "/cgu" },
-  openGraph: { url: "/cgu", locale: "fr_FR", title: "CGU | Wheeloh", images: ["/opengraph-image"] },
-};
+  locale: "fr",
+  paths: ROUTES.cgu.paths,
+});
 
 export default function Page() {
   return (

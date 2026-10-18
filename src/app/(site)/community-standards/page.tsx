@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import CommunityStandardsContent from "@/components/redesign/shared/pages/CommunityStandardsContent";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbLd } from "@/lib/seo";
+import { pageMetadata } from "@/lib/metadata";
+import { ROUTES } from "@/lib/routes";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Standards Communautaires",
   description: "Standards communautaires de Wheeloh : les règles qui garantissent une communauté de passionnés respectueuse.",
-  alternates: { canonical: "/community-standards" },
-  openGraph: { url: "/community-standards", locale: "fr_FR", title: "Standards Communautaires | Wheeloh", images: ["/opengraph-image"] },
-};
+  locale: "fr",
+  paths: ROUTES.communityStandards.paths,
+});
 
 export default function Page() {
   return (

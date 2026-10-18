@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useInViewRef } from "@/components/redesign/shared/motion/reveal";
-
-const fmt = (n: number, decimals: number) =>
-  n.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+import { useLocale } from "@/components/redesign/shared/Locale";
+import { NUMBER_LOCALE } from "@/lib/i18n";
 
 interface CountUpProps {
   to: number;
@@ -36,6 +35,9 @@ export default function CountUp({
 }: CountUpProps) {
   const el = useRef<HTMLSpanElement | null>(null);
   const played = useRef(false);
+  const numberLocale = NUMBER_LOCALE[useLocale()];
+  const fmt = (n: number, decimals: number) =>
+    n.toLocaleString(numberLocale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 
   const run = () => {
     const node = el.current;

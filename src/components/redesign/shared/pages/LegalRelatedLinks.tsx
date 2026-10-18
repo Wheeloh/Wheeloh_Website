@@ -14,7 +14,7 @@ export default function LegalRelatedLinks({ current }: { current: string }) {
   return (
     <aside className="mx-auto mt-16 max-w-3xl border-t border-line pt-8">
       <h2 className="text-sm font-semibold text-ash">Documents connexes</h2>
-      <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+      <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
         {[...others, { path: "/", label: "Retour à l’accueil" }].map((doc) => (
           <li key={doc.path}>
             <Link

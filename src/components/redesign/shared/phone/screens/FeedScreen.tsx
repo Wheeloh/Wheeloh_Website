@@ -3,12 +3,37 @@
 import { Bell, Bookmark, Check, Heart, MapPin, MessageSquare, Search, Timer, Weight, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import CountUp from "@/components/redesign/shared/motion/CountUp";
+import { useCopy } from "@/components/redesign/shared/Locale";
 import { TabBar, useSteps } from "../ui";
+
+const COPY = {
+  en: {
+    public: "Public",
+    private: "Private",
+    now: "just now",
+    caption: "Caught it on Quai Branly. Still shaking.",
+    saved: "Spot saved to your garage",
+    category: "Supercar category · +2,212 pts",
+    stats: ["789 hp", "2.8 s", "1,198 kg"],
+    alt: "A McLaren Senna spotted on Quai Branly in Paris, posted to the Wheeloh feed",
+  },
+  fr: {
+    public: "Public",
+    private: "Privé",
+    now: "à l’instant",
+    caption: "Croisée quai Branly. J’en tremble encore.",
+    saved: "Spot ajouté à ton garage",
+    category: "Catégorie supercar · +2 212 pts",
+    stats: ["789 ch", "2,8 s", "1 198 kg"],
+    alt: "Une McLaren Senna spottée quai Branly à Paris, publiée dans le feed Wheeloh",
+  },
+};
 
 /** Chapter 2 — the spot is posted to the feed and earns its points. */
 export default function FeedScreen({ active }: { active: boolean }) {
   // 1 toast in · 2 points count · 3 like · 4 toast out
   const step = useSteps(active, [350, 900, 2300, 3600]);
+  const t = useCopy(COPY);
 
   return (
     <div className="absolute inset-0 bg-snow text-ink">
@@ -18,8 +43,8 @@ export default function FeedScreen({ active }: { active: boolean }) {
           <Search className="h-[21px] w-[21px]" strokeWidth={2} />
         </span>
         <span className="flex h-[44px] items-center rounded-full bg-snow p-[3px] text-[14px] font-semibold shadow-[0_4px_18px_rgba(0,0,0,0.12)]">
-          <span className="rounded-full bg-ink px-[18px] py-[9px] text-snow">Public</span>
-          <span className="px-[18px] text-ash">Private</span>
+          <span className="rounded-full bg-ink px-[18px] py-[9px] text-snow">{t.public}</span>
+          <span className="px-[18px] text-ash">{t.private}</span>
         </span>
         <span className="relative grid h-[44px] w-[44px] place-items-center rounded-full bg-snow shadow-[0_4px_18px_rgba(0,0,0,0.12)]">
           <Bell className="h-[21px] w-[21px]" strokeWidth={2} />
@@ -34,7 +59,7 @@ export default function FeedScreen({ active }: { active: boolean }) {
           <img src="/media/mclaren-675lt-sm.jpg" alt="" loading="lazy" className="h-[44px] w-[44px] rounded-[12px] object-cover" />
           <div className="min-w-0 flex-1">
             <p className="text-[16px] font-semibold leading-tight">
-              Sylvain <span className="font-medium text-ash">· just now</span>
+              Sylvain <span className="font-medium text-ash">· {t.now}</span>
             </p>
             <p className="mt-[2px] flex items-center gap-1 text-[13px] text-ash">
               <MapPin className="h-3.5 w-3.5" strokeWidth={2} /> Quai Branly, Paris
@@ -45,7 +70,7 @@ export default function FeedScreen({ active }: { active: boolean }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/media/senna-square-sm.jpg"
-          alt=""
+          alt={t.alt}
           loading="lazy"
           className="mt-[10px] h-[369px] w-full rounded-[16px] object-cover object-[50%_62%]"
         />
@@ -73,13 +98,13 @@ export default function FeedScreen({ active }: { active: boolean }) {
           </span>
         </div>
         <p className="mt-[6px] flex items-center gap-2 px-[6px] text-[13px] text-ash">
-          <Zap className="h-3.5 w-3.5" strokeWidth={2} /> 789 hp
+          <Zap className="h-3.5 w-3.5" strokeWidth={2} /> {t.stats[0]}
           <span>·</span>
-          <Timer className="h-3.5 w-3.5" strokeWidth={2} /> 2.8 s
+          <Timer className="h-3.5 w-3.5" strokeWidth={2} /> {t.stats[1]}
           <span>·</span>
-          <Weight className="h-3.5 w-3.5" strokeWidth={2} /> 1,198 kg
+          <Weight className="h-3.5 w-3.5" strokeWidth={2} /> {t.stats[2]}
         </p>
-        <p className="mt-[8px] px-[6px] text-[15px] leading-snug">Caught it on Quai Branly. Still shaking.</p>
+        <p className="mt-[8px] px-[6px] text-[15px] leading-snug">{t.caption}</p>
       </div>
 
       {/* in-app toast */}
@@ -93,8 +118,8 @@ export default function FeedScreen({ active }: { active: boolean }) {
           <Check className="h-[18px] w-[18px]" strokeWidth={3} />
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block text-[14px] font-bold">Spot saved to your garage</span>
-          <span className="block text-[12px] font-medium text-snow/65">Supercar category · +2,212 pts</span>
+          <span className="block text-[14px] font-bold">{t.saved}</span>
+          <span className="block text-[12px] font-medium text-snow/65">{t.category}</span>
         </span>
       </div>
 

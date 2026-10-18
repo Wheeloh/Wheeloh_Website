@@ -11,8 +11,10 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#ffffff",
     theme_color: "#000000",
     icons: [
-      { src: "/icon-android.png", sizes: "512x512", type: "image/png", purpose: "any" },
-      { src: "/icon-android-white.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+      { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+      { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+      // extra padding: the flag stays inside the 80 % circle Android masks to
+      { src: "/icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
     ],
   };
 }

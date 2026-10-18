@@ -3,7 +3,9 @@ import dynamic from "next/dynamic";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import TranslationGuard from "@/components/TranslationGuard";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/seo";
+import { OG_IMAGE } from "@/lib/metadata";
 
 // The v1 / v2 previews exist in `next dev` only, and so does their switcher:
 // in a production build this branch is dead code and the import is dropped.
@@ -34,29 +36,40 @@ export const metadata: Metadata = {
     "carspotting",
     "carspotting app",
     "car identification",
+    "car identifier app",
+    "application carspotting",
     "car collection",
     "supercars",
     "automotive",
     "Wheeloh",
   ],
-  alternates: { canonical: "/" },
+  // No canonical here: it would be inherited by every page that forgets its
+  // own (the 404 used to point to the home). Pages set theirs through
+  // pageMetadata(), which also writes their hreflang, Open Graph and Twitter.
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    url: SITE_URL,
     locale: "en_US",
     title: "Wheeloh — Car Spotting App",
     description: SITE_DESCRIPTION,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Wheeloh — Car Spotting App",
     description: SITE_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
+  // The app icon (black flag on a white tile), made from the app's own icon.
+  // Google needs a square favicon whose size is a multiple of 48 px.
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon-ios.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   },
   robots: { index: true, follow: true },
 };
@@ -73,6 +86,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://forms.fillout.com" />
       </head>
       <body className="font-sans">
+        <TranslationGuard />
         <SmoothScroll>{children}</SmoothScroll>
         <VersionSwitcher />
       </body>

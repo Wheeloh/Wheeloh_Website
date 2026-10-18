@@ -17,31 +17,38 @@ if (!process.env.NETLIFY) {
   process.exit(0);
 }
 
-function getChangelogSlugs() {
-  try {
-    const indexPath = path.join(process.cwd(), "public/changelog/content/index.json");
-    const files = JSON.parse(fs.readFileSync(indexPath, "utf8"));
-    return files.map((f) => f.replace(/\.md$/, ""));
-  } catch {
-    return [];
+// The sitemap `next build` just generated (app/sitemap.ts) is the list of
+// every indexable URL, in both languages: submit exactly that.
+function sitemapUrls() {
+  const candidates = [".next/server/app/sitemap.xml.body", ".next/server/app/sitemap.xml"];
+  for (const file of candidates) {
+    try {
+      const xml = fs.readFileSync(path.join(process.cwd(), file), "utf8");
+      const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+      if (urls.length) return urls;
+    } catch {
+      // try the next location
+    }
   }
+  return [];
 }
 
-const staticPaths = [
-  "/",
-  "/engineering",
-  "/engineering/semantic-car-search",
-  "/changelog",
-  "/legal",
-  "/cgu",
-  "/privacy",
-  "/community-standards",
-];
+// Fallback if the build output moved: the main pages and the releases.
+function fallbackUrls() {
+  let slugs = [];
+  try {
+    const files = JSON.parse(fs.readFileSync(path.join(process.cwd(), "public/changelog/content/index.json"), "utf8"));
+    slugs = files.map((f) => f.replace(/\.md$/, ""));
+  } catch {
+    // no releases
+  }
+  return ["/", "/fr", "/car-spotting", "/fr/carspotting", "/cars", "/fr/voitures", "/changelog", ...slugs.map((s) => `/changelog/${s}`)].map(
+    (p) => `${SITE_URL}${p === "/" ? "" : p}`,
+  );
+}
 
-const urlList = [
-  ...staticPaths,
-  ...getChangelogSlugs().map((slug) => `/changelog/${slug}`),
-].map((p) => `${SITE_URL}${p === "/" ? "" : p}`);
+const fromSitemap = sitemapUrls();
+const urlList = fromSitemap.length ? fromSitemap : fallbackUrls();
 
 try {
   const res = await fetch("https://api.indexnow.org/indexnow", {

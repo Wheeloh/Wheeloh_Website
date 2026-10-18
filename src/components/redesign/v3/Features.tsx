@@ -1,8 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { BadgeCheck, Check, Flame, Trophy, Wrench } from "lucide-react";
+import { ArrowRight, BadgeCheck, Check, Flame, Trophy, Wrench } from "lucide-react";
 import CountUp from "@/components/redesign/shared/motion/CountUp";
 import { Reveal, SplitText, useInView } from "@/components/redesign/shared/motion/reveal";
 import Phone from "@/components/redesign/shared/phone/Phone";
@@ -11,31 +12,120 @@ import PlatesCard from "./PlatesCard";
 import FeedScreen from "@/components/redesign/shared/phone/screens/FeedScreen";
 import GarageScreen from "@/components/redesign/shared/phone/screens/GarageScreen";
 import { ALBUMS, CarAvatar, useSteps } from "@/components/redesign/shared/phone/ui";
+import { useCopy, useLocale } from "@/components/redesign/shared/Locale";
+import { formatNumber, type Locale } from "@/lib/i18n";
+import { routePath } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
 const CARD = "relative overflow-hidden rounded-[2rem] bg-mist";
 
+const COPY = {
+  en: {
+    title: "One shot.\nThe rest is automatic.",
+    intro: "Wheeloh identifies the car, scores the spot, files it in your garage and pins it on the map. You just take the photo.",
+    rarity: {
+      title: "Rarer cars, bigger scores.",
+      body: "Every spot earns points by category — a hypercar is worth far more than a hatchback, and modified cars get a +25% tuning bonus. Post it, watch the likes roll in.",
+      link: "How identification and points work",
+    },
+    garage: { title: "A garage that sorts itself.", body: "Spots land in brand albums on their own. Complete each maker's collection, model by model." },
+    map: {
+      title: "Every spot, on the map.",
+      body: "See exactly where each car was caught. Spot zones — the community's heat map — show where the scene is busiest, and which car meets are on near you.",
+      link: "Car meets on Wheeloh",
+    },
+    rank: { title: "Climb the world ranking.", body: "Every point counts on the Top 50 worldwide — and on the one that matters most, the one with your friends on it." },
+    race: {
+      title: "Your collection, as a race.",
+      body: "Your progress is the share of the 1,154-model catalogue you've spotted, drawn as a road. Your friends sit on the same road at their own percentage — above you means ahead — so you always know who to catch, and by how many cars.",
+      stats: ["milestones from 1% to 100%", "levels, Karting pro to Triple Crown king"],
+      link: "Browse the 1,154 cars",
+    },
+    collect: { title: "Collect them all.", body: "Each maker has its own collection. Fill it in one spot at a time — it ticks itself off.", link: "The cars, brand by brand" },
+    plates: { title: "Plates disappear.", body: "Erased on your phone, before anything is uploaded.", link: "How plate masking works" },
+    news: {
+      title: "The car world, daily.",
+      body: "Automotive news from the Wheeloh team, right next to your spots.",
+      headline: "A Porsche 911 GT3 RS turns heads in Paris with an explosive livery",
+      by: "By Wheeloh News",
+      when: "1 hour ago",
+      alt: "A Porsche 911 GT3 RS with a bold livery in Paris",
+    },
+    quests: {
+      title: "Quests that keep you hunting.",
+      body: "Daily challenges, streaks and achievements turn every drive into a hunt.",
+      streak: "12-day streak",
+      items: ["Spot 3 Italian cars", "Spot a car at a meet", "Share a story"],
+    },
+    bars: { title: "Points by category", labels: ["Daily", "Sport", "Super", "Hyper"], bonus: "+25% for modified cars" },
+    meet: { zones: "Spot zones", day: "Sun", name: "Sunday morning meet", going: (n: number) => `${n} going · 9:00`, join: "Join", joined: "Going" },
+    board: { title: "TOP 50 WORLD", you: "You", youTag: "(you)", cars: (n: number) => `${n} cars` },
+  },
+  fr: {
+    title: "Une photo.\nLe reste est automatique.",
+    intro: "Wheeloh identifie la voiture, calcule les points du spot, le range dans ton garage et l’épingle sur la carte. Toi, tu prends juste la photo.",
+    rarity: {
+      title: "Plus c’est rare, plus ça rapporte.",
+      body: "Chaque spot rapporte des points selon sa catégorie : une hypercar vaut bien plus qu’une citadine, et les voitures modifiées gagnent un bonus tuning de +25 %. Publie-la et regarde les likes tomber.",
+      link: "Comment l’app identifie et note",
+    },
+    garage: { title: "Un garage qui se range tout seul.", body: "Tes spots arrivent d’eux-mêmes dans des albums par marque. Complète la collection de chaque constructeur, modèle après modèle." },
+    map: {
+      title: "Chaque spot, sur la carte.",
+      body: "Retrouve où chaque voiture a été croisée. Les zones de spots — la heatmap de la communauté — montrent où ça bouge le plus, et quels rassos ont lieu près de chez toi.",
+      link: "Les rassos sur Wheeloh",
+    },
+    rank: { title: "Grimpe au classement mondial.", body: "Chaque point compte dans le Top 50 mondial — et dans celui qui compte vraiment : le classement avec tes amis." },
+    race: {
+      title: "Ta collection, comme une course.",
+      body: "Ta progression, c’est la part des 1 154 modèles du catalogue que tu as spottés, dessinée comme une route. Tes amis roulent sur la même route, à leur propre pourcentage — au-dessus de toi, ils sont devant — pour que tu saches toujours qui rattraper, et de combien de voitures.",
+      stats: ["paliers de 1 % à 100 %", "niveaux, de Pro du karting à Roi de la triple couronne"],
+      link: "Voir les 1 154 voitures",
+    },
+    collect: { title: "Attrape-les toutes.", body: "Chaque constructeur a sa collection. Remplis-la un spot à la fois — elle se coche toute seule.", link: "Les voitures, marque par marque" },
+    plates: { title: "Les plaques disparaissent.", body: "Effacées sur ton téléphone, avant le moindre envoi.", link: "Comment les plaques sont masquées" },
+    news: {
+      title: "L’actu auto, chaque jour.",
+      body: "Les actus automobiles de l’équipe Wheeloh, juste à côté de tes spots.",
+      headline: "Une Porsche 911 GT3 RS fait tourner les têtes à Paris avec une livrée explosive",
+      by: "Par Wheeloh News",
+      when: "il y a 1 heure",
+      alt: "Une Porsche 911 GT3 RS à la livrée voyante dans Paris",
+    },
+    quests: {
+      title: "Des quêtes pour rester en chasse.",
+      body: "Défis quotidiens, séries et exploits transforment chaque trajet en chasse.",
+      streak: "Série de 12 jours",
+      items: ["Spotte 3 voitures italiennes", "Spotte une voiture en rasso", "Partage une story"],
+    },
+    bars: { title: "Points par catégorie", labels: ["Courante", "Sport", "Super", "Hyper"], bonus: "+25 % pour les voitures modifiées" },
+    meet: { zones: "Zones de spots", day: "Dim.", name: "Rasso du dimanche matin", going: (n: number) => `${n} inscrits · 9h00`, join: "Rejoindre", joined: "Inscrit" },
+    board: { title: "TOP 50 MONDIAL", you: "Toi", youTag: "(toi)", cars: (n: number) => `${n} voitures` },
+  },
+};
+
+type FeatureCopy = (typeof COPY)["en"];
+
 export default function Features() {
+  const t = useCopy(COPY);
+  const locale = useLocale();
   return (
     <section id="features" aria-labelledby="features-title" className="bg-snow py-20 sm:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
           <h2 id="features-title" className="text-display-l font-extrabold lg:col-span-7">
-            <SplitText text={"One shot.\nThe rest is automatic."} lineClassNames={["", "text-ash"]} />
+            <SplitText text={t.title} lineClassNames={["", "text-ash"]} />
           </h2>
           <Reveal as="p" delay={200} className="max-w-[44ch] text-lg font-medium leading-relaxed text-ash lg:col-span-5 lg:pb-2">
-            Wheeloh identifies the car, scores the spot, files it in your garage and pins it on the map. You just take the photo.
+            {t.intro}
           </Reveal>
         </div>
 
         <div className="mt-12 grid gap-4 md:grid-flow-row-dense md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
           <Reveal className={cn(CARD, "min-h-[30rem] md:col-span-2 lg:grid lg:grid-cols-[1fr_minmax(0,22rem)]")}>
             <div className="p-7 sm:p-9">
-              <Copy
-                title="Rarer cars, bigger scores."
-                body="Every spot earns points by category — a hypercar is worth far more than a hatchback, and modified cars get a +25% tuning bonus. Post it, watch the likes roll in."
-              />
-              <RarityBars className="mt-8" />
+              <Copy {...t.rarity} href={routePath("identify", locale)} />
+              <RarityBars className="mt-8" t={t.bars} />
             </div>
             <PhonePeek className="h-[22rem] lg:h-auto" scale={0.72}>
               {(active) => <FeedScreen active={active} />}
@@ -43,44 +133,29 @@ export default function Features() {
           </Reveal>
 
           <Reveal delay={100} className={cn(CARD, "min-h-[30rem]")}>
-            <Copy
-              className="p-7 pb-0 sm:p-9 sm:pb-0"
-              title="A garage that sorts itself."
-              body="Spots land in brand albums on their own. Complete each maker's collection, model by model."
-            />
+            <Copy className="p-7 pb-0 sm:p-9 sm:pb-0" {...t.garage} />
             <PhonePeek className="mt-6 h-[20rem]" scale={0.68}>
               {(active) => <GarageScreen active={active} />}
             </PhonePeek>
           </Reveal>
 
           <Reveal className={cn(CARD, "min-h-[30rem] md:col-span-2 lg:grid lg:grid-cols-[minmax(0,20rem)_1fr]")}>
-            <Copy
-              className="p-7 sm:p-9"
-              title="Every spot, on the map."
-              body="See exactly where each car was caught. Spot zones — the community's heat map — show where the scene is busiest, and which car meets are on near you."
-            />
-            <MapPanel className="h-[22rem] lg:h-auto" />
+            <Copy className="p-7 sm:p-9" {...t.map} href={routePath("meets", locale)} />
+            <MapPanel className="h-[22rem] lg:h-auto" t={t.meet} />
           </Reveal>
 
           <Reveal delay={100} className={cn(CARD, "flex min-h-[30rem] flex-col p-7 sm:p-9")}>
-            <Copy
-              title="Climb the world ranking."
-              body="Every point counts on the Top 50 worldwide — and on the one that matters most, the one with your friends on it."
-            />
-            <Leaderboard className="mt-7" />
+            <Copy {...t.rank} />
+            <Leaderboard className="mt-7" t={t.board} locale={locale} />
           </Reveal>
 
           <Reveal className={cn(CARD, "min-h-[30rem] bg-ink text-snow md:col-span-2 lg:grid lg:grid-cols-[1fr_minmax(0,21rem)] lg:gap-6")}>
             <div className="p-7 sm:p-9">
-              <Copy
-                tone="dark"
-                title="Your collection, as a race."
-                body="Your progress is the share of the 1,154-model catalogue you've spotted, drawn as a road. Your friends sit on the same road at their own percentage — above you means ahead — so you always know who to catch, and by how many cars."
-              />
+              <Copy tone="dark" {...t.race} href={routePath("cars", locale)} />
               <dl className="mt-8 grid max-w-[22rem] grid-cols-2 gap-3">
                 {[
-                  { v: "30", l: "milestones from 1% to 100%" },
-                  { v: "9", l: "levels, Karting pro to Triple Crown king" },
+                  { v: "30", l: t.race.stats[0] },
+                  { v: "9", l: t.race.stats[1] },
                 ].map((s) => (
                   <div key={s.l} className="rounded-2xl bg-snow/[0.07] px-4 py-3 ring-1 ring-inset ring-snow/[0.08]">
                     <dt className="sr-only">{s.l}</dt>
@@ -97,36 +172,36 @@ export default function Features() {
 
           {/* Column 3 over the last two rows (lg): the collection takes what it
               needs, the plates card takes the rest. Side by side at md. */}
-          <div className="grid gap-4 md:col-span-2 md:grid-cols-2 lg:col-span-1 lg:row-span-2 lg:flex lg:flex-col">
+          <div className="grid grid-cols-1 gap-4 md:col-span-2 md:grid-cols-2 lg:col-span-1 lg:row-span-2 lg:flex lg:flex-col">
             <Reveal delay={100} className={cn(CARD, "flex flex-col p-7 sm:p-9")}>
-              <Copy title="Collect them all." body="Each maker has its own collection. Fill it in one spot at a time — it ticks itself off." />
+              <Copy {...t.collect} href={routePath("cars", locale)} />
               {/* at md this card is stretched to the plates card: the rings sit on its floor */}
               <BrandRings className="mt-auto pt-7" />
             </Reveal>
             <Reveal delay={150} className={cn(CARD, "flex flex-col p-7 sm:p-9 lg:flex-1")}>
-              <Copy title="Plates disappear." body="Erased on your phone, before anything is uploaded." />
+              <Copy {...t.plates} href={routePath("plates", locale)} />
               <PlatesCard className="mt-7 flex-1" />
             </Reveal>
           </div>
 
           <Reveal delay={100} className={cn(CARD, "p-7 sm:p-9")}>
-            <Copy title="The car world, daily." body="Automotive news from the Wheeloh team, right next to your spots." />
+            <Copy title={t.news.title} body={t.news.body} />
             <div className="mt-7 overflow-hidden rounded-2xl bg-snow shadow-[0_12px_30px_-18px_rgba(0,0,0,0.25)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/porsche-gt3rs-sm.jpg" alt="" loading="lazy" className="h-32 w-full object-cover" />
+              <img src="/media/porsche-gt3rs-sm.jpg" alt={t.news.alt} loading="lazy" className="h-32 w-full object-cover" />
               <div className="p-4">
-                <p className="text-[0.9375rem] font-bold leading-snug">A Porsche 911 GT3 RS turns heads in Paris with an explosive livery</p>
+                <p className="text-[0.9375rem] font-bold leading-snug">{t.news.headline}</p>
                 <p className="mt-2 flex items-center justify-between text-[0.75rem] font-semibold text-ash">
-                  <span>By Wheeloh News</span>
-                  <span>1 hour ago</span>
+                  <span>{t.news.by}</span>
+                  <span>{t.news.when}</span>
                 </p>
               </div>
             </div>
           </Reveal>
 
           <Reveal delay={200} className={cn(CARD, "p-7 sm:p-9")}>
-            <Copy title="Quests that keep you hunting." body="Daily challenges, streaks and achievements turn every drive into a hunt." />
-            <Quests className="mt-7" />
+            <Copy title={t.quests.title} body={t.quests.body} />
+            <Quests className="mt-7" t={t.quests} />
           </Reveal>
         </div>
       </div>
@@ -134,13 +209,32 @@ export default function Features() {
   );
 }
 
-function Copy({ title, body, className, tone = "light" }: { title: string; body: string; className?: string; tone?: "light" | "dark" }) {
+interface CopyProps {
+  title: string;
+  body: string;
+  /** "Read more" link to the page that covers the feature. */
+  link?: string;
+  href?: string;
+  className?: string;
+  tone?: "light" | "dark";
+}
+
+function Copy({ title, body, link, href, className, tone = "light" }: CopyProps) {
   return (
     <div className={className}>
       <h3 className={cn("text-display-s font-extrabold", tone === "dark" ? "text-snow" : "text-ink")}>{title}</h3>
       <p className={cn("mt-3 max-w-[36ch] text-[0.9375rem] font-medium leading-relaxed sm:text-base", tone === "dark" ? "text-smoke" : "text-ash")}>
         {body}
       </p>
+      {link && href && (
+        <Link
+          href={href}
+          className={cn("group mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-bold", tone === "dark" ? "text-snow" : "text-ink")}
+        >
+          {link}
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
+        </Link>
+      )}
     </div>
   );
 }
@@ -161,17 +255,12 @@ function PhonePeek({ children, scale = 0.7, className }: { children: (active: bo
   );
 }
 
-function RarityBars({ className }: { className?: string }) {
-  const bars = [
-    { label: "Daily", h: 18 },
-    { label: "Sport", h: 34 },
-    { label: "Super", h: 58 },
-    { label: "Hyper", h: 84 },
-  ];
+function RarityBars({ className, t }: { className?: string; t: FeatureCopy["bars"] }) {
+  const bars = [18, 34, 58, 84].map((h, i) => ({ label: t.labels[i], h }));
   const [ref, inView] = useInView<HTMLDivElement>({ once: false });
   return (
     <div ref={ref} className={cn("w-[14rem] rounded-2xl bg-snow p-4 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.25)]", className)}>
-      <p className="text-[0.8125rem] font-bold">Points by category</p>
+      <p className="text-[0.8125rem] font-bold">{t.title}</p>
       <div className="mt-3 flex h-[5.5rem] items-end gap-2">
         {bars.map((b, i) => (
           <span key={b.label} className="flex flex-1 items-end">
@@ -190,7 +279,7 @@ function RarityBars({ className }: { className?: string }) {
         ))}
       </div>
       <p className="mt-3 flex items-center gap-1.5 border-t border-line pt-3 text-[0.75rem] font-bold text-spotted">
-        <Wrench className="h-3.5 w-3.5" aria-hidden /> +25% for modified cars
+        <Wrench className="h-3.5 w-3.5" aria-hidden /> {t.bonus}
       </p>
     </div>
   );
@@ -261,7 +350,7 @@ const HEAT = [
   { x: "78%", y: "32%", r: 150 },
 ];
 
-function MapPanel({ className }: { className?: string }) {
+function MapPanel({ className, t }: { className?: string; t: FeatureCopy["meet"] }) {
   const [ref, inView] = useInView<HTMLDivElement>({ once: false, rootMargin: "0px 0px -10% 0px" });
   // 1 roads + pins · 2 community layer · 3 meet card · 4 joined
   const step = useSteps(inView, [200, 1400, 2200, 3200]);
@@ -308,7 +397,7 @@ function MapPanel({ className }: { className?: string }) {
           strokeWidth={1.6}
           aria-hidden
         />
-        Spot zones
+        {t.zones}
       </span>
 
       <div
@@ -318,18 +407,18 @@ function MapPanel({ className }: { className?: string }) {
         )}
       >
         <span className="flex h-[52px] w-[48px] shrink-0 flex-col items-center justify-center rounded-xl bg-ink text-snow">
-          <span className="text-[0.625rem] font-bold uppercase tracking-[0.04em] text-snow/70">Sun</span>
+          <span className="text-[0.625rem] font-bold uppercase tracking-[0.04em] text-snow/70">{t.day}</span>
           <span className="text-xl font-bold leading-none">14</span>
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block truncate text-[0.9375rem] font-bold">Sunday morning meet</span>
+          <span className="block truncate text-[0.9375rem] font-bold">{t.name}</span>
           <span className="mt-0.5 flex items-center gap-1.5 text-[0.75rem] font-medium text-ash">
             <span className="flex -space-x-2">
               <CarAvatar src={ALBUMS.mclaren} size={20} className="ring-2 ring-snow" />
               <CarAvatar src={ALBUMS.pagani} size={20} className="ring-2 ring-snow" />
               <CarAvatar src="/media/porsche-gt3rs-sm.jpg" size={20} className="ring-2 ring-snow" />
             </span>
-            <span className="tabular">{step >= 4 ? 19 : 18} going · 9:00</span>
+            <span className="tabular">{t.going(step >= 4 ? 19 : 18)}</span>
           </span>
         </span>
         <span
@@ -340,10 +429,10 @@ function MapPanel({ className }: { className?: string }) {
         >
           {step >= 4 ? (
             <>
-              <Check className="h-3.5 w-3.5" strokeWidth={3} aria-hidden /> Going
+              <Check className="h-3.5 w-3.5" strokeWidth={3} aria-hidden /> {t.joined}
             </>
           ) : (
-            "Join"
+            t.join
           )}
         </span>
       </div>
@@ -372,7 +461,7 @@ const RANKING: Row[] = [
 ];
 const MEDAL = ["bg-gold", "bg-silver", "bg-bronze"];
 
-function Leaderboard({ className }: { className?: string }) {
+function Leaderboard({ className, t, locale }: { className?: string; t: FeatureCopy["board"]; locale: Locale }) {
   const [ref, inView] = useInView<HTMLDivElement>({ once: false, rootMargin: "0px 0px -10% 0px" });
   // 1 points count up · 2 reorder
   const step = useSteps(inView, [600, 2000]);
@@ -383,7 +472,7 @@ function Leaderboard({ className }: { className?: string }) {
     <div ref={ref} className={cn("overflow-hidden rounded-[1.25rem] bg-snow shadow-[0_12px_30px_-18px_rgba(0,0,0,0.25)]", className)}>
       <div className="flex items-center justify-between border-b border-line bg-mist px-4 py-3 text-[0.75rem] font-bold tracking-[0.03em] text-ink">
         <span className="flex items-center gap-2">
-          <Trophy className="h-4 w-4" strokeWidth={1.8} aria-hidden /> TOP 50 WORLD
+          <Trophy className="h-4 w-4" strokeWidth={1.8} aria-hidden /> {t.title}
         </span>
         <span className="flex items-center gap-1 rounded-full bg-snow px-2 py-1 text-[0.6875rem] text-ink ring-1 ring-line">
           <Flame className="h-3.5 w-3.5 text-[#F26B1D]" fill="#F26B1D" aria-hidden /> 12
@@ -408,14 +497,14 @@ function Leaderboard({ className }: { className?: string }) {
             <CarAvatar src={r.avatar} size={34} />
             <span className="min-w-0 flex-1">
               <span className="flex items-center gap-1 text-[0.875rem] font-semibold">
-                {r.name}
+                {r.you ? t.you : r.name}
                 {r.verified && <BadgeCheck className="h-4 w-4 text-snow" fill="#111" strokeWidth={2} aria-hidden />}
-                {r.you && <span className="text-[0.6875rem] font-medium text-ash">(you)</span>}
+                {r.you && <span className="text-[0.6875rem] font-medium text-ash">{t.youTag}</span>}
               </span>
-              <span className="text-[0.75rem] text-ash">{r.cars} cars</span>
+              <span className="text-[0.75rem] text-ash">{t.cars(r.cars)}</span>
             </span>
-            <span className="text-[0.8125rem] font-semibold tabular">
-              {r.you && step >= 1 ? <CountUp to={7392} from={5180} start duration={1200} /> : r.pts.toLocaleString("en-US")} pts
+            <span translate="no" className="text-[0.8125rem] font-semibold tabular">
+              {r.you && step >= 1 ? <CountUp to={7392} from={5180} start duration={1200} /> : formatNumber(r.pts, locale)} pts
             </span>
           </motion.li>
         ))}
@@ -471,19 +560,19 @@ function BrandRings({ className }: { className?: string }) {
 
 // ------------------------------------------------------------------ quests
 
-function Quests({ className }: { className?: string }) {
+function Quests({ className, t }: { className?: string; t: FeatureCopy["quests"] }) {
   const [ref, inView] = useInView<HTMLDivElement>({ once: false });
   const tick = useSteps(inView, [900, 2000]);
   const quests = [
-    { label: "Spot 3 Italian cars", done: 2 + (tick >= 1 ? 1 : 0), of: 3 },
-    { label: "Spot a car at a meet", done: 1, of: 1 },
-    { label: "Share a story", done: tick >= 2 ? 1 : 0, of: 1 },
+    { label: t.items[0], done: 2 + (tick >= 1 ? 1 : 0), of: 3 },
+    { label: t.items[1], done: 1, of: 1 },
+    { label: t.items[2], done: tick >= 2 ? 1 : 0, of: 1 },
   ];
   return (
     <div ref={ref} className={className}>
       <div className="flex items-center justify-between rounded-2xl bg-snow px-4 py-3 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.25)]">
         <span className="flex items-center gap-2 text-[0.9375rem] font-bold">
-          <Flame className="h-5 w-5 text-[#F26B1D]" fill="#F26B1D" strokeWidth={1.6} aria-hidden /> 12-day streak
+          <Flame className="h-5 w-5 text-[#F26B1D]" fill="#F26B1D" strokeWidth={1.6} aria-hidden /> {t.streak}
         </span>
         <span className="flex gap-1">
           {Array.from({ length: 7 }).map((_, i) => (
@@ -519,4 +608,19 @@ function Quests({ className }: { className?: string }) {
       </ul>
     </div>
   );
+}
+
+// ------------------------------------------------- reused on feature pages
+
+/** The map card with its car meet, on its own (the car meets page). */
+export function MeetsMap({ className }: { className?: string }) {
+  const t = useCopy(COPY);
+  return <MapPanel className={className} t={t.meet} />;
+}
+
+/** The world ranking card, on its own. */
+export function RankingCard({ className }: { className?: string }) {
+  const t = useCopy(COPY);
+  const locale = useLocale();
+  return <Leaderboard className={className} t={t.board} locale={locale} />;
 }

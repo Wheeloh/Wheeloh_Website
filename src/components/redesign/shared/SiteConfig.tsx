@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext, useMemo, type ReactNode } from "react";
+import { useLocale } from "@/components/redesign/shared/Locale";
 
 // What differs between the two redesign previews, besides the home page
 // itself: the home sections the header, footer and mobile menu link to.
@@ -27,6 +28,15 @@ export const SECTIONS: Record<Version, SectionLink[]> = {
   ],
 };
 
+// French labels for the same sections, by id.
+const LABELS_FR: Record<string, string> = {
+  features: "Fonctionnement",
+  galaxy: "Le catalogue",
+  collection: "Collection",
+  community: "Communauté",
+  affiliate: "Affiliés",
+};
+
 const VersionContext = createContext<Version>("v3");
 
 export function SiteConfigProvider({ version, children }: { version: Version; children: ReactNode }) {
@@ -34,4 +44,11 @@ export function SiteConfigProvider({ version, children }: { version: Version; ch
 }
 
 export const useVersion = () => useContext(VersionContext);
-export const useSections = () => SECTIONS[useContext(VersionContext)];
+export function useSections(): SectionLink[] {
+  const sections = SECTIONS[useContext(VersionContext)];
+  const locale = useLocale();
+  return useMemo(
+    () => (locale === "fr" ? sections.map((s) => ({ ...s, label: LABELS_FR[s.id] ?? s.label })) : sections),
+    [sections, locale],
+  );
+}

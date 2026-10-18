@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import DocShell, { PROSE } from "@/components/redesign/shared/DocShell";
-import StoreButtons from "@/components/redesign/shared/StoreButtons";
+import AppCta from "@/components/redesign/shared/AppCta";
 import { cn } from "@/lib/utils";
 
 /** "Wheeloh v1.3.0 — The Social Update" → ["Wheeloh v1.3.0", "The Social Update"] */
@@ -23,10 +23,13 @@ export default function ChangelogArticleContent({
   markdown,
   title,
   printed,
+  qr,
 }: {
   markdown: string;
   title: string;
   printed: string;
+  /** Build-time SVG of the download QR code. */
+  qr?: string;
 }) {
   const [head, name] = splitTitle(title);
   return (
@@ -52,11 +55,7 @@ export default function ChangelogArticleContent({
         </ReactMarkdown>
       </article>
 
-      <div className="mx-auto mt-16 max-w-3xl rounded-[2rem] bg-ink p-8 text-snow sm:p-10">
-        <p className="text-display-s font-extrabold">Get the update.</p>
-        <p className="mt-2 text-base font-medium text-smoke">Free on iOS and Android.</p>
-        <StoreButtons tone="light" campaign="changelog" className="mt-6" />
-      </div>
+      <AppCta campaign="changelog" title="Get the update." body="Free on iOS and Android." qr={qr} className="mx-auto mt-16 max-w-4xl" />
 
       <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-sm font-semibold">
         <Link href="/changelog" className="group flex items-center gap-2 text-ink">

@@ -1,12 +1,27 @@
 # Wheeloh
 
-> Wheeloh is a mobile car-spotting app for iOS and Android. Point your camera at
-> a car to instantly identify its make, model and version, collect it in your
-> virtual garage, plot it on a live map, earn points on the leaderboard, and share
-> rare finds with a community of enthusiasts.
+> Wheeloh is a free car spotting (carspotting) app for iPhone and Android. Photograph a car and
+> Wheeloh identifies its make, model and version, scores the spot by performance, price and rarity,
+> files it in a garage sorted by brand and pins it on a map. Spotters complete a collection of
+> 1,154 models, climb world and friends rankings, find car meets, run car clubs, play "Guess the car"
+> and share Instagram stories. Number plates are erased on the phone before a photo is uploaded.
 
 Wheeloh is published by Wheeloh SAS (Versailles, France). Contact: contact@wheeloh.com.
-The marketing site is primarily in English; legal documents are in French.
+The site exists in English (wheeloh.com) and French (wheeloh.com/fr); the app is in French and English.
+Legal documents are in French.
+
+## Key facts
+- Price: free, no subscription and no paywall.
+- Platforms: iPhone (iOS 16.6 or later) and Android.
+- Availability: France, Belgium, Switzerland, Luxembourg, the Netherlands, the UK, the US, Canada and Australia.
+- Car identification: AI recognition from one photo, matched against a database of more than 23,000 versions
+  (about 1,680 models) from over 150 brands, model years 1904 to 2026. Wrong results can be contested in the app.
+- Collection: 1,154 models from 74 brands and 14 countries; progress is drawn as a road with 30 milestones and 9 levels.
+- Points: four layers (performance, excitement, price, rarity), from about 40 points for an everyday car to
+  3,000 for an ultra-rare hypercar; +25% for visibly modified cars.
+- Privacy: licence plates are detected and erased on the phone before upload; they can be masked by hand or shown.
+- Gallery sync imports past car photos; screenshots and downloaded images are filtered out (anti-cheat).
+- Latest version: 1.3.0 (October 2026), which added car clubs and a public feed.
 
 ## App
 - [App Store (iOS)](https://apps.apple.com/fr/app/wheeloh-carspotting/id6746037128)
@@ -14,12 +29,32 @@ The marketing site is primarily in English; legal documents are in French.
 - [Service status](https://status.wheeloh.com)
 - [Instagram](https://www.instagram.com/wheeloh_app)
 - [TikTok](https://www.tiktok.com/@bywheeloh)
+- [LinkedIn](https://www.linkedin.com/company/wheeloh)
 
-## Core pages
-- [Home / features](https://wheeloh.com/): capture, share, map tracking, leaderboard, garage, brand collection, auto news, FAQ
-- [Changelog](https://wheeloh.com/changelog): product updates and release notes
-- [Engineering](https://wheeloh.com/engineering): technical deep dives from the Wheeloh team
-- [Semantic Car Search](https://wheeloh.com/engineering/semantic-car-search): a vector-embedding approach indexing 22,180 vehicle models in a 1,536-dimensional space (75.6% validation accuracy)
+## Guides and features (English)
+- [Home](https://wheeloh.com/): the car spotting app, features and FAQ
+- [Car spotting: the complete guide](https://wheeloh.com/car-spotting): what it is, where to spot, photo tips, etiquette and the law
+- [Car identifier](https://wheeloh.com/car-identifier): identify a car from a photo
+- [Licence plate blur](https://wheeloh.com/license-plate-blur): plates erased on the phone before upload
+- [Car meets](https://wheeloh.com/car-meets): find, join and share car meets near you
+- [Guess the car](https://wheeloh.com/guess-the-car): the five-try car photo game
+- [Car clubs](https://wheeloh.com/car-clubs): communities with channels, meets, polls and news
+- [Cars to spot](https://wheeloh.com/cars): the 1,154 models of the collection, with a page per brand
+
+## Guides et fonctionnalités (français)
+- [Accueil](https://wheeloh.com/fr) : l'app de carspotting
+- [Le carspotting : le guide complet](https://wheeloh.com/fr/carspotting)
+- [Identifier une voiture en photo](https://wheeloh.com/fr/identifier-une-voiture)
+- [Flouter une plaque d'immatriculation](https://wheeloh.com/fr/flouter-plaque-immatriculation)
+- [Rasso voiture](https://wheeloh.com/fr/rasso-voiture)
+- [Devine la caisse](https://wheeloh.com/fr/devine-la-voiture)
+- [Clubs auto](https://wheeloh.com/fr/clubs-auto)
+- [Voitures à spotter](https://wheeloh.com/fr/voitures)
+
+## Product and engineering
+- [Changelog](https://wheeloh.com/changelog): release notes
+- [Engineering](https://wheeloh.com/engineering): technical articles
+- [Semantic Car Search](https://wheeloh.com/engineering/semantic-car-search): the vector-search research behind car matching
 
 ## Legal (French)
 - [Mentions légales](https://wheeloh.com/legal)
@@ -28,4 +63,4 @@ The marketing site is primarily in English; legal documents are in French.
 - [Standards communautaires](https://wheeloh.com/community-standards)
 
 ## Notes
-- /invite, /news and /user are deep-link redirect pages and are not indexable content.
+- /invite, /news and /user are deep-link fallbacks that open the app; they are not content pages.

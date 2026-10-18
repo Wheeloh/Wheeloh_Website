@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import LegalContent from "@/components/redesign/shared/pages/LegalContent";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbLd } from "@/lib/seo";
+import { pageMetadata } from "@/lib/metadata";
+import { ROUTES } from "@/lib/routes";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Mentions légales",
   description: "Mentions légales de Wheeloh : éditeur, hébergement, propriété intellectuelle et données personnelles.",
-  alternates: { canonical: "/legal" },
-  openGraph: { url: "/legal", locale: "fr_FR", title: "Mentions légales | Wheeloh", images: ["/opengraph-image"] },
-};
+  locale: "fr",
+  paths: ROUTES.legal.paths,
+});
 
 export default function Page() {
   return (

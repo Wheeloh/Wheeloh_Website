@@ -4,7 +4,14 @@ import { useEffect, useId, useRef, useState } from "react";
 import { ArrowDown, ArrowUp, Check, Flag, Lock, Map as MapIcon, Minus, Plus, Target, Users } from "lucide-react";
 import { useInView } from "@/components/redesign/shared/motion/reveal";
 import { ALBUMS } from "@/components/redesign/shared/phone/ui";
+import { useCopy } from "@/components/redesign/shared/Locale";
 import { cn } from "@/lib/utils";
+
+// The app's advancement strings in each language.
+const COPY = {
+  en: { models: "19 / 1154 models", rank: "#15 of 29", pending: "104 friend(s) not placed yet", level: "Level 1", name: "Karting pro", start: "STARTING LINE", me: "Me" },
+  fr: { models: "19 / 1154 modèles", rank: "15e sur 29", pending: "104 ami(s) pas encore placé(s)", level: "Niveau 1", name: "Pro du karting", start: "LIGNE DE DÉPART", me: "Moi" },
+};
 
 // The app's "Progress bar" screen: a road rising from the starting line,
 // one milestone per step (1 %, 2 %, 3 %…), friends placed on the same road
@@ -82,6 +89,7 @@ export default function ProgressTrack({ className }: { className?: string }) {
   const me = useRef<HTMLDivElement>(null);
   const bubble = useRef<HTMLSpanElement>(null);
   const [passed, setPassed] = useState(false);
+  const t = useCopy(COPY);
 
   // One rAF loop drives the white "done" road, the avatar and its bubble,
   // like the app's replay when you come back with new cars.
@@ -126,12 +134,12 @@ export default function ProgressTrack({ className }: { className?: string }) {
     <div ref={ref} className={cn("flex flex-col overflow-hidden rounded-[1.5rem] bg-[#0B0B0D] text-snow", className)}>
       {/* HUD */}
       <div className="flex items-center justify-between px-4 pt-4 text-[0.8125rem] font-bold">
-        <span className="text-[#8C8C95] tabular">19 / 1154 models</span>
+        <span className="text-[#8C8C95] tabular">{t.models}</span>
         <span className="flex items-center gap-1.5 rounded-full bg-[#1C1C20] px-3 py-1.5 text-snow tabular ring-1 ring-inset ring-[#2B2B31]">
-          <Users className="h-3.5 w-3.5" aria-hidden /> #15 of 29
+          <Users className="h-3.5 w-3.5" aria-hidden /> {t.rank}
         </span>
       </div>
-      <p className="mt-1.5 text-center text-[0.6875rem] font-semibold text-[#55555E]">104 friend(s) not placed yet</p>
+      <p className="mt-1.5 text-center text-[0.6875rem] font-semibold text-[#55555E]">{t.pending}</p>
 
       {/* the road */}
       <div className="relative mx-auto mt-1 w-full max-w-[26rem] flex-1" style={{ aspectRatio: `${W} / ${H}` }}>
@@ -206,8 +214,8 @@ export default function ProgressTrack({ className }: { className?: string }) {
         >
           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#1C1C20] text-[0.9375rem] font-black text-[#8C8C95]">1</span>
           <span className="min-w-0 flex-1 leading-tight">
-            <span className="block text-[0.625rem] font-bold uppercase tracking-[0.14em] text-[#8C8C95]">Level 1</span>
-            <span className="block truncate text-[1rem] font-black text-snow">Karting pro</span>
+            <span className="block text-[0.625rem] font-bold uppercase tracking-[0.14em] text-[#8C8C95]">{t.level}</span>
+            <span className="block truncate text-[1rem] font-black text-snow">{t.name}</span>
           </span>
           <Lock className="h-4 w-4 shrink-0 text-[#55555E]" strokeWidth={2.2} aria-hidden />
         </div>
@@ -275,7 +283,7 @@ export default function ProgressTrack({ className }: { className?: string }) {
 
         <p className="absolute inset-x-0 bottom-1 flex items-center justify-center gap-3 text-[0.6875rem] font-black tracking-[0.18em] text-[#8C8C95]">
           <span aria-hidden className="checker h-[14px] w-[42px] bg-[#1C1C20] text-snow [--checker:7px]" />
-          STARTING LINE
+          {t.start}
           <span aria-hidden className="checker h-[14px] w-[42px] bg-[#1C1C20] text-snow [--checker:7px]" />
         </p>
       </div>
@@ -291,7 +299,7 @@ export default function ProgressTrack({ className }: { className?: string }) {
           </span>
         ))}
         <span className="ml-1 flex h-9 items-center gap-1.5 rounded-[21px] bg-snow px-3.5 text-[0.8125rem] font-black text-[#0B0B0D]">
-          <Target className="h-4 w-4" strokeWidth={2.4} /> Me
+          <Target className="h-4 w-4" strokeWidth={2.4} /> {t.me}
         </span>
       </div>
     </div>

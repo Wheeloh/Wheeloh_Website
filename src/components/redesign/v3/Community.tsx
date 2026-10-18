@@ -1,14 +1,64 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Send, ShieldCheck, Users, X } from "lucide-react";
+import { ArrowRight, Check, Send, ShieldCheck, Users, X } from "lucide-react";
 import FlagMark from "@/components/redesign/shared/brand/FlagMark";
 import { Reveal, SplitText, useInView } from "@/components/redesign/shared/motion/reveal";
 import { ALBUMS, useSteps } from "@/components/redesign/shared/phone/ui";
+import { useCopy, useLocale } from "@/components/redesign/shared/Locale";
+import { routePath } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+const COPY = {
+  en: {
+    title: "Built for the scene,\nnot just the camera.",
+    intro: "Wheeloh is where spotters meet, chat, compete and show off. Here's what happens after the shot.",
+    panels: {
+      community: {
+        title: "Start a community.",
+        body: "Car club, school crew or one-marque fan page — publish news, polls, posts and albums for everyone.",
+        link: "Car clubs on Wheeloh",
+      },
+      chat: { title: "Chat about it.", body: "Message friends one-to-one or in groups, and drop spots straight into the conversation." },
+      story: { title: "Made for Stories.", body: "Turn any spot into a polished Instagram story in a single tap." },
+      sync: {
+        title: "Import years of spots.",
+        body: "Scan your camera roll in one tap. Only genuine camera shots count — screenshots and downloads are filtered out.",
+      },
+    },
+    club: { kind: "Community · Public", join: "Join", joined: "Joined", tabs: ["News", "Polls", "Albums", "Meets"], cover: "A Porsche 911 GT3 RS, cover of the Paris Spotter community" },
+    chat: { first: "Senna on Quai Branly right now", reply: "No way. Where exactly?", spot: "Spot · Quai Branly", input: "Message…" },
+    story: { city: "New York", stamp: "Spotted on Wheeloh", share: "Share to story", shared: "Shared", save: "Save image", alt: "A McLaren 675LT spotted in New York, turned into an Instagram story" },
+    sync: { screenshot: "Screenshot", found: "cars found", skipped: "screenshot skipped" },
+  },
+  fr: {
+    title: "Pensé pour la scène,\npas juste pour la photo.",
+    intro: "Wheeloh, c’est là que les spotters se retrouvent, discutent, s’affrontent et se montrent. Voici ce qui se passe après la photo.",
+    panels: {
+      community: {
+        title: "Crée ta communauté.",
+        body: "Club auto, bande du lycée ou fan page d’une marque — publie actus, sondages, posts et albums pour tout le monde.",
+        link: "Les clubs auto sur Wheeloh",
+      },
+      chat: { title: "Parles-en.", body: "Écris à tes amis en privé ou en groupe, et envoie tes spots directement dans la conversation." },
+      story: { title: "Fait pour les stories.", body: "Transforme n’importe quel spot en story Instagram soignée, en un seul tap." },
+      sync: {
+        title: "Importe des années de spots.",
+        body: "Analyse ta pellicule en un tap. Seules les vraies photos prises avec l’appareil comptent — captures d’écran et téléchargements sont écartés.",
+      },
+    },
+    club: { kind: "Communauté · Publique", join: "Rejoindre", joined: "Membre", tabs: ["Actus", "Sondages", "Albums", "Rassos"], cover: "Une Porsche 911 GT3 RS, couverture de la communauté Paris Spotter" },
+    chat: { first: "Senna quai Branly, là maintenant", reply: "Sérieux ? Où exactement ?", spot: "Spot · Quai Branly", input: "Message…" },
+    story: { city: "New York", stamp: "Spottée sur Wheeloh", share: "Partager en story", shared: "Partagée", save: "Enregistrer l’image", alt: "Une McLaren 675LT spottée à New York, transformée en story Instagram" },
+    sync: { screenshot: "Capture", found: "voitures trouvées", skipped: "capture écartée" },
+  },
+};
+
+type CommunityCopy = (typeof COPY)["en"];
 
 /** Loops through `n` states every `ms` while visible. */
 function useLoop(active: boolean, n: number, ms: number) {
@@ -26,34 +76,32 @@ function useLoop(active: boolean, n: number, ms: number) {
 }
 
 export default function Community() {
+  const t = useCopy(COPY);
+  const locale = useLocale();
   return (
     <section id="community" aria-labelledby="community-title" className="bg-snow py-20 sm:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-        <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-end">
           <h2 id="community-title" className="text-display-l font-extrabold lg:col-span-7">
-            <SplitText text={"Built for the scene,\nnot just the camera."} lineClassNames={["", "text-ash"]} />
+            <SplitText text={t.title} lineClassNames={["", "text-ash"]} />
           </h2>
           <Reveal as="p" delay={150} className="max-w-[42ch] text-lg font-medium leading-relaxed text-ash lg:col-span-5 lg:pb-2">
-            Wheeloh is where spotters meet, chat, compete and show off. Here's what happens after the shot.
+            {t.intro}
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:mt-16">
-          <Panel delay={0} title="Start a community." body="Car club, school crew or one-marque fan page — publish news, polls, posts and albums for everyone.">
-            {(a) => <CommunityUI active={a} />}
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:mt-16">
+          <Panel delay={0} {...t.panels.community} href={routePath("clubs", locale)}>
+            {(a) => <CommunityUI active={a} t={t.club} />}
           </Panel>
-          <Panel delay={100} title="Chat about it." body="Message friends one-to-one or in groups, and drop spots straight into the conversation.">
-            {(a) => <ChatUI active={a} />}
+          <Panel delay={100} {...t.panels.chat}>
+            {(a) => <ChatUI active={a} t={t.chat} />}
           </Panel>
-          <Panel delay={0} title="Made for Stories." body="Turn any spot into a polished Instagram story in a single tap.">
-            {(a) => <StoryUI active={a} />}
+          <Panel delay={0} {...t.panels.story}>
+            {(a) => <StoryUI active={a} t={t.story} />}
           </Panel>
-          <Panel
-            delay={100}
-            title="Import years of spots."
-            body="Scan your camera roll in one tap. Only genuine camera shots count — screenshots and downloads are filtered out."
-          >
-            {(a) => <SyncUI active={a} />}
+          <Panel delay={100} {...t.panels.sync}>
+            {(a) => <SyncUI active={a} t={t.sync} />}
           </Panel>
         </div>
       </div>
@@ -64,11 +112,15 @@ export default function Community() {
 function Panel({
   title,
   body,
+  link,
+  href,
   delay,
   children,
 }: {
   title: string;
   body: string;
+  link?: string;
+  href?: string;
   delay: number;
   children: (active: boolean) => ReactNode;
 }) {
@@ -81,19 +133,25 @@ function Panel({
       <div className="px-3 pb-4 pt-5 sm:px-5 sm:pb-5">
         <h3 className="text-display-s font-extrabold">{title}</h3>
         <p className="mt-2 max-w-[44ch] text-[0.9375rem] font-medium leading-relaxed text-ash sm:text-base">{body}</p>
+        {link && href && (
+          <Link href={href} className="group mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-bold text-ink">
+            {link}
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
+          </Link>
+        )}
       </div>
     </Reveal>
   );
 }
 
-function CommunityUI({ active }: { active: boolean }) {
+function CommunityUI({ active, t }: { active: boolean; t: CommunityCopy["club"] }) {
   const joined = useLoop(active, 2, 2400) === 1;
   return (
     <div className="absolute inset-0 p-4 sm:p-5">
       <div className="overflow-hidden rounded-3xl bg-snow text-ink shadow-[0_12px_30px_-18px_rgba(0,0,0,0.25)]">
         <div className="relative h-24">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/porsche-gt3rs-sm.jpg" alt="" loading="lazy" className="h-full w-full object-cover" />
+          <img src="/media/porsche-gt3rs-sm.jpg" alt={t.cover} loading="lazy" className="h-full w-full object-cover" />
           <span className="absolute -bottom-6 left-4 grid h-14 w-14 place-items-center rounded-2xl bg-ink ring-4 ring-snow">
             <FlagMark className="w-8 text-snow" />
           </span>
@@ -103,7 +161,7 @@ function CommunityUI({ active }: { active: boolean }) {
             <div>
               <p className="text-base font-bold leading-tight">Paris Spotter</p>
               <p className="mt-0.5 flex items-center gap-1.5 text-[0.75rem] font-semibold text-ash">
-                <Users className="h-3.5 w-3.5" aria-hidden /> Community · Public
+                <Users className="h-3.5 w-3.5" aria-hidden /> {t.kind}
               </p>
             </div>
             <span
@@ -113,13 +171,13 @@ function CommunityUI({ active }: { active: boolean }) {
               )}
             >
               {joined && <Check className="h-4 w-4" strokeWidth={3} aria-hidden />}
-              {joined ? "Joined" : "Join"}
+              {joined ? t.joined : t.join}
             </span>
           </div>
-          <div className="mt-3 flex gap-2 text-[0.75rem] font-bold">
-            {["News", "Polls", "Albums", "Meets"].map((t, i) => (
-              <span key={t} className={cn("rounded-full px-3 py-1.5", i === 0 ? "bg-ink text-snow" : "bg-mist text-ink")}>
-                {t}
+          <div className="mt-3 flex flex-wrap gap-2 text-[0.75rem] font-bold">
+            {t.tabs.map((tab, i) => (
+              <span key={tab} className={cn("rounded-full px-3 py-1.5", i === 0 ? "bg-ink text-snow" : "bg-mist text-ink")}>
+                {tab}
               </span>
             ))}
           </div>
@@ -129,13 +187,13 @@ function CommunityUI({ active }: { active: boolean }) {
   );
 }
 
-function ChatUI({ active }: { active: boolean }) {
+function ChatUI({ active, t }: { active: boolean; t: CommunityCopy["chat"] }) {
   const step = useSteps(active, [900, 1900, 2900]);
   return (
     <div className="absolute inset-0 flex flex-col justify-end gap-2 p-4 text-[0.875rem] font-medium sm:p-5">
-      <Bubble show side="left">Senna on Quai Branly right now</Bubble>
+      <Bubble show side="left">{t.first}</Bubble>
       <Bubble show={step >= 1} side="right">
-        No way. Where exactly?
+        {t.reply}
       </Bubble>
       <Bubble show={step >= 2} side="left" bare>
         <span className="flex items-center gap-3 rounded-2xl bg-snow p-2 pr-4 text-ink shadow-[0_12px_30px_-18px_rgba(0,0,0,0.25)]">
@@ -143,7 +201,7 @@ function ChatUI({ active }: { active: boolean }) {
           <img src="/media/senna-square-sm.jpg" alt="" loading="lazy" className="h-12 w-12 rounded-xl object-cover object-[50%_65%]" />
           <span>
             <span className="block text-[0.8125rem] font-bold">McLaren Senna</span>
-            <span className="block text-[0.75rem] font-semibold text-ash">Spot · Quai Branly</span>
+            <span className="block text-[0.75rem] font-semibold text-ash">{t.spot}</span>
           </span>
         </span>
       </Bubble>
@@ -164,7 +222,7 @@ function ChatUI({ active }: { active: boolean }) {
         </AnimatePresence>
       </div>
       <div className="flex items-center gap-2 rounded-full bg-snow py-1.5 pl-4 pr-1.5 text-ash shadow-[0_8px_20px_-12px_rgba(0,0,0,0.3)]">
-        <span className="flex-1 text-[0.8125rem]">Message…</span>
+        <span className="flex-1 text-[0.8125rem]">{t.input}</span>
         <span className="grid h-8 w-8 place-items-center rounded-full bg-ink text-snow">
           <Send className="h-3.5 w-3.5" aria-hidden />
         </span>
@@ -197,7 +255,7 @@ function Bubble({ show, side, bare, children }: { show: boolean; side: "left" | 
   );
 }
 
-function StoryUI({ active }: { active: boolean }) {
+function StoryUI({ active, t }: { active: boolean; t: CommunityCopy["story"] }) {
   const shared = useLoop(active, 2, 2600) === 1;
   return (
     <div className="absolute inset-0 flex items-center justify-center gap-4 p-4 sm:p-5">
@@ -208,16 +266,16 @@ function StoryUI({ active }: { active: boolean }) {
         )}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/media/mclaren-675lt-sm.jpg" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[60%_50%]" />
+        <img src="/media/mclaren-675lt-sm.jpg" alt={t.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[60%_50%]" />
         <span className="absolute inset-x-2 top-2 flex gap-1">
           <span className="h-0.5 flex-1 rounded-full bg-snow" />
           <span className="h-0.5 flex-1 rounded-full bg-snow/40" />
         </span>
         <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-10">
           <span className="block text-[0.75rem] font-bold text-snow">McLaren 675LT</span>
-          <span className="mt-0.5 block text-[0.625rem] font-semibold text-snow/70">New York</span>
+          <span className="mt-0.5 block text-[0.625rem] font-semibold text-snow/70">{t.city}</span>
           <span className="mt-2 flex w-fit items-center gap-1 rounded-full bg-snow px-2 py-1 text-[0.5625rem] font-bold text-ink">
-            <FlagMark className="w-3 text-ink" /> Spotted on Wheeloh
+            <FlagMark className="w-3 text-ink" /> {t.stamp}
           </span>
         </span>
       </div>
@@ -229,9 +287,9 @@ function StoryUI({ active }: { active: boolean }) {
           )}
         >
           {shared ? <Check className="h-4 w-4" strokeWidth={3} aria-hidden /> : <Send className="h-4 w-4" aria-hidden />}
-          {shared ? "Shared" : "Share to story"}
+          {shared ? t.shared : t.share}
         </span>
-        <span className="rounded-full bg-snow px-4 py-2.5 text-ink shadow-[0_8px_20px_-12px_rgba(0,0,0,0.3)]">Save image</span>
+        <span className="rounded-full bg-snow px-4 py-2.5 text-ink shadow-[0_8px_20px_-12px_rgba(0,0,0,0.3)]">{t.save}</span>
       </div>
     </div>
   );
@@ -246,7 +304,7 @@ const ROLL = [
   { src: "/media/mclaren-675lt-sm.jpg", ok: true },
 ];
 
-function SyncUI({ active }: { active: boolean }) {
+function SyncUI({ active, t }: { active: boolean; t: CommunityCopy["sync"] }) {
   const pass = useLoop(active, 2, 3400);
   const [scanned, setScanned] = useState(0);
   useEffect(() => {
@@ -270,7 +328,7 @@ function SyncUI({ active }: { active: boolean }) {
                 <span className="h-1.5 w-10 rounded-full bg-line" />
                 <span className="h-1.5 w-14 rounded-full bg-line" />
                 <span className="h-5 rounded-md bg-mist" />
-                <span className="text-[0.5625rem] font-bold text-ash">Screenshot</span>
+                <span className="text-[0.5625rem] font-bold text-ash">{t.screenshot}</span>
               </span>
             )}
             <AnimatePresence>
@@ -295,8 +353,32 @@ function SyncUI({ active }: { active: boolean }) {
       </div>
       <p className="mt-3 flex items-center gap-2 text-[0.8125rem] font-semibold text-ash">
         <ShieldCheck className="h-4 w-4 text-spotted" aria-hidden />
-        <span className="tabular">{found}</span> cars found · <span className="tabular">{skipped}</span> screenshot skipped
+        <span className="tabular">{found}</span> {t.found} · <span className="tabular">{skipped}</span> {t.skipped}
       </p>
+    </div>
+  );
+}
+
+// ------------------------------------------------- reused on feature pages
+
+/** The community card, on its own (the car clubs page). */
+export function ClubCard({ className }: { className?: string }) {
+  const t = useCopy(COPY);
+  const [ref, inView] = useInView<HTMLDivElement>({ once: false, rootMargin: "0px 0px -8% 0px" });
+  return (
+    <div ref={ref} className={cn("relative h-[18rem] overflow-hidden rounded-[1.5rem]", className)}>
+      <CommunityUI active={inView} t={t.club} />
+    </div>
+  );
+}
+
+/** The chat card, on its own. */
+export function ChatCard({ className }: { className?: string }) {
+  const t = useCopy(COPY);
+  const [ref, inView] = useInView<HTMLDivElement>({ once: false, rootMargin: "0px 0px -8% 0px" });
+  return (
+    <div ref={ref} className={cn("relative h-[18rem] overflow-hidden rounded-[1.5rem]", className)}>
+      <ChatUI active={inView} t={t.chat} />
     </div>
   );
 }
