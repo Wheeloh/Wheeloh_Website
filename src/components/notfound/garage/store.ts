@@ -5,7 +5,7 @@ import { RARITIES, RARITY, SKINS, type Rarity, type Skin } from "../engine/skins
 // the car. Kept in this browser only; nothing is ever paid for.
 
 const KEY = "wh-404-garage";
-export const CRATE_COST = 150;
+export const CRATE_COST = 50;
 /** A skin you already have: half the price back. */
 export const DUPLICATE_REFUND = CRATE_COST / 2;
 
