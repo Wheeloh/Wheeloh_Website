@@ -4,7 +4,31 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Eye, EyeOff, Palette, Trash2 } from "lucide-react";
 import { useInView } from "@/components/redesign/shared/motion/reveal";
 import { cn } from "@/lib/utils";
+import { useCopy } from "@/components/redesign/shared/Locale";
 import { PLATE_DEMOS, PLATE_PHOTO, type PlateDemo } from "./plates";
+
+const COPY = {
+  en: {
+    before: (car: string) => `${car}, before masking`,
+    after: (car: string) => `${car}, its plate erased by Wheeloh`,
+    searching: "Looking for plates…",
+    masking: "Masking the plate…",
+    visible: "Plate visible",
+    hidden: "Plate hidden",
+    hide: "Hide",
+    show: "Show",
+  },
+  fr: {
+    before: (car: string) => `${car}, avant le masquage`,
+    after: (car: string) => `${car}, plaque effacée par Wheeloh`,
+    searching: "Recherche des plaques…",
+    masking: "Masquage de la plaque…",
+    visible: "Plaque visible",
+    hidden: "Plaque masquée",
+    hide: "Masquer",
+    show: "Afficher",
+  },
+};
 
 // The app's publish page (direction B): the photo on black, then the white
 // sheet and its plate row. Strings, sizes and timings are the app's own
@@ -151,6 +175,7 @@ function Photo({
   masked: boolean;
   glow: "off" | "on" | "fading";
 }) {
+  const t = useCopy(COPY);
   const r = plateRect(demo, size.w, size.h);
   // The app's glow geometry (plateGlowGeometry): margin max(2.5, 0.22 h),
   // at least 22 × 11, radius min(h / 2, max(3, 0.26 h)).
@@ -175,7 +200,7 @@ function Photo({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/media/plates/${demo.id}-before.jpg`}
-        alt={`${demo.car}, before masking`}
+        alt={t.before(demo.car)}
         width={PLATE_PHOTO.width}
         height={PLATE_PHOTO.height}
         loading="lazy"
@@ -186,7 +211,7 @@ function Photo({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/media/plates/${demo.id}-after.jpg`}
-        alt={`${demo.car}, its plate erased by Wheeloh`}
+        alt={t.after(demo.car)}
         width={PLATE_PHOTO.width}
         height={PLATE_PHOTO.height}
         loading="lazy"
@@ -214,6 +239,7 @@ function Photo({
 
 /** `.clair .ligne-plaque`: the grey row of the white sheet. */
 function PlateRow({ phase, shown, demo, onToggle }: { phase: Phase; shown: boolean; demo: PlateDemo; onToggle: () => void }) {
+  const t = useCopy(COPY);
   return (
     <div
       className="flex h-12 items-center gap-2.5 rounded-[14px] bg-[#F3F3F3] px-3 text-[13px] font-semibold leading-tight text-black"
@@ -226,7 +252,7 @@ function PlateRow({ phase, shown, demo, onToggle }: { phase: Phase; shown: boole
           (shown ? <Eye className="h-[18px] w-[18px]" strokeWidth={1.5} aria-hidden /> : <EyeOff className="h-[18px] w-[18px]" strokeWidth={1.5} aria-hidden />)}
       </span>
       <span className={cn("min-w-0 flex-1 truncate", phase === "searching" && "font-medium text-[#6B6B6B]")}>
-        {phase === "searching" ? "Looking for plates…" : phase === "masking" ? "Masking the plate…" : shown ? "Plate visible" : "Plate hidden"}
+        {phase === "searching" ? t.searching : phase === "masking" ? t.masking : shown ? t.visible : t.hidden}
       </span>
       {phase === "masked" && (
         <>
@@ -241,7 +267,7 @@ function PlateRow({ phase, shown, demo, onToggle }: { phase: Phase; shown: boole
             onClick={onToggle}
             className="-mr-1 flex h-11 min-w-11 items-center justify-center px-1 underline decoration-black/45 decoration-1 underline-offset-2"
           >
-            {shown ? "Hide" : "Show"}
+            {shown ? t.hide : t.show}
           </button>
         </>
       )}

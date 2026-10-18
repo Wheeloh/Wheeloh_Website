@@ -6,34 +6,65 @@ import { ArrowUpRight, BadgeCheck, Check, ImagePlus } from "lucide-react";
 import FlagMark from "@/components/redesign/shared/brand/FlagMark";
 import { Reveal, SplitText } from "@/components/redesign/shared/motion/reveal";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { useCopy } from "@/components/redesign/shared/Locale";
 
 const FilloutStandardEmbed = dynamic(() => import("@/components/FilloutEmbedLazy"), { ssr: false });
 
-const PERKS = [
-  {
-    title: "An exclusive affiliate badge",
-    body: "Shown on your profile, your posts and the leaderboard.",
+const COPY = {
+  en: {
+    title: "Already shooting cars?\nJoin the affiliates.",
+    body: "The Wheeloh affiliate programme is for car photographers and creators who want their work seen by the people who care most.",
+    perks: [
+      { title: "An exclusive affiliate badge", body: "Shown on your profile, your posts and the leaderboard." },
+      { title: "Import your own car photos", body: "Publish shots from your camera — full quality, straight into the app." },
+    ],
+    apply: "Apply to the programme",
+    dialogTitle: "Affiliate programme application",
+    dialogBody: "Review the requirements below before submitting your application.",
+    card: {
+      cover: "McLaren 675LT, cover photo of an affiliate profile",
+      name: "Your name",
+      handle: "@yourhandle · Car photographer",
+      badge: "Affiliate",
+      stats: ["Spots", "Points", "Country"],
+      imported: "Imported from your camera",
+    },
   },
-  {
-    title: "Import your own car photos",
-    body: "Publish shots from your camera — full quality, straight into the app.",
+  fr: {
+    title: "Tu photographies déjà des voitures ?\nDeviens affilié.",
+    body: "Le programme d'affiliation Wheeloh s'adresse aux photographes auto et aux créateurs qui veulent montrer leur travail à ceux qui s'y intéressent le plus.",
+    perks: [
+      { title: "Un badge affilié exclusif", body: "Affiché sur ton profil, tes posts et dans le classement." },
+      { title: "Importe tes propres photos", body: "Publie les photos de ton appareil, en pleine qualité, directement dans l'app." },
+    ],
+    apply: "Candidater au programme",
+    dialogTitle: "Candidature au programme d'affiliation",
+    dialogBody: "Lis les conditions ci-dessous avant d'envoyer ta candidature.",
+    card: {
+      cover: "McLaren 675LT, photo de couverture d'un profil affilié",
+      name: "Ton nom",
+      handle: "@toncompte · Photographe auto",
+      badge: "Affilié",
+      stats: ["Spots", "Points", "Pays"],
+      imported: "Importées depuis ton appareil",
+    },
   },
-];
+};
 
 export default function Affiliate() {
+  const t = useCopy(COPY);
   return (
     <section id="affiliate" aria-labelledby="affiliate-title" className="sheet relative z-10 -mt-10 pb-24 pt-20 sm:pb-32 sm:pt-28">
       <div className="mx-auto grid grid-cols-1 max-w-[1440px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-6 lg:pr-10">
           <h2 id="affiliate-title" className="text-display-l font-extrabold">
-            <SplitText text={"Already shooting cars?\nJoin the affiliates."} lineClassNames={["", "text-ash"]} />
+            <SplitText text={t.title} lineClassNames={["", "text-ash"]} />
           </h2>
           <Reveal as="p" delay={150} className="mt-6 max-w-[44ch] text-lg font-medium leading-relaxed text-ash">
-            The Wheeloh affiliate programme is for car photographers and creators who want their work seen by the people who
-            care most.
+            {t.body}
           </Reveal>
           <ul className="mt-10 space-y-5">
-            {PERKS.map((p, i) => (
+            {t.perks.map((p, i) => (
               <Reveal as="li" key={p.title} delay={250 + i * 90} className="flex gap-4">
                 <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-ink text-snow">
                   <Check className="h-4 w-4" strokeWidth={3} aria-hidden />
@@ -52,7 +83,7 @@ export default function Affiliate() {
                   type="button"
                   className="group inline-flex h-14 items-center gap-3 rounded-full bg-ink pl-7 pr-2 text-base font-semibold text-snow transition-transform duration-300 active:scale-[0.97]"
                 >
-                  Apply to the programme
+                  {t.apply}
                   <span className="grid h-10 w-10 place-items-center rounded-full bg-snow text-ink transition-transform duration-500 ease-out-expo group-hover:rotate-45">
                     <ArrowUpRight className="h-5 w-5" aria-hidden />
                   </span>
@@ -60,8 +91,8 @@ export default function Affiliate() {
               </DialogTrigger>
               <DialogContent className="max-h-[90vh] w-[calc(100%-2rem)] max-w-[40rem] overflow-y-auto rounded-[2rem] border-0 p-6 sm:p-8" data-lenis-prevent>
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-extrabold tracking-[-0.02em]">Affiliate programme application</DialogTitle>
-                  <DialogDescription>Review the requirements below before submitting your application.</DialogDescription>
+                  <DialogTitle className="text-2xl font-extrabold tracking-[-0.02em]">{t.dialogTitle}</DialogTitle>
+                  <DialogDescription>{t.dialogBody}</DialogDescription>
                 </DialogHeader>
                 <div className="h-[520px] py-2">
                   <FilloutStandardEmbed filloutId="3nF36BZAZ3us" />
@@ -82,6 +113,7 @@ export default function Affiliate() {
 /** An affiliate profile, app style — tilts toward the cursor. */
 function ProfileCard() {
   const ref = useRef<HTMLDivElement>(null);
+  const t = useCopy(COPY).card;
   const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== "mouse" || !ref.current) return;
     const r = e.currentTarget.getBoundingClientRect();
@@ -100,7 +132,7 @@ function ProfileCard() {
       >
         <div className="relative h-44 sm:h-52">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/mclaren-675lt-sm.jpg" alt="" loading="lazy" className="h-full w-full object-cover object-[50%_60%]" />
+          <img src="/media/mclaren-675lt-sm.jpg" alt={t.cover} loading="lazy" className="h-full w-full object-cover object-[50%_60%]" />
           <span className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         </div>
         <div className="px-6 pb-7 sm:px-8">
@@ -108,19 +140,19 @@ function ProfileCard() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/media/senna-square-sm.jpg" alt="" loading="lazy" className="h-24 w-24 rounded-full object-cover ring-[5px] ring-snow" />
             <span className="affiliate-badge relative mb-2 inline-flex items-center gap-2 overflow-hidden rounded-full bg-ink px-3.5 py-2 text-sm font-bold text-snow">
-              <FlagMark className="w-4 text-snow" /> Affiliate
+              <FlagMark className="w-4 text-snow" /> {t.badge}
             </span>
           </div>
           <p className="mt-4 flex items-center gap-1.5 text-2xl font-extrabold tracking-[-0.02em]">
-            Your name <BadgeCheck className="h-6 w-6 text-snow" fill="#111" strokeWidth={2} aria-hidden />
+            {t.name} <BadgeCheck className="h-6 w-6 text-snow" fill="#111" strokeWidth={2} aria-hidden />
           </p>
-          <p className="text-base font-medium text-ash">@yourhandle · Car photographer</p>
+          <p className="text-base font-medium text-ash">{t.handle}</p>
 
           <div className="mt-6 grid grid-cols-3 gap-2 text-center">
             {[
-              { v: "128", l: "Spots" },
-              { v: "41.2k", l: "Points" },
-              { v: "#12", l: "Country" },
+              { v: "128", l: t.stats[0] },
+              { v: "41.2k", l: t.stats[1] },
+              { v: "#12", l: t.stats[2] },
             ].map((s) => (
               <span key={s.l} className="rounded-2xl bg-mist py-3">
                 <span className="block text-xl font-extrabold tabular">{s.v}</span>
@@ -130,7 +162,7 @@ function ProfileCard() {
           </div>
 
           <p className="mt-6 flex items-center gap-2 text-sm font-bold">
-            <ImagePlus className="h-4 w-4" aria-hidden /> Imported from your camera
+            <ImagePlus className="h-4 w-4" aria-hidden /> {t.imported}
           </p>
           <div className="mt-3 grid grid-cols-3 gap-2">
             {["/media/porsche-gt3rs-sm.jpg", "/media/senna-portrait-sm.jpg", "/media/mclaren-675lt-sm.jpg"].map((src, i) => (

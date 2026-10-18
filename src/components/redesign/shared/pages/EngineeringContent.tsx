@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import DocShell from "@/components/redesign/shared/DocShell";
+import AppCta from "@/components/redesign/shared/AppCta";
 import { Reveal } from "@/components/redesign/shared/motion/reveal";
 
 interface BlogPost {
@@ -36,7 +37,7 @@ const posts: BlogPost[] = [
     }
 ];
 
-export default function EngineeringBlog() {
+export default function EngineeringBlog({ qr }: { qr?: string }) {
     return (
         <DocShell
             lang="en"
@@ -97,6 +98,7 @@ export default function EngineeringBlog() {
                     </Reveal>
                 ))}
             </ul>
+            <AppCta campaign="engineering" title="See it work on your street." body="The research ends up in the app: point your phone at a car and it is identified in seconds. Free on iPhone and Android." qr={qr} className="mt-16" />
         </DocShell>
     );
 }

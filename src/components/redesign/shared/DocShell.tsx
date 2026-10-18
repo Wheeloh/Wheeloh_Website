@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import Header from "@/components/redesign/shared/Header";
 import Footer from "@/components/redesign/shared/Footer";
+import MobileCta from "@/components/redesign/shared/MobileCta";
 import { Reveal, SplitText } from "@/components/redesign/shared/motion/reveal";
 import { cn } from "@/lib/utils";
 
@@ -96,6 +97,7 @@ export default function DocShell({
         <div className={cn("mx-auto max-w-[1440px] break-words px-5 sm:px-8", contentClassName)}>{children}</div>
       </main>
       <Footer />
+      <MobileCta />
     </div>
   );
 }

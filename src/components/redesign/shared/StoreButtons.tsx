@@ -4,6 +4,12 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { appStoreUrl, playStoreUrl } from "@/lib/links";
 import { useMaintenance } from "@/hooks/useMaintenance";
+import { useCopy } from "@/components/redesign/shared/Locale";
+
+const COPY = {
+  en: { apple: "Download on the", google: "Get it on", unavailable: (store: string) => `Wheeloh is currently unavailable on ${store}` },
+  fr: { apple: "Télécharger dans l'", google: "Disponible sur", unavailable: (store: string) => `Wheeloh est momentanément indisponible sur ${store}` },
+};
 
 export function AppleIcon({ className }: { className?: string }) {
   return (
@@ -34,11 +40,12 @@ interface StoreButtonsProps {
 
 export default function StoreButtons({ tone = "light", size = "md", campaign = "app_download", className }: StoreButtonsProps) {
   const maintenance = useMaintenance();
+  const t = useCopy(COPY);
 
   const guard = (store: string) => (e: React.MouseEvent) => {
     if (maintenance.active) {
       e.preventDefault();
-      toast.error(maintenance.message || `Wheeloh is currently unavailable on ${store}`);
+      toast.error(maintenance.message || t.unavailable(store));
     }
   };
 
@@ -52,8 +59,8 @@ export default function StoreButtons({ tone = "light", size = "md", campaign = "
   );
 
   const stores = [
-    { name: "App Store", kicker: "Download on the", href: appStoreUrl(campaign), Icon: AppleIcon },
-    { name: "Google Play", kicker: "Get it on", href: playStoreUrl(campaign), Icon: PlayIcon },
+    { name: "App Store", kicker: t.apple, href: appStoreUrl(campaign), Icon: AppleIcon },
+    { name: "Google Play", kicker: t.google, href: playStoreUrl(campaign), Icon: PlayIcon },
   ];
 
   return (

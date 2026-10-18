@@ -1,22 +1,21 @@
-import type { Metadata } from "next";
 import EngineeringContent from "@/components/redesign/shared/pages/EngineeringContent";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbLd } from "@/lib/seo";
+import { pageMetadata } from "@/lib/metadata";
+import { ROUTES } from "@/lib/routes";
+import { APP_LINK_URL } from "@/lib/links";
+import { qrSvg } from "@/lib/qr";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Engineering",
   description:
-    "Research and technical deep dives from the Wheeloh engineering team — vector search, car identification and the systems behind the app.",
-  alternates: { canonical: "/engineering" },
-  openGraph: {
-    url: "/engineering",
-    title: "Engineering | Wheeloh",
-    description: "Technical deep dives from the Wheeloh engineering team.",
-    images: ["/opengraph-image"],
-  },
-};
+    "Research and technical deep dives from the Wheeloh engineering team — vector search, car identification and the systems behind the car spotting app.",
+  locale: "en",
+  paths: ROUTES.engineering.paths,
+});
 
-export default function Page() {
+export default async function Page() {
+  const qr = await qrSvg(APP_LINK_URL);
   return (
     <>
       <JsonLd
@@ -25,7 +24,7 @@ export default function Page() {
           { name: "Engineering", path: "/engineering" },
         ])}
       />
-      <EngineeringContent />
+      <EngineeringContent qr={qr} />
     </>
   );
 }

@@ -23,6 +23,12 @@ function stripFrontmatter(md: string): string {
   return md.replace(/^---[\s\S]*?---\s*/, "");
 }
 
+/** `description: "..."` from the front-matter, the release's meta description. */
+function frontmatterDescription(md: string): string | undefined {
+  const block = md.match(/^---\n([\s\S]*?)\n---/)?.[1];
+  return block?.match(/^description:\s*"?(.*?)"?\s*$/m)?.[1];
+}
+
 /** Strip inline markdown formatting so a line is safe to use as a plain-text
  * meta description / OG description / JSON-LD description. */
 function stripMarkdownInline(text: string): string {
@@ -47,7 +53,7 @@ export function listSlugs(): string[] {
 /** Read and parse a single changelog entry by slug. Throws if missing. */
 export function readEntry(slug: string): ChangelogEntry {
   const raw = fs.readFileSync(path.join(DIR, `${slug}.md`), "utf8");
-  const lines = raw.split("\n");
+  const lines = stripFrontmatter(raw).split("\n");
 
   const title =
     lines.find((l) => l.startsWith("#"))?.replace(/^#+\s*/, "") ?? slug;
@@ -57,12 +63,15 @@ export function readEntry(slug: string): ChangelogEntry {
       ?.replace(/\*/g, "")
       .trim() ?? slug;
   const description =
+    frontmatterDescription(raw) ??
     lines.find(
       (l, i) => i > 1 && l.trim() !== "" && !l.startsWith("#") && !l.startsWith("*") && !l.startsWith("-"),
     ) ?? title;
 
-  // Prefer the slug when it is already an ISO date (deterministic on CI).
-  const iso = /^\d{4}-\d{2}-\d{2}$/.test(slug) ? slug : new Date().toISOString().slice(0, 10);
+  // The printed date (dd/mm/yyyy) is the release date; the slug is only a
+  // URL (2024-04-05 was published on 04/05/2025). Fall back to an ISO slug.
+  const [d, m, y] = printed.split("/");
+  const iso = y && m && d ? `${y}-${m}-${d}` : /^\d{4}-\d{2}-\d{2}$/.test(slug) ? slug : new Date().toISOString().slice(0, 10);
 
   return {
     slug,

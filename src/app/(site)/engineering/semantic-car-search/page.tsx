@@ -1,8 +1,9 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
 import SemanticCarSearchContent from "@/components/redesign/shared/pages/SemanticCarSearchContent";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbLd, techArticleLd } from "@/lib/seo";
+import { pageMetadata } from "@/lib/metadata";
+import { ROUTES } from "@/lib/routes";
 
 const PATH = "/engineering/semantic-car-search";
 const HEADLINE = "Semantic Car Search: A Vector-Based Approach";
@@ -11,21 +12,17 @@ const DESCRIPTION =
 const PUBLISHED = "2025-11-24";
 const MODIFIED = "2026-10-03";
 
-export const metadata: Metadata = {
-  title: HEADLINE,
-  description: DESCRIPTION,
-  authors: [{ name: "Théophile" }],
-  alternates: { canonical: PATH },
-  openGraph: {
-    type: "article",
-    url: PATH,
+export const metadata = {
+  ...pageMetadata({
     title: HEADLINE,
     description: DESCRIPTION,
+    locale: "en",
+    paths: ROUTES.semanticSearch.paths,
+    type: "article",
     publishedTime: PUBLISHED,
     modifiedTime: MODIFIED,
-    authors: ["Théophile"],
-    images: ["/opengraph-image"],
-  },
+  }),
+  authors: [{ name: "Théophile" }],
 };
 
 export default function Page() {

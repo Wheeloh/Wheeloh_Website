@@ -4,7 +4,13 @@ import dynamic from "next/dynamic";
 import { ArrowUpRight } from "lucide-react";
 import LazyMount from "@/components/LazyMount";
 import { Reveal, SplitText } from "@/components/redesign/shared/motion/reveal";
+import { useCopy } from "@/components/redesign/shared/Locale";
 import { CONTACT_EMAIL, INSTAGRAM_URL, TIKTOK_URL } from "@/lib/seo";
+
+const COPY = {
+  en: { title: "Talk to\nthe team.", body: "A question about the app, some feedback or a partnership idea? We read everything." },
+  fr: { title: "Parle\nà l'équipe.", body: "Une question sur l'app, un retour ou une idée de partenariat ? On lit tout." },
+};
 
 const FilloutStandardEmbed = dynamic(() => import("@/components/FilloutEmbedLazy"), { ssr: false });
 
@@ -15,16 +21,17 @@ const CHANNELS = [
 ];
 
 export default function Contact() {
+  const t = useCopy(COPY);
   return (
     <section id="contact" aria-labelledby="contact-title" className="relative bg-snow pb-24 text-ink sm:pb-32">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
         <div className="grid grid-cols-1 gap-12 border-t border-line pt-20 sm:pt-28 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 id="contact-title" className="text-display-l font-extrabold">
-              <SplitText text={"Talk to\nthe team."} lineClassNames={["", "text-ash"]} />
+              <SplitText text={t.title} lineClassNames={["", "text-ash"]} />
             </h2>
             <Reveal as="p" delay={150} className="mt-6 max-w-[38ch] text-lg font-medium leading-relaxed text-ash">
-              A question about the app, some feedback or a partnership idea? We read everything.
+              {t.body}
             </Reveal>
             <ul className="mt-10 border-t border-line">
               {CHANNELS.map((c, i) => (

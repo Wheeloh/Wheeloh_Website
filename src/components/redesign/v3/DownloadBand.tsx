@@ -3,12 +3,29 @@
 import FlagMark from "@/components/redesign/shared/brand/FlagMark";
 import StoreButtons from "@/components/redesign/shared/StoreButtons";
 import { Reveal, SplitText, useInViewRef } from "@/components/redesign/shared/motion/reveal";
+import { useCopy, useLocale } from "@/components/redesign/shared/Locale";
+import { STORE_COUNTRIES } from "@/lib/seo";
 
-const COUNTRIES = "France, Belgium, Switzerland, Luxembourg, the Netherlands, the UK, the US, Canada and Australia";
+const COPY = {
+  en: {
+    title: "The next one is\naround the corner.",
+    body: (countries: string) => `Free on iOS and Android. Available in ${countries}.`,
+    scan: "Scan to download",
+    store: "Opens the right store",
+  },
+  fr: {
+    title: "La prochaine est\nau coin de la rue.",
+    body: (countries: string) => `Gratuite sur iOS et Android. Disponible dans 9 pays : ${countries}.`,
+    scan: "Scanne pour télécharger",
+    store: "Ouvre le bon store",
+  },
+};
 
 /** The one dark block of the page: the download call to action, running straight into the footer. */
 export default function DownloadBand({ qr }: { qr: string }) {
   const flagRef = useInViewRef<HTMLDivElement>({ once: false, rootMargin: "0px" });
+  const t = useCopy(COPY);
+  const locale = useLocale();
   return (
     <section
       id="download"
@@ -21,10 +38,10 @@ export default function DownloadBand({ qr }: { qr: string }) {
           <FlagMark motion="wave" className="w-24 text-snow sm:w-32" />
         </div>
         <h2 id="download-title" className="mt-10 text-display-xl font-extrabold sm:mt-14">
-          <SplitText text={"The next one is\naround the corner."} />
+          <SplitText text={t.title} />
         </h2>
         <Reveal as="p" delay={200} className="mt-6 max-w-[46ch] text-lg font-medium leading-relaxed text-smoke">
-          Free on iOS and Android. Available in {COUNTRIES}.
+          {t.body(STORE_COUNTRIES[locale])}
         </Reveal>
         <Reveal delay={320} className="mt-10 flex flex-col items-center gap-8 lg:flex-row lg:gap-10">
           <StoreButtons tone="light" size="lg" campaign="download_section" className="justify-center" />
@@ -35,8 +52,8 @@ export default function DownloadBand({ qr }: { qr: string }) {
               aria-hidden
             />
             <span>
-              <span className="block text-base font-bold">Scan to download</span>
-              <span className="block text-sm font-medium text-ash">Opens the right store</span>
+              <span className="block text-base font-bold">{t.scan}</span>
+              <span className="block text-sm font-medium text-ash">{t.store}</span>
             </span>
           </div>
         </Reveal>

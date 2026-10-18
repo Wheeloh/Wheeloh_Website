@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import dynamic from 'next/dynamic';
+import AppCta from "@/components/redesign/shared/AppCta";
 import DocShell from '@/components/redesign/shared/DocShell';
 import Link from 'next/link';
 import {
@@ -1219,6 +1220,7 @@ export default function SemanticCarSearchContent() {
 
                         </div>
                     </div>
+            <AppCta campaign="engineering_article" title="Try the car search yourself." body="It runs in the Wheeloh app: point your phone at a car and it is identified in seconds. Free on iPhone and Android." className="mx-auto mt-16 max-w-4xl" />
         </DocShell>
     );
 }

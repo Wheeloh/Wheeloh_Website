@@ -10,7 +10,10 @@ import Wordmark from "@/components/redesign/shared/brand/Wordmark";
 import FlagMark from "@/components/redesign/shared/brand/FlagMark";
 import StoreButtons from "@/components/redesign/shared/StoreButtons";
 import { useSections } from "@/components/redesign/shared/SiteConfig";
+import { useCopy, useHomePath, useLocale } from "@/components/redesign/shared/Locale";
 import { INSTAGRAM_URL, STATUS_URL, TIKTOK_URL } from "@/lib/seo";
+import { sectionHref, type Locale } from "@/lib/i18n";
+import { alternatePath } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -24,12 +27,38 @@ const PAGE_LINKS = [
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+const COPY = {
+  en: {
+    home: "Wheeloh — home",
+    getApp: "Get the app",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    main: "Main",
+    mobile: "Mobile",
+    menu: "Menu",
+    contact: "Contact",
+    other: { label: "Français", lang: "fr" as Locale },
+  },
+  fr: {
+    home: "Wheeloh — accueil",
+    getApp: "Télécharger",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
+    main: "Principal",
+    mobile: "Mobile",
+    menu: "Menu",
+    contact: "Contact",
+    other: { label: "English", lang: "en" as Locale },
+  },
+};
+
 /** Smooth in-page scrolling through Lenis, falling back to a normal navigation. */
 export function useSectionLink() {
   const lenis = useLenis();
   const pathname = usePathname();
+  const home = useHomePath();
   return (id: string) => (e: React.MouseEvent) => {
-    if (pathname !== "/") return; // let the browser navigate to /#id
+    if (pathname !== home) return; // let the browser navigate to /#id
     const el = document.getElementById(id);
     if (!el) return;
     e.preventDefault();
@@ -41,10 +70,22 @@ export function useSectionLink() {
 
 export default function Header({ showNavLinks = true }: HeaderProps) {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const locale = useLocale();
+  const t = useCopy(COPY);
+  const home = useHomePath();
+  const isHome = pathname === home;
   const lenis = useLenis();
   const goTo = useSectionLink();
   const sections = useSections();
+  // "Get the app": the home's download band, or this page's own download CTA.
+  const toDownload = (e: React.MouseEvent) => {
+    if (isHome) return goTo("download")(e);
+    const cta = document.querySelector<HTMLElement>("[data-download-cta]");
+    if (!cta) return;
+    e.preventDefault();
+    if (lenis) lenis.scrollTo(cta, { offset: -96, duration: 1.6 });
+    else cta.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
@@ -107,7 +148,7 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
   }, [menuOpen]);
 
   const links = [
-    ...sections.map((s) => ({ key: s.id, href: `/#${s.id}`, label: s.label, section: s.id as string | null })),
+    ...sections.map((s) => ({ key: s.id, href: sectionHref(s.id, locale), label: s.label, section: s.id as string | null })),
     ...PAGE_LINKS.map((p) => ({ key: p.href, href: p.href, label: p.label, section: null as string | null })),
   ];
   // Six links need the extra room of an xl viewport; five fit from lg.
@@ -126,8 +167,8 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
       >
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-3 px-4 pt-3 sm:px-6 sm:pt-4 lg:px-8">
           <Link
-            href="/"
-            aria-label="Wheeloh — home"
+            href={home}
+            aria-label={t.home}
             className={cn(pill, "group flex h-11 shrink-0 items-center gap-2.5 rounded-full pl-3.5 pr-5 transition-transform duration-300 ease-out-expo active:scale-[0.97]")}
           >
             <FlagMark className="h-[18px] w-auto text-ink transition-transform duration-500 ease-out-expo group-hover:-rotate-6" />
@@ -136,7 +177,7 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
 
           {showNavLinks && (
             <nav
-              aria-label="Main"
+              aria-label={t.main}
               className={cn(
                 pill,
                 "absolute left-1/2 hidden h-11 -translate-x-1/2 items-center rounded-full p-1",
@@ -178,14 +219,14 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
 
           <div className="flex shrink-0 items-center gap-2">
             <Link
-              href="/#download"
-              onClick={goTo("download")}
+              href={sectionHref("download", locale)}
+              onClick={toDownload}
               className={cn(
                 pill,
                 "group hidden h-11 items-center gap-2 whitespace-nowrap rounded-full pl-5 pr-1.5 text-[0.8125rem] font-semibold sm:flex",
               )}
             >
-              Get the app
+              {t.getApp}
               <span className="grid h-8 w-8 place-items-center rounded-full bg-ink text-snow transition-transform duration-500 ease-out-expo group-hover:rotate-[-45deg]">
                 <ArrowDownRight className="h-4 w-4" aria-hidden />
               </span>
@@ -194,7 +235,7 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
               <button
                 type="button"
                 onClick={() => setMenuOpen((v) => !v)}
-                aria-label={menuOpen ? "Close menu" : "Open menu"}
+                aria-label={menuOpen ? t.closeMenu : t.openMenu}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
                 className={cn(pill, "relative grid h-11 w-11 place-items-center rounded-full", wide ? "xl:hidden" : "lg:hidden")}
@@ -223,7 +264,7 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
-            aria-label="Menu"
+            aria-label={t.menu}
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
@@ -231,8 +272,8 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
             className={cn("fixed inset-0 z-menu flex flex-col bg-night px-6 pb-8 pt-28", wide ? "xl:hidden" : "lg:hidden")}
             data-lenis-prevent
           >
-            <nav aria-label="Mobile" className="flex flex-1 flex-col gap-1 overflow-y-auto">
-              {[...links, { key: "contact", href: "/#contact", label: "Contact", section: "contact" }].map((l, i) => (
+            <nav aria-label={t.mobile} className="flex flex-1 flex-col gap-1 overflow-y-auto">
+              {[...links, { key: "contact", href: sectionHref("contact", locale), label: t.contact, section: "contact" }].map((l, i) => (
                 <motion.div
                   key={l.key}
                   initial={{ opacity: 0, y: 32 }}
@@ -265,6 +306,9 @@ export default function Header({ showNavLinks = true }: HeaderProps) {
                 <a href={INSTAGRAM_URL} target="_blank" rel="noopener" className="hover:text-snow">Instagram</a>
                 <a href={TIKTOK_URL} target="_blank" rel="noopener" className="hover:text-snow">TikTok</a>
                 <a href={STATUS_URL} target="_blank" rel="noopener" className="hover:text-snow">Status</a>
+                <Link href={alternatePath(pathname, t.other.lang)} hrefLang={t.other.lang} lang={t.other.lang} className="ml-auto hover:text-snow">
+                  {t.other.label}
+                </Link>
               </div>
             </motion.div>
           </motion.div>

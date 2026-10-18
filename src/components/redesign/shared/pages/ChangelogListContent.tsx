@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import DocShell from "@/components/redesign/shared/DocShell";
+import AppCta from "@/components/redesign/shared/AppCta";
 import { Reveal } from "@/components/redesign/shared/motion/reveal";
 
 export interface ChangelogListItem {
@@ -19,8 +20,11 @@ function splitTitle(title: string) {
 
 export default function ChangelogListContent({
   entries,
+  qr,
 }: {
   entries: ChangelogListItem[];
+  /** Build-time SVG of the download QR code. */
+  qr?: string;
 }) {
   return (
     <DocShell
@@ -88,6 +92,7 @@ export default function ChangelogListContent({
           );
         })}
       </ol>
+      <AppCta campaign="changelog_list" title="Get the latest version." body="Free on iPhone and Android." qr={qr} className="mt-16" />
     </DocShell>
   );
 }

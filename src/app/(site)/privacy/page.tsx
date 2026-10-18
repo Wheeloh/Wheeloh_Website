@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import PrivacyContent from "@/components/redesign/shared/pages/PrivacyContent";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbLd } from "@/lib/seo";
+import { pageMetadata } from "@/lib/metadata";
+import { ROUTES } from "@/lib/routes";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Politique de confidentialité",
   description: "Politique de confidentialité de Wheeloh : quelles données sont traitées et comment nous les protégeons.",
-  alternates: { canonical: "/privacy" },
-  openGraph: { url: "/privacy", locale: "fr_FR", title: "Politique de confidentialité | Wheeloh", images: ["/opengraph-image"] },
-};
+  locale: "fr",
+  paths: ROUTES.privacy.paths,
+});
 
 export default function Page() {
   return (

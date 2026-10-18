@@ -8,9 +8,29 @@ import StoreButtons from "@/components/redesign/shared/StoreButtons";
 import { Reveal, SplitText, useInView } from "@/components/redesign/shared/motion/reveal";
 import Phone, { PHONE_H } from "@/components/redesign/shared/phone/Phone";
 import CameraScreen from "@/components/redesign/shared/phone/screens/CameraScreen";
+import { useCopy } from "@/components/redesign/shared/Locale";
 import { cn } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+const COPY = {
+  en: {
+    badge: "New",
+    kicker: "The car spotting app",
+    title: "Spot it before it’s gone.",
+    body: "Point your camera at any car. Wheeloh identifies it in seconds, files it in your garage and turns every street into a leaderboard.",
+    meta: "Free · iOS & Android · English & French · 9 countries",
+    card: { kicker: "New spot", saved: "Saved to your garage" },
+  },
+  fr: {
+    badge: "Nouveau",
+    kicker: "L’app de carspotting",
+    title: "Spotte-la avant qu’elle file.",
+    body: "Vise n’importe quelle voiture. Wheeloh l’identifie en quelques secondes, la range dans ton garage et transforme chaque rue en classement.",
+    meta: "Gratuit · iOS et Android · Français et anglais · 9 pays",
+    card: { kicker: "Nouveau spot", saved: "Ajouté à ton garage" },
+  },
+};
 
 interface HeroProps {
   latestUpdate?: { slug: string; title: string };
@@ -30,6 +50,7 @@ export default function Hero({ latestUpdate }: HeroProps) {
   const [identified, setIdentified] = useState(false);
   const reduced = useReducedMotion();
   const k = reduced ? 0 : 1;
+  const t = useCopy(COPY);
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const yPhone = useTransform(scrollYProgress, [0, 1], [0, -40 * k]);
@@ -79,7 +100,7 @@ export default function Hero({ latestUpdate }: HeroProps) {
                 href={`/changelog/${latestUpdate.slug}`}
                 className="group inline-flex max-w-full items-center gap-2 rounded-full bg-mist py-1 pl-1 pr-3 text-[0.8125rem] font-semibold text-ink ring-1 ring-inset ring-black/[0.05] transition-colors hover:bg-line"
               >
-                <span className="shrink-0 rounded-full bg-ink px-2 py-0.5 text-[0.6875rem] font-bold text-snow">New</span>
+                <span className="shrink-0 rounded-full bg-ink px-2 py-0.5 text-[0.6875rem] font-bold text-snow">{t.badge}</span>
                 <span className="min-w-0 truncate">{latestUpdate.title}</span>
                 <ChevronRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
               </Link>
@@ -87,24 +108,23 @@ export default function Hero({ latestUpdate }: HeroProps) {
           )}
           <h1 className="mt-6">
             <Reveal as="span" delay={80} className="block text-base font-semibold text-ash sm:text-lg">
-              The car spotting app
+              {t.kicker}
             </Reveal>
             <SplitText
               as="span"
-              text="Spot it before it’s gone."
+              text={t.title}
               delay={140}
               className="mt-3 block text-[2.625rem] font-extrabold leading-[0.98] tracking-[-0.035em] sm:text-display-l xl:text-display-xl"
             />
           </h1>
           <Reveal as="p" delay={480} className="mt-6 max-w-[36ch] text-lg font-medium leading-relaxed text-ash sm:text-xl">
-            Point your camera at any car. Wheeloh identifies it in seconds, files it in your garage and turns every street into a
-            leaderboard.
+            {t.body}
           </Reveal>
           <Reveal delay={600} className="mt-8">
             <StoreButtons tone="dark" campaign="hero" />
           </Reveal>
           <Reveal as="p" variant="fade" delay={760} className="mt-5 text-sm font-medium text-ash">
-            Free · iOS &amp; Android · English &amp; French · 9 countries
+            {t.meta}
           </Reveal>
         </div>
 
@@ -128,7 +148,7 @@ export default function Hero({ latestUpdate }: HeroProps) {
                     style={{ transform: "rotateX(calc(var(--my) * -4deg)) rotateY(calc(var(--mx) * 6deg))" }}
                   >
                     <Phone scale={scale} tone="light">
-                      <CameraScreen active={inView} loop onStep={onStep} />
+                      <CameraScreen active={inView} loop onStep={onStep} priority />
                     </Phone>
                   </div>
                 </div>
@@ -187,16 +207,17 @@ function Floating({ y, delay = 0, show = true, fromPhone = false, depth = 10, fl
 }
 
 function NewSpotCard() {
+  const t = useCopy(COPY).card;
   return (
     <div className="flex w-[14rem] items-center gap-3 rounded-[1.25rem] bg-ink p-2 pr-4 text-snow shadow-[0_30px_60px_-24px_rgba(0,0,0,0.5)]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/media/senna-square-sm.jpg" alt="" loading="lazy" className="h-14 w-14 shrink-0 rounded-[0.9rem] object-cover object-[50%_65%]" />
       <div className="min-w-0">
         <p className="flex items-center gap-1.5 text-[0.6875rem] font-bold text-spotted">
-          <Check className="h-3 w-3" strokeWidth={3} aria-hidden /> New spot
+          <Check className="h-3 w-3" strokeWidth={3} aria-hidden /> {t.kicker}
         </p>
         <p className="truncate text-[0.9375rem] font-bold leading-tight">McLaren Senna</p>
-        <p className="text-[0.75rem] font-medium text-snow/60">Saved to your garage</p>
+        <p className="text-[0.75rem] font-medium text-snow/60">{t.saved}</p>
       </div>
     </div>
   );

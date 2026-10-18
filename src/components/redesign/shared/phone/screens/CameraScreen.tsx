@@ -3,20 +3,52 @@
 import { useEffect, useRef } from "react";
 import { Box, Copy, Crop, Gauge, Image as ImageIcon, MessageSquare, Navigation, ScanLine, Settings, Timer, User, Weight, Zap, ZapOff, ArrowUpToLine, House, Check, Cog } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useCopy } from "@/components/redesign/shared/Locale";
 import { useSteps } from "../ui";
 import { PHOTO_TALL, coverBox } from "../photos";
 
 const PREVIEW = { left: 10, top: 104, w: 373, h: 606 };
 const box = coverBox(PHOTO_TALL, PREVIEW.w, PREVIEW.h);
 
-const SPECS = [
-  { Icon: Zap, label: "Power", value: "789 hp" },
-  { Icon: Gauge, label: "Torque", value: "800 Nm" },
-  { Icon: Timer, label: "0–100 km/h", value: "2.8 s" },
-  { Icon: Navigation, label: "Top speed", value: "340 km/h" },
-  { Icon: Weight, label: "Dry weight", value: "1,198 kg" },
-  { Icon: Cog, label: "Engine", value: "4.0 L V8 TT" },
-];
+const SPEC_ICONS = [Zap, Gauge, Timer, Navigation, Weight, Cog];
+
+// The app's own wording in each language (shared.carStats, postCreation).
+const COPY = {
+  en: {
+    specs: [
+      ["Power", "789 hp"],
+      ["Torque", "800 Nm"],
+      ["0–100 km/h", "2.8 s"],
+      ["Top speed", "340 km/h"],
+      ["Dry weight", "1,198 kg"],
+      ["Engine", "4.0 L V8 TT"],
+    ],
+    detecting: "Detecting model…",
+    detected: "Model identified",
+    identified: "Identified",
+    line: "McLaren · Ultimate Series · 2018–2022",
+    points: "2,212 pts",
+    add: "Add to my garage",
+    alt: "A McLaren Senna identified by the Wheeloh car spotting camera",
+  },
+  fr: {
+    specs: [
+      ["Puissance", "789 ch"],
+      ["Couple", "800 Nm"],
+      ["0–100 km/h", "2,8 s"],
+      ["Vitesse max", "340 km/h"],
+      ["Poids à sec", "1 198 kg"],
+      ["Moteur", "4,0 L V8 TT"],
+    ],
+    detecting: "Identification du modèle…",
+    detected: "Modèle identifié",
+    identified: "Identifiée",
+    line: "McLaren · Ultimate Series · 2018–2022",
+    points: "2 212 pts",
+    add: "Ajouter à mon garage",
+    alt: "Une McLaren Senna identifiée par la caméra de carspotting Wheeloh",
+  },
+};
 
 /** Chapter 1 — the camera identifies the car, then the spec sheet slides up. */
 interface CameraScreenProps {
@@ -24,9 +56,12 @@ interface CameraScreenProps {
   /** Replay the detection every few seconds while on screen. */
   loop?: boolean;
   onStep?: (step: number) => void;
+  /** Above the fold: load the photo first instead of lazily. */
+  priority?: boolean;
 }
 
-export default function CameraScreen({ active, loop = false, onStep }: CameraScreenProps) {
+export default function CameraScreen({ active, loop = false, onStep, priority = false }: CameraScreenProps) {
+  const t = useCopy(COPY);
   // 0 idle · 1 detecting · 2 identified · 3 sheet up
   const step = useSteps(active, [250, 2100, 2700], loop ? 5200 : undefined);
   const pct = useRef<HTMLSpanElement>(null);
@@ -68,8 +103,9 @@ export default function CameraScreen({ active, loop = false, onStep }: CameraScr
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/media/senna-portrait-sm.jpg"
-          alt=""
-          loading="lazy"
+          alt={t.alt}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
           decoding="async"
           className={cn(
             "absolute inset-0 h-full w-full object-cover object-[50%_72%] transition-transform [transition-duration:1600ms] ease-out-expo",
@@ -99,7 +135,7 @@ export default function CameraScreen({ active, loop = false, onStep }: CameraScr
         {/* detection card */}
         <div className="absolute left-[10px] right-[10px] top-[10px] rounded-[16px] bg-black/45 px-[14px] py-[12px] backdrop-blur-xl">
           <div className="flex items-center justify-between text-[14px] font-medium">
-            <span>{step >= 2 ? "Model identified" : "Detecting model…"}</span>
+            <span>{step >= 2 ? t.detected : t.detecting}</span>
             <span className="tabular text-snow/70">
               <span ref={pct}>{step >= 2 ? 100 : 0}</span>%
             </span>
@@ -176,32 +212,35 @@ export default function CameraScreen({ active, loop = false, onStep }: CameraScr
         <div className="mt-[18px] flex items-start justify-between gap-3">
           <div>
             <p className="flex items-center gap-1.5 text-[13px] font-semibold text-spotted">
-              <Check className="h-4 w-4" strokeWidth={3} /> Identified
+              <Check className="h-4 w-4" strokeWidth={3} /> {t.identified}
             </p>
             <p className="mt-1 text-[26px] font-bold leading-tight tracking-[-0.02em]">McLaren Senna</p>
-            <p className="text-[13px] font-medium text-ash">McLaren · Ultimate Series · 2018–2022</p>
+            <p className="text-[13px] font-medium text-ash">{t.line}</p>
           </div>
-          <span className="mt-1 shrink-0 rounded-full bg-ink px-3 py-1.5 text-[13px] font-bold text-snow tabular">2,212 pts</span>
+          <span className="mt-1 shrink-0 rounded-full bg-ink px-3 py-1.5 text-[13px] font-bold text-snow tabular">{t.points}</span>
         </div>
         <div className="mt-[18px] grid grid-cols-2 gap-[10px]">
-          {SPECS.map(({ Icon, label, value }, i) => (
-            <div
-              key={label}
-              className={cn(
-                "rounded-[16px] bg-mist px-[14px] py-[11px] transition-[opacity,transform] duration-700 ease-out-expo",
-                step >= 3 ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
-              )}
-              style={{ transitionDelay: step >= 3 ? `${250 + i * 70}ms` : "0ms" }}
-            >
-              <p className="flex items-center gap-1.5 text-[12px] font-medium text-ash">
-                <Icon className="h-3.5 w-3.5" strokeWidth={2} /> {label}
-              </p>
-              <p className="mt-0.5 text-[17px] font-bold tracking-[-0.01em]">{value}</p>
-            </div>
-          ))}
+          {t.specs.map(([label, value], i) => {
+            const Icon = SPEC_ICONS[i];
+            return (
+              <div
+                key={label}
+                className={cn(
+                  "rounded-[16px] bg-mist px-[14px] py-[11px] transition-[opacity,transform] duration-700 ease-out-expo",
+                  step >= 3 ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+                )}
+                style={{ transitionDelay: step >= 3 ? `${250 + i * 70}ms` : "0ms" }}
+              >
+                <p className="flex items-center gap-1.5 text-[12px] font-medium text-ash">
+                  <Icon className="h-3.5 w-3.5" strokeWidth={2} /> {label}
+                </p>
+                <p className="mt-0.5 text-[17px] font-bold tracking-[-0.01em]">{value}</p>
+              </div>
+            );
+          })}
         </div>
         <span className="mt-[18px] flex h-[52px] items-center justify-center rounded-full bg-ink text-[16px] font-semibold text-snow">
-          Add to my garage
+          {t.add}
         </span>
         <span className="absolute bottom-[8px] left-1/2 h-[5px] w-[134px] -translate-x-1/2 rounded-full bg-ink" />
       </div>

@@ -1,58 +1,54 @@
 import type { MetadataRoute } from "next";
-import { execSync } from "node:child_process";
 import { SITE_URL } from "@/lib/seo";
 import { listEntries } from "@/lib/changelog";
+import { ROUTES, brandPath, type SiteRoute } from "@/lib/routes";
+import { LOCALES } from "@/lib/i18n";
+import { indexableBrands, CATALOGUE_UPDATED } from "@/lib/catalogue";
 
-// Native, dynamic sitemap. Replaces next-sitemap: accurate content-derived
-// lastmod, includes changelog detail routes, and no self-referencing index.
-// /invite, /news, /user and /legal-and-privacy are intentionally excluded.
+// Native, dynamic sitemap built from lib/routes.ts: one <url> per page and
+// language, each listing its translations (hreflang) so Google pairs /x with
+// /fr/x. lastmod comes from the explicit content dates in the registry, never
+// from git (a file move or a shallow CI clone would reset them all).
+// /invite, /news and /user (deep-link fallbacks) are intentionally excluded.
 
-// Fallback used only if git history is unavailable at build time (e.g. a
-// shallow clone) — never falls back to `new Date()`, which would make every
-// static route report an identical, meaningless "now" lastmod on every build.
-const FALLBACK_DATE = new Date("2026-07-22T00:00:00.000Z");
+const abs = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`;
 
-/** Real last-content-change date for a source file, via git history. */
-function lastCommitDate(file: string): Date {
-  try {
-    const iso = execSync(`git log -1 --format=%cI -- ${file}`, {
-      cwd: process.cwd(),
-      encoding: "utf8",
-    }).trim();
-    return iso ? new Date(iso) : FALLBACK_DATE;
-  } catch {
-    return FALLBACK_DATE;
-  }
+function entriesFor(route: Pick<SiteRoute, "paths" | "priority">, lastModified: Date): MetadataRoute.Sitemap {
+  const locales = LOCALES.filter((l) => route.paths[l]);
+  const languages =
+    locales.length > 1
+      ? {
+          ...Object.fromEntries(locales.map((l) => [l, abs(route.paths[l]!)])),
+          "x-default": abs(route.paths.en ?? route.paths[locales[0]]!),
+        }
+      : undefined;
+  return locales.map((l) => ({
+    url: abs(route.paths[l]!),
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: route.priority,
+    ...(languages && { alternates: { languages } }),
+  }));
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // `file` is where the page's content lives on the site (v3): its content
-  // component, or for the home the whole folder of its sections.
-  const PAGES = "src/components/redesign/shared/pages";
-  const staticRoutes: Array<{ path: string; priority: number; file: string }> = [
-    { path: "/", priority: 1, file: "src/components/redesign/v3" },
-    { path: "/engineering", priority: 0.7, file: `${PAGES}/EngineeringContent.tsx` },
-    { path: "/engineering/semantic-car-search", priority: 0.7, file: `${PAGES}/SemanticCarSearchContent.tsx` },
-    { path: "/changelog", priority: 0.7, file: `${PAGES}/ChangelogListContent.tsx` },
-    { path: "/legal", priority: 0.4, file: `${PAGES}/LegalContent.tsx` },
-    { path: "/cgu", priority: 0.4, file: `${PAGES}/CguContent.tsx` },
-    { path: "/privacy", priority: 0.4, file: `${PAGES}/PrivacyContent.tsx` },
-    { path: "/community-standards", priority: 0.4, file: `${PAGES}/CommunityStandardsContent.tsx` },
-  ];
+  const changelog = listEntries();
+  const latestRelease = changelog[0]?.iso;
 
-  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map(({ path, priority, file }) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: lastCommitDate(file),
-    changeFrequency: "weekly",
-    priority,
-  }));
+  const pages = (Object.entries(ROUTES) as Array<[string, SiteRoute]>).flatMap(([key, route]) =>
+    entriesFor(route, new Date(key === "changelog" && latestRelease ? latestRelease : route.updated)),
+  );
 
-  const changelogEntries: MetadataRoute.Sitemap = listEntries().map((entry) => ({
+  const brands = indexableBrands().flatMap((b) =>
+    entriesFor({ paths: { en: brandPath(b.id, "en"), fr: brandPath(b.id, "fr") }, priority: 0.6 }, new Date(CATALOGUE_UPDATED)),
+  );
+
+  const releases: MetadataRoute.Sitemap = changelog.map((entry) => ({
     url: `${SITE_URL}/changelog/${entry.slug}`,
     lastModified: new Date(entry.iso),
     changeFrequency: "monthly",
-    priority: 0.6,
+    priority: 0.5,
   }));
 
-  return [...staticEntries, ...changelogEntries];
+  return [...pages, ...brands, ...releases];
 }

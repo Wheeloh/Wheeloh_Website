@@ -13,5 +13,16 @@ export default function nextConfig(phase) {
     images: {
       formats: ["image/avif", "image/webp"],
     },
+    async redirects() {
+      return [
+        // An old duplicate of /legal + /privacy: send its signals to /legal.
+        { source: "/legal-and-privacy", destination: "/legal", permanent: true },
+        // Spellings people type or link to.
+        { source: "/carspotting", destination: "/car-spotting", permanent: true },
+        { source: "/fr/car-spotting", destination: "/fr/carspotting", permanent: true },
+        { source: "/en", destination: "/", permanent: true },
+        { source: "/en/:path*", destination: "/:path*", permanent: true },
+      ];
+    },
   };
 }
