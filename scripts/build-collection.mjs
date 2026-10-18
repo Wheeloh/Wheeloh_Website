@@ -1,4 +1,5 @@
-// Builds the compact Brand Collection file used by the homepage explorer.
+// Builds the compact Brand Collection file used by the v2 preview's
+// collection explorer (dev only: runs before `npm run dev`).
 //
 //   node scripts/build-collection.mjs
 //

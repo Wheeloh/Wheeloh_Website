@@ -76,9 +76,10 @@
    detection/notification red and the podium medals.
    Brand colours are OKLCH channel triplets so Tailwind can add alpha.
    Everything version-specific is scoped on the [data-version] wrapper that
-   src/app/[version]/layout.tsx renders, via :root:has() so that portaled
-   dialogs and toasts pick the right tokens too. The original site (no
-   wrapper) keeps the tokens above untouched.
+   the site layout (src/app/(site)/layout.tsx, v3) and the dev-only v2
+   preview render, via :root:has() so that portaled dialogs and toasts pick
+   the right tokens too. Pages without the wrapper (the deep-link pages, the
+   v1 preview) keep the tokens above untouched.
 --------------------------------------------------------------------------- */
 @layer base {
   :root {

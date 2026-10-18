@@ -26,15 +26,18 @@ function lastCommitDate(file: string): Date {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // `file` is where the page's content lives on the site (v3): its content
+  // component, or for the home the whole folder of its sections.
+  const PAGES = "src/components/redesign/shared/pages";
   const staticRoutes: Array<{ path: string; priority: number; file: string }> = [
-    { path: "/", priority: 1, file: "src/components/HomeContent.tsx" },
-    { path: "/engineering", priority: 0.7, file: "src/components/EngineeringContent.tsx" },
-    { path: "/engineering/semantic-car-search", priority: 0.7, file: "src/components/SemanticCarSearchContent.tsx" },
-    { path: "/changelog", priority: 0.7, file: "src/components/ChangelogListContent.tsx" },
-    { path: "/legal", priority: 0.4, file: "src/components/LegalContent.tsx" },
-    { path: "/cgu", priority: 0.4, file: "src/components/CguContent.tsx" },
-    { path: "/privacy", priority: 0.4, file: "src/components/PrivacyContent.tsx" },
-    { path: "/community-standards", priority: 0.4, file: "src/components/CommunityStandardsContent.tsx" },
+    { path: "/", priority: 1, file: "src/components/redesign/v3" },
+    { path: "/engineering", priority: 0.7, file: `${PAGES}/EngineeringContent.tsx` },
+    { path: "/engineering/semantic-car-search", priority: 0.7, file: `${PAGES}/SemanticCarSearchContent.tsx` },
+    { path: "/changelog", priority: 0.7, file: `${PAGES}/ChangelogListContent.tsx` },
+    { path: "/legal", priority: 0.4, file: `${PAGES}/LegalContent.tsx` },
+    { path: "/cgu", priority: 0.4, file: `${PAGES}/CguContent.tsx` },
+    { path: "/privacy", priority: 0.4, file: `${PAGES}/PrivacyContent.tsx` },
+    { path: "/community-standards", priority: 0.4, file: `${PAGES}/CommunityStandardsContent.tsx` },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map(({ path, priority, file }) => ({

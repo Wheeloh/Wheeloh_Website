@@ -1,28 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-const COOKIE = "wh-site-version";
 const OPTIONS = ["v1", "v2", "v3"] as const;
 
 /**
- * Tiny preview switcher for comparing the site versions. Only appears once
- * a version has been chosen through the URL (?v2=true, ?v3=true…), so
- * regular visitors never see it. Links do a full navigation: the middleware
- * reads the parameter, sets the cookie and reloads the page in that version.
+ * DEV ONLY: the root layout renders it in `next dev` alone. Compares the
+ * site (v3) with the older versions. Links do a full navigation: the dev
+ * middleware reads the parameter, sets or clears the cookie and reloads the
+ * page in that version.
  */
 export default function VersionSwitcher() {
-  const [current, setCurrent] = useState<string | null>(null);
-  const [path, setPath] = useState("/");
+  const path = usePathname() || "/";
+  const [current, setCurrent] = useState<string>("v3");
 
   useEffect(() => {
-    const m = document.cookie.match(/(?:^|;\s*)wh-site-version=(v[123])/);
-    setCurrent(m ? m[1] : null);
-    setPath(window.location.pathname);
-  }, []);
-
-  if (!current) return null;
+    const m = document.cookie.match(/(?:^|;\s*)wh-site-version=(v[12])/);
+    setCurrent(m ? m[1] : "v3");
+  }, [path]);
 
   return (
     <div
@@ -44,13 +40,6 @@ export default function VersionSwitcher() {
           {v}
         </a>
       ))}
-      <a
-        href={`${path}?preview=off`}
-        aria-label="Exit preview mode"
-        className="ml-0.5 grid h-7 w-7 place-items-center rounded-full text-white/55 hover:bg-white/10 hover:text-white"
-      >
-        <X className="h-3.5 w-3.5" />
-      </a>
     </div>
   );
 }

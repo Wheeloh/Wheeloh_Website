@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import VersionSwitcher from "@/components/redesign/shared/VersionSwitcher";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/seo";
+
+// The v1 / v2 previews exist in `next dev` only, and so does their switcher:
+// in a production build this branch is dead code and the import is dropped.
+const VersionSwitcher =
+  process.env.NODE_ENV === "development" ? dynamic(() => import("@/components/redesign/shared/VersionSwitcher")) : () => null;
 
 // Inter is the original site's typeface; Montserrat (the app's typeface) is
 // what the redesign uses, across its full weight range. globals.css picks
