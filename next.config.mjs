@@ -22,6 +22,11 @@ export default function nextConfig(phase) {
         { source: "/fr/car-spotting", destination: "/fr/carspotting", permanent: true },
         { source: "/en", destination: "/", permanent: true },
         { source: "/en/:path*", destination: "/:path*", permanent: true },
+        // Brands dropped from the collection (brand-list v3, October 2026): their pages are gone.
+        ...["acura", "avatr", "delage", "denza", "ginetta", "volvo"].flatMap((brand) => [
+          { source: `/cars/${brand}`, destination: "/cars", permanent: true },
+          { source: `/fr/voitures/${brand}`, destination: "/fr/voitures", permanent: true },
+        ]),
       ];
     },
   };
