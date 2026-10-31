@@ -7,8 +7,9 @@
 // Output: public/car-brands/collection.json  brands → display name, logo, country, model names
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const data = JSON.parse(fs.readFileSync(path.join(root, "public/car-brands/data.json"), "utf8"));
 
 // Display fixes for keys stored in a technical casing.
