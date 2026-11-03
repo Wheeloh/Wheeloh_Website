@@ -23,7 +23,7 @@ export const ROUTES = {
   cars: { paths: { en: "/cars", fr: "/fr/voitures" }, updated: "2026-10-18", priority: 0.8 },
   engineering: { paths: { en: "/engineering" }, updated: "2025-11-24", priority: 0.5 },
   semanticSearch: { paths: { en: "/engineering/semantic-car-search" }, updated: "2026-10-03", priority: 0.5 },
-  changelog: { paths: { en: "/changelog" }, updated: "2026-10-03", priority: 0.6 },
+  changelog: { paths: { en: "/changelog" }, updated: "2026-10-31", priority: 0.6 },
   legal: { paths: { fr: "/legal" }, updated: "2026-07-22", priority: 0.3 },
   cgu: { paths: { fr: "/cgu" }, updated: "2026-07-22", priority: 0.3 },
   privacy: { paths: { fr: "/privacy" }, updated: "2026-07-22", priority: 0.3 },
