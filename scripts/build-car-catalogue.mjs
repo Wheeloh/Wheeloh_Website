@@ -12,8 +12,9 @@
 // have the app repository).
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dbDir = process.argv[2];
 if (!dbDir || !fs.existsSync(path.join(dbDir, "cars_by_brand"))) {
   console.error("usage: node scripts/build-car-catalogue.mjs <app>/functions/lib/wheeloh/data");
